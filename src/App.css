@@ -1,38 +1,68 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
+*{
+  font-family: 'Varela Round', sans-serif;
+}
+h1,h2,h3,h4,h5{
+  font-weight: 800;
+}
+.alt-box{
+  padding: 50px 0px;
+  background: #264d64;
+}
+.alt-box h1, .alt-box p{
+  color: #FFF;
+}
+.mb-n70{
+  margin-bottom: -70px;
+}
+.ptb-50{
+  padding: 50px 0px;
+}
+.alt-box h1{
+  font-size: 50px;
+  font-weight: 800;
+}
+.alt-title h2{
+  border-left: 5px solid #FF8C32;
+  padding-left: 15px;
+  font-size: 26px;
+}
+.btn-main{
+  background: #264d64;
+  color: #FFF;
+  padding: 8px;
+  font-size: 20px;
+}
+.mobile-form select{
+  padding: 12px;
+  margin-bottom: 20px;
+}
+.card:hover{
+  box-shadow: 0 0 10px 0 rgb(0 0 0 / 11%);
+}
+.card-body{
+  width: 70% !important;
+  margin: 0px auto;
+}
+.card-body img{
+  width: 100%;
+}
+.bg-grey{
+  background: #EEEEEE;
+}
+.work-box {
+  padding: 20px;
   text-align: center;
+  background: white;
+  border-radius: 10px;
+  height: 100%;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.work-boximg img {
+  height: 100px;
+  margin-bottom: 15px;
+  margin-top: 10px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form-select:focus {
+  border-color: black;
+  box-shadow: none !important;
 }
