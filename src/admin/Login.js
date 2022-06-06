@@ -7,6 +7,7 @@ const Login = () => {
         <div className='container'>
             <div className='row py-5'>
                 <div className='col-md-6 offset-md-3 p-5 shadow'>
+                    <h2>Login page</h2>
                 <div class="mb-3">
                     <label className="form-label">Email address</label>
                     <input type="email" className="form-control" />
