@@ -8,6 +8,8 @@ import Home from './page/Home';
 import Footer from './comonent/Footer';
 import Login from './admin/Login';
 import Singup from './admin/Singup';
+import Profile from './admin/Profile';
+import Protected from './comonent/Protected';
 
 function App() {
   return (
@@ -16,10 +18,16 @@ function App() {
     <Navbar/>
     <Switch>
       <Route path='/' component={Home} exact/>
+
+      
       <Route path='/about' component={About} exact/>
       <Route path='/content' component={About} exact/>
       <Route path='/wp-login' component={Login} exact/>
       <Route path='/wp-singup' component={Singup} exact/>
+      <Route path='/Profile' exact>
+      <Protected Cmd={Profile}/>
+      </Route>
+      
     </Switch>
     <Footer/>
     </>

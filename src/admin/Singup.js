@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 const Singup = () => {
+
+    const history = useHistory();
+
+    useEffect(()=>{
+        if(localStorage.getItem('login'))
+        {
+            history.push('/profile');
+        }
+    },[])
 
     const[username,setUsername]=useState();
     const[phone,setPhone]=useState();
     const[email,setEmail]=useState();
     const[password,setPassword]=useState();
     const[submit,setSubmit]=useState(false);
+
+
     const userSubmit = (e) =>{
         const data = {username,phone,email,password};
         fetch('http://localhost:9000/user/signup',{
@@ -16,14 +28,11 @@ const Singup = () => {
                 'Accept': 'application/json'
             },
             body: JSON.stringify(data)
-        }).then(res=>{
-
-            console.log(res);
+        }).then(res=>{console.log(res);
             setSubmit(true);
         }).catch(error=>{
             console.log(error);
         })
-        console.log()
     }
 
     return (
