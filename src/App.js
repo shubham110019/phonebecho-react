@@ -12,6 +12,8 @@ import Profile from './admin/Profile';
 import Protected from './comonent/Protected';
 import Addbrand from './admin/brand/Addbrand';
 import StateProvider from './StateProvider';
+import Brand from './page/Brand';
+import Brandall from './page/Brandall';
 
 function App() {
 
@@ -24,6 +26,8 @@ function App() {
     <Switch>
       <Route path='/' component={Home} exact/>
       <Route path='/about' component={About} exact/>
+      <Route path='/brand' component={Brandall} exact/>
+      <Route path='/brand/:id' component={Brand} exact/>
       <Route path='/wp-login' component={Login} exact/>
       <Route path='/wp-singup' component={Singup} exact/>
       <Route path='/dashboard' exact>
