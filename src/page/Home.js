@@ -42,7 +42,7 @@ const Home = () =>{
                           brand.map((item,i)=>{
                               return(
                                   <>
-                                   <Card value={item} key={i}/>
+                                   <Card value={item} key={i} link={`brand/${item.brand}`}/>
                                   </>
                               )
                           })
