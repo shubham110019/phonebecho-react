@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import SelectSearch from 'react-select-search';
 
 const Searchphone = () =>{
+
+    const[model,setModel]=useState();
+    const[btnck,setbtnck]=useState()
     const [apibrand, setApibrand] = useState();
     const [apimodel, setApimodel] = useState();
     const [selectedOptions, setSelectedOptions] = useState();
+
+    const history = useHistory();
     const apiData = async () => {
 
         const apidata = await fetch('http://localhost:9000/phone/');
@@ -31,11 +37,24 @@ const Searchphone = () =>{
         apiData();
     }, []);
 
+    const searchmodel = (e) =>{
 
-    const options = [
-        {name: 'Swedish', value: 'sv'},
-        {name: 'English', value: 'en'},
-    ];
+        if(model == undefined)
+        {
+            console.log("select model");
+            setbtnck(true);
+        }
+        else{
+
+        setbtnck(false);
+        
+
+        console.log(model);
+
+        history.push(`/model/${model}`)
+        }
+
+    }
 
     return(
         <>
@@ -43,8 +62,14 @@ const Searchphone = () =>{
              <div className="mobile-form shadow bg-white p-4 mb-n70">
                             <h4 className='text-center mb-4'>Sell Your Old Phone</h4>
 
-                            {/* <SelectSearch options={options} search emptyMessage="Not found" value="sv" name="language" placeholder="Choose your language" /> */}
-
+                          <p>{
+                          btnck?
+                          <>
+                            <div class="alert alert-danger" role="alert">
+                                Select the model
+                            </div>
+                          </>:null
+}</p> 
 
                         <select className="form-select" onChange={brandget}>
                             <option >Select Brand</option>
@@ -58,7 +83,7 @@ const Searchphone = () =>{
                                 }
                             </select>
 
-                            <select className="form-select">
+                            <select className="form-select" onChange={(e)=>{setModel(e.target.value)}}>
                             <option >Select Model</option>
 
                             {
@@ -72,7 +97,7 @@ const Searchphone = () =>{
 
                             </select>
 
-                            <button className='btn btn-block w-100 btn-main'>Sell now</button>
+                            <button className='btn btn-block w-100 btn-main' onClick={()=>{searchmodel()}} >Sell now</button>
                         </div>
         </>
     )
