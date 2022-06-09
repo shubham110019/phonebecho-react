@@ -47,6 +47,7 @@ const Searchphone = () =>{
         else{
 
         setbtnck(false);
+        
 
         console.log(model);
 
