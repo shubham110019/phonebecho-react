@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Searchphone from '../comonent/Searchphone';
+import Card from '../comonent/Card';
 
 const Home = () =>{
+
+    const[brand,setBrand]=useState();
+
+    fetch('http://localhost:9000/phone/').then((resq)=>{
+        resq.json().then((result)=>{
+            setBrand(result.brandapi);
+        }).catch((err)=>{
+            console.log(err);
+        })
+    })
     return(
         <>
           <div className='alt-box'>
@@ -18,120 +29,32 @@ const Home = () =>{
             </div>
           </div>
 
-          <div className="alt-topsell ptb-50 pb-0">
+          <div className="alt-topsell ptb-50">
               <div className='container'>
                   <div className='row mb-4 '>
                       <div className='col-md-12 alt-title'><h2>Top Selling Brands</h2></div>
                   </div>
 
                   <div className='row'>
-                        <div className='col-md-2'>
-                          <div className='card'>
-                              <div className="card-body">
-                              <img src='https://s3n.cashify.in/cashify/brand/img/xhdpi/2e7cdc22-5a5f.jpg'/>
-                              </div>
-                          </div>
-                        </div>
-                        <div className='col-md-2'>
-                          <div className='card'>
-                          <div className="card-body">
-                              <img src='https://s3n.cashify.in/cashify/brand/img/xhdpi/cb96df6e-080f.jpg'/>
-                              </div>
-                          </div>
-                        </div>
 
-                        <div className='col-md-2'>
-                          <div className='card'>
-                          <div className="card-body">
-                              <img src='https://s3n.cashify.in/cashify/brand/img/xhdpi/406a512d-e8dd.jpg'/>
-                              </div>
-                          </div>
-                        </div>
+                      {
+                          brand ? 
+                          brand.map((item,i)=>{
+                              return(
+                                  <>
+                                   <Card value={item} key={i}/>
+                                  </>
+                              )
+                          })
 
-                        <div className='col-md-2'>
-                          <div className='card'>
-                          <div className="card-body">
-                              <img src='https://s3n.cashify.in/cashify/brand/img/xhdpi/20922c34-8afc.jpg'/>
-                              </div>
-                          </div>
-                        </div>
-
-                        <div className='col-md-2'>
-                          <div className='card'>
-                          <div className="card-body">
-                              <img src='https://s3n.cashify.in/cashify/brand/img/xhdpi/5f6b4d6f-57a9.jpg'/>
-                              </div>
-                          </div>
-                        </div>
-
-                        <div className='col-md-2'>
-                          <div className='card'>
-                          <div className="card-body">
-                              <img src='https://s3n.cashify.in/cashify/brand/img/xhdpi/ac5c9a7b-76b5.jpg'/>
-                              </div>
-                          </div>
-                        </div>
+                          :null
+}
                   </div>
               </div>
           </div>
 
 
-          <div className="alt-topsell ptb-50">
-              <div className='container'>
-                  <div className='row mb-4 '>
-                      <div className='col-md-12 alt-title'><h2>Top Selling Models</h2></div>
-                  </div>
-
-                  <div className='row'>
-                        <div className='col-md-2'>
-                          <div className='card'>
-                              <div className="card-body">
-                              <img src='https://s3n.cashify.in/cashify/brand/img/xhdpi/2e7cdc22-5a5f.jpg'/>
-                              </div>
-                          </div>
-                        </div>
-                        <div className='col-md-2'>
-                          <div className='card'>
-                          <div className="card-body">
-                              <img src='https://s3n.cashify.in/cashify/brand/img/xhdpi/cb96df6e-080f.jpg'/>
-                              </div>
-                          </div>
-                        </div>
-
-                        <div className='col-md-2'>
-                          <div className='card'>
-                          <div className="card-body">
-                              <img src='https://s3n.cashify.in/cashify/brand/img/xhdpi/406a512d-e8dd.jpg'/>
-                              </div>
-                          </div>
-                        </div>
-
-                        <div className='col-md-2'>
-                          <div className='card'>
-                          <div className="card-body">
-                              <img src='https://s3n.cashify.in/cashify/brand/img/xhdpi/20922c34-8afc.jpg'/>
-                              </div>
-                          </div>
-                        </div>
-
-                        <div className='col-md-2'>
-                          <div className='card'>
-                          <div className="card-body">
-                              <img src='https://s3n.cashify.in/cashify/brand/img/xhdpi/5f6b4d6f-57a9.jpg'/>
-                              </div>
-                          </div>
-                        </div>
-
-                        <div className='col-md-2'>
-                          <div className='card'>
-                          <div className="card-body">
-                              <img src='https://s3n.cashify.in/cashify/brand/img/xhdpi/ac5c9a7b-76b5.jpg'/>
-                              </div>
-                          </div>
-                        </div>
-                  </div>
-              </div>
-          </div>
+    
 
         <div className='bg-grey ptb-50'>
         <div className='container'>

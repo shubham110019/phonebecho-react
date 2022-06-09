@@ -48,7 +48,12 @@ const Navbar = () => {
                 </Link>
               </li>
 
-             
+              <li className="nav-item">
+                <Link className="nav-link" to="/brand">
+                  Brand
+                </Link>
+              </li>
+
               <li className="nav-item">
                 <Link className="nav-link" to="/about">
                   About
@@ -59,8 +64,24 @@ const Navbar = () => {
                   Content
                 </Link>
               </li>
-              {!loginck ? (
+              {!localStorage.getItem('login') ? (
                 <>
+
+<li className="nav-item">
+                    <Link className="nav-link" to="/wp-login">
+                      Login
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/wp-singup">
+                      Sing up
+                    </Link>
+                  </li>
+                 </>
+              ) : (
+                <>
+                  
+
                   <li className="nav-item">
                     <Link
                       className="nav-link"
@@ -72,19 +93,7 @@ const Navbar = () => {
                     </Link>
                   </li>
                 </>
-              ) : (
-                <>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/wp-login">
-                      Login
-                    </Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/wp-singup">
-                      Sing up
-                    </Link>
-                  </li>
-                </>
+              
               )}
             </ul>
           </div>
