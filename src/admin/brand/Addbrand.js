@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Menu from './cmp/Menu';
+import Menu from '../cmp/Menu';
 
 const Addbrand = () =>{
     const[brandapi,setBrandapi]=useState();
@@ -23,6 +23,7 @@ const Addbrand = () =>{
             body:JSON.stringify(data)
         }).then((resq)=>{
             console.log(resq);
+            brandapifetch();
         }).catch((err)=>{
             console.log(err);
         })
@@ -47,6 +48,7 @@ const Addbrand = () =>{
             method:'DELETE'
         }).then((res)=>{
             console.log(res);
+            brandapifetch();
         }).catch((err)=>{
             console.log(err);
         })

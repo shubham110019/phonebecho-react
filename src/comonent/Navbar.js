@@ -1,14 +1,26 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useContext } from "react";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { StateContent } from "../StateProvider";
+
+
 
 const Navbar = () => {
+
+  const{loginck,loginupdate}= useContext(StateContent);
+
+  console.log(loginck)
+ 
+  const history = useHistory();
   const logout = () => {
     localStorage.clear();
-    // window.location.reload(false);
+    loginupdate();
+    history.push("/wp-login");
   };
 
   return (
     <>
+ 
       <nav className="navbar navbar-expand-lg bg-light">
         <div className="container">
           <Link className="navbar-brand" to="/">
@@ -47,7 +59,7 @@ const Navbar = () => {
                   Content
                 </Link>
               </li>
-              {localStorage.getItem("login") ? (
+              {!loginck ? (
                 <>
                   <li className="nav-item">
                     <Link

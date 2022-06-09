@@ -8,7 +8,7 @@ const Singup = () => {
     useEffect(()=>{
         if(localStorage.getItem('login'))
         {
-            history.push('/profile');
+            history.push('/dashboard');
         }
     },[])
 
