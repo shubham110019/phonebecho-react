@@ -79,7 +79,7 @@ const Searchphone = () =>{
                                       return(<>
                                       <option value={item.brand} key={i}>{item.brand}</option>
                                       </>
-                                      )}):null
+                                      )}):<>data not fetch</>
                                 }
                             </select>
 
@@ -92,7 +92,7 @@ const Searchphone = () =>{
                                       return(<>
                                       <option value={item.brand} key={i}>{item.name}</option>
                                       </>
-                                      )}):null
+                                      )}):<>data not fetch</>
                                 }
 
                             </select>
