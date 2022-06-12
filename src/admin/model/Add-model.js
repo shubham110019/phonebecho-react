@@ -12,7 +12,7 @@ const Addmodel = () => {
 
         <div className="home-content">
           <div className="container">
-            <h1>add Model</h1>
+            <h2>Add Model</h2>
           </div>
         </div>
       </section>

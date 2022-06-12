@@ -107,7 +107,7 @@ const Addbrand = () => {
         <Topmenu />
 
         <div className="home-content">
-      <div className="container">
+      <div className="container px-4">
         <div className="row">
           <div className="col-md-5 p-2">
             <div className="border p-3 bg-white">
