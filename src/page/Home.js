@@ -47,7 +47,9 @@ const Home = () =>{
                               )
                           })
 
-                          :null
+                          :<>
+                            <p>data not </p>
+                          </>
 }
                   </div>
               </div>

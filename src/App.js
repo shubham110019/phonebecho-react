@@ -11,6 +11,7 @@ import Singup from './admin/Singup';
 import Profile from './admin/Profile';
 import Protected from './comonent/Protected';
 import Addbrand from './admin/brand/Addbrand';
+import Addmodel from './admin/model/Add-model';
 import StateProvider from './StateProvider';
 import Brand from './page/Brand';
 import Model from './page/Model';
@@ -34,6 +35,9 @@ function App() {
       </Route>
       <Route path='/add-brand' exact>
       <Protected Cmd={Addbrand}/>
+      </Route>
+      <Route path='/add-model' exact>
+      <Protected Cmd={Addmodel}/>
       </Route>
       
     </Switch>

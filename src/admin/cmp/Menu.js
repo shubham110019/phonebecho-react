@@ -17,6 +17,11 @@ const Menu = () => {
             Add Brand
           </Link>
         </li>
+        <li className="nav-item">
+          <Link className="nav-link" to="/add-model">
+            Add model
+          </Link>
+        </li>
    
       </ul>
       </div>
