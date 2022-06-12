@@ -5,15 +5,13 @@ const Addbrand = () => {
   const [brandapi, setBrandapi] = useState();
   const [brand, setBrand] = useState();
   const [image, setImage] = useState();
-  const[brandidc,setBrandidc]=useState();
+  const [brandidc, setBrandidc] = useState();
   const [formerr, setFromerr] = useState();
-  const [checkfrom, setCheckfrom]=useState();
-  const [updatecheck,setUpdatecheck]=useState(false);
+  const [checkfrom, setCheckfrom] = useState();
+  const [updatecheck, setUpdatecheck] = useState(false);
 
   const brandsubmit = (e) => {
-
-    if(brand && image)
-    {
+    if (brand && image) {
       const data = { brand, image };
 
       fetch("http://localhost:9000/phone", {
@@ -32,12 +30,9 @@ const Addbrand = () => {
         .catch((err) => {
           console.log(err);
         });
+    } else {
+      alert("fill this form");
     }
-    else{
-      alert("fill this form")
-    }
-
-   
   };
 
   const brandapifetch = () => {
@@ -60,47 +55,42 @@ const Addbrand = () => {
       });
   };
 
-  const updateBrand = (brandid) =>{
+  const updateBrand = (brandid) => {
     setUpdatecheck(true);
-    fetch(`http://localhost:9000/phone/${brandid}`).then((resq)=>{
-      resq.json().then((result)=>{
+    fetch(`http://localhost:9000/phone/${brandid}`).then((resq) => {
+      resq.json().then((result) => {
         setBrand(result.PhoneBrandData.brand);
         setImage(result.PhoneBrandData.image);
-        setBrandidc(result.PhoneBrandData._id)
-      })
-    })
+        setBrandidc(result.PhoneBrandData._id);
+      });
+    });
+  };
 
-   
+  const brandupd = (brandidc) => {
+    if (brand && image) {
+      const data = { brand, image };
 
-  }
-
-  const brandupd = (brandidc) =>{
-
-    if(brand && image)
-    {
-    const data = { brand, image };
-
-  fetch(`http://localhost:9000/phone/${brandidc}`,{
-      method:"PUT",
+      fetch(`http://localhost:9000/phone/${brandidc}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
         body: JSON.stringify(data),
-    }).then((resq)=>{
-      brandapifetch();
-      setUpdatecheck(false);
-      setBrand("");
-      setImage("");
-    }).catch((err)=>{
-      console.log(err);
-    })
-
-  }
-  else{
-    alert("fill this form")
-  }
-  }
+      })
+        .then((resq) => {
+          brandapifetch();
+          setUpdatecheck(false);
+          setBrand("");
+          setImage("");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      alert("fill this form");
+    }
+  };
 
   useEffect(() => {
     brandapifetch();
@@ -110,20 +100,18 @@ const Addbrand = () => {
 
   return (
     <>
-
       <Menu />
       <div className="container">
         <div className="row py-5">
           <div className="col-md-5 border p-5">
             <p>{checkfrom}</p>
 
-            {
-              updatecheck?
+            {updatecheck ? (
               <h2 className="mb-4 r">Update brand</h2>
-              :<h2 className="mb-4 r">Add brand </h2>
-            }
-            
-           
+            ) : (
+              <h2 className="mb-4 r">Add brand </h2>
+            )}
+
             <div className="mb-3">
               <label className="form-label">Brand</label>
               <input
@@ -143,29 +131,27 @@ const Addbrand = () => {
               />
             </div>
 
-            {
-              updatecheck?
+            {updatecheck ? (
               <button
-              type="submit"
-              className="btn btn-primary"
-              onClick={() => {
-                brandupd(brandidc);
-              }}
-            >
-              Update
-            </button>
-              :<button
-              type="submit"
-              className="btn btn-primary"
-              onClick={() => {
-                brandsubmit();
-              }}
-            >
-              Submit
-            </button>
-            }
-
-            
+                type="submit"
+                className="btn btn-primary"
+                onClick={() => {
+                  brandupd(brandidc);
+                }}
+              >
+                Update
+              </button>
+            ) : (
+              <button
+                type="submit"
+                className="btn btn-primary"
+                onClick={() => {
+                  brandsubmit();
+                }}
+              >
+                Submit
+              </button>
+            )}
           </div>
 
           <div className="col-md-1"></div>
@@ -190,7 +176,12 @@ const Addbrand = () => {
                             </td>
                             <td>{item.brand}</td>
                             <td>
-                              <button className="btn btn-info btn-sm mx-2" onClick={()=>{updateBrand(item._id)}}>
+                              <button
+                                className="btn btn-info btn-sm mx-2"
+                                onClick={() => {
+                                  updateBrand(item._id);
+                                }}
+                              >
                                 edit
                               </button>
                               <button

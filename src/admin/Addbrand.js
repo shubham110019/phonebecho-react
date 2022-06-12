@@ -60,9 +60,7 @@ deleteBrand();
 
     return(
         <>
-        {
-            console.log(brandapi)
-        }
+
         
         <Menu/>
         <div className='container'>

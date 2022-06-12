@@ -13,7 +13,8 @@ const Navbar = () => {
  
   const history = useHistory();
   const logout = () => {
-    localStorage.clear();
+    // localStorage.clear();
+    localStorage.removeItem('login')
     loginupdate();
     history.push("/wp-login");
   };
@@ -59,11 +60,7 @@ const Navbar = () => {
                   About
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/content">
-                  Content
-                </Link>
-              </li>
+           
               {!localStorage.getItem('login') ? (
                 <>
 
