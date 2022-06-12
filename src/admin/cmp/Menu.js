@@ -4,29 +4,41 @@ import { Link } from "react-router-dom";
 const Menu = () => {
   return (
     <>
-     <div className='container'>
-            
-      <ul className="nav border-bottom p-2">
-        <li className="nav-item">
-          <Link className="nav-link active" to="/dashboard">
-            Home
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/add-brand">
-            Add Brand
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/add-model">
-            Add model
-          </Link>
-        </li>
-   
-      </ul>
+      <div className="sidebar">
+        <div className="logo-details">
+          <i className="bx bxl-c-plus-plus"></i>
+          <span className="logo_name">PhoneBecho</span>
+        </div>
+        <ul className="nav-links p-0">
+          <li>
+            <Link to="/dashboard" className="active">
+              <i className="bx bx-grid-alt"></i>
+              <span className="links_name">Dashboard</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/add-brand">
+              <i className="bx bx-box"></i>
+              <span className="links_name">Phone Brand</span>
+            </Link>
+          </li>
+          <li>
+            <Link to="/add-model">
+              <i className="bx bx-list-ul"></i>
+              <span className="links_name">Phone Model</span>
+            </Link>
+          </li>
+
+          <li className="log_out">
+            <Link to="/logout">
+              <i className="bx bx-log-out"></i>
+              <span className="links_name">Log out</span>
+            </Link>
+          </li>
+        </ul>
       </div>
     </>
-  )
-}
+  );
+};
 
 export default Menu;

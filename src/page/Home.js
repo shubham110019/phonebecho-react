@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Searchphone from '../comonent/Searchphone';
 import Card from '../comonent/Card';
+import Navbar from '../comonent/Navbar';
+import Footer from '../comonent/Footer';
 
 const Home = () =>{
 
@@ -15,6 +17,7 @@ const Home = () =>{
     })
     return(
         <>
+        <Navbar/>
           <div className='alt-box'>
             <div className='container'>
                 <div className='row align-items-center'>
@@ -99,6 +102,8 @@ const Home = () =>{
                   </div>
         </div>
         </div>
+
+        <Footer/>
         </>
     )
 }
