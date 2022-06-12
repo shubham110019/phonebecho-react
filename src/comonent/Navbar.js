@@ -7,18 +7,6 @@ import { StateContent } from "../StateProvider";
 
 const Navbar = () => {
 
-  const{loginck,loginupdate}= useContext(StateContent);
-
-  console.log(loginck)
- 
-  const history = useHistory();
-  const logout = () => {
-    // localStorage.clear();
-    localStorage.removeItem('login')
-    loginupdate();
-    history.push("/wp-login");
-  };
-
   return (
     <>
  
@@ -87,9 +75,7 @@ const Navbar = () => {
                   <li className="nav-item">
                     <Link
                       className="nav-link"
-                      onClick={() => {
-                        logout();
-                      }}
+                      to="/logout"
                     >
                       Logout
                     </Link>

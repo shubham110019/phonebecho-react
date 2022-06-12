@@ -1,7 +1,8 @@
 import React,{useState} from 'react';
 import { useParams } from 'react-router-dom';
 import Card from '../comonent/Card';
-
+import Navbar from '../comonent/Navbar';
+import Footer from '../comonent/Footer';
 
 
 const Model = (prop) =>{
@@ -22,6 +23,7 @@ const Model = (prop) =>{
 
     return(
         <>
+        <Navbar/>
              <div className="alt-topsell ptb-50">
               <div className='container'>
                   <div className='row mb-4 '>
@@ -44,7 +46,7 @@ const Model = (prop) =>{
                   </div>
               </div>
           </div>
-       
+          <Footer/>
         </>
     )
 }

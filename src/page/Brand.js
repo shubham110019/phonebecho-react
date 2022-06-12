@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Card from "../comonent/Card";
+import Navbar from "../comonent/Navbar";
+import Footer from "../comonent/Footer";
 const Brand = () => {
   const [brand, setBrand] = useState();
 
@@ -16,6 +18,7 @@ const Brand = () => {
   });
   return (
     <>
+    <Navbar/>
       <div className="alt-topsell ptb-50">
         <div className="container">
           <div className="row mb-4 ">
@@ -38,6 +41,7 @@ const Brand = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

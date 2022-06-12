@@ -15,6 +15,7 @@ import Addmodel from './admin/model/Add-model';
 import StateProvider from './StateProvider';
 import Brand from './page/Brand';
 import Model from './page/Model';
+import Logout from './admin/Logout';
 function App() {
 
   
@@ -22,7 +23,7 @@ function App() {
     <>
 
     <StateProvider>
-    <Navbar/>
+    
     <Switch>
       <Route path='/' component={Home} exact/>
       <Route path='/about' component={About} exact/>
@@ -39,9 +40,13 @@ function App() {
       <Route path='/add-model' exact>
       <Protected Cmd={Addmodel}/>
       </Route>
+      <Route path='/logout' exact>
+      <Protected Cmd={Logout}/>
+      </Route>
+      
       
     </Switch>
-    <Footer/>
+   
     </StateProvider>
     
     </>

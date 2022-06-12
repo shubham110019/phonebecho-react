@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Menu from "../cmp/Menu";
+import Topmenu from "../cmp/Topmenu";
 
 const Addbrand = () => {
   const [brandapi, setBrandapi] = useState();
@@ -101,9 +102,15 @@ const Addbrand = () => {
   return (
     <>
       <Menu />
+
+      <section className="home-section">
+        <Topmenu />
+
+        <div className="home-content">
       <div className="container">
-        <div className="row py-5">
-          <div className="col-md-5 border p-5">
+        <div className="row">
+          <div className="col-md-5 p-2">
+            <div className="border p-3 bg-white">
             <p>{checkfrom}</p>
 
             {updatecheck ? (
@@ -153,10 +160,11 @@ const Addbrand = () => {
               </button>
             )}
           </div>
+              </div>
 
-          <div className="col-md-1"></div>
 
-          <div className="col-md-6 border">
+          <div className="col-md-7 p-2">
+          <div className="border p-3 bg-white">
             <table class="table">
               <thead>
                 <tr>
@@ -201,8 +209,11 @@ const Addbrand = () => {
               </tbody>
             </table>
           </div>
+          </div>
         </div>
       </div>
+      </div>
+      </section>
     </>
   );
 };
