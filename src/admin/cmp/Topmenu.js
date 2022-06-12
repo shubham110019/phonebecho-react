@@ -25,7 +25,7 @@ const Topmenu = () => {
         </div>
         <div className="profile-details">
           <img src="https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG.png" alt="" />
-          <span className="admin_name">Prem Shahi</span>
+          <span className="admin_name">{localStorage.getItem('username')}</span>
           <i className="bx bx-chevron-down"></i>
         </div>
       </nav>

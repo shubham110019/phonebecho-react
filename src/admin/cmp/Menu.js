@@ -11,19 +11,19 @@ const Menu = () => {
         </div>
         <ul className="nav-links p-0">
           <li>
-            <Link to="/dashboard" className="active">
+            <Link to="/admin/dashboard" className="active">
               <i className="bx bx-grid-alt"></i>
               <span className="links_name">Dashboard</span>
             </Link>
           </li>
           <li>
-            <Link to="/add-brand">
+            <Link to="/admin/add-brand">
               <i className="bx bx-box"></i>
               <span className="links_name">Phone Brand</span>
             </Link>
           </li>
           <li>
-            <Link to="/add-model">
+            <Link to="/admin/add-model">
               <i className="bx bx-list-ul"></i>
               <span className="links_name">Phone Model</span>
             </Link>

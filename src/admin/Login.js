@@ -35,14 +35,27 @@ const Login = () => {
   
       result = await result.json();
       console.log(result);
+      
       if(!result.token)
       {
         setError(result.mess);
       }
       else{
-        localStorage.setItem("login",JSON.stringify({token: result.token}));
-        history.push("/dashboard");
+        localStorage.setItem("login",JSON.stringify({token: result.token,username:result.username}));
+        localStorage.setItem("username",result.username)
+        localStorage.setItem("usertype",result.userType)
+        localStorage.setItem("userid",result.userId)
+        // console.log("user id is : " + localStorage.getItem("userid"))
+        // console.log("user type is : " + localStorage.getItem("usertype"))
+
+        if(result.userType === "admin"){
+          history.push("/admin/dashboard");
         loginout();
+        }
+        else{
+          history.push("/");
+        }
+        
       }
 
     }
@@ -51,42 +64,6 @@ const Login = () => {
     }
   }
 
-  // const loginFrom = () => {
-
-  //   if(username && password){
-  //   const userdata = { username, password };
-
-  //   fetch("http://localhost:9000/user/login", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "Accept": "application/json",
-  //     },
-  //     body: JSON.stringify(userdata),
-  //   }).then((resp) => {
-  //     resp.json().then((result) => {
-  //       // console.log(result.token);
-  //       localStorage.setItem(
-  //         "login",
-  //         JSON.stringify({
-  //           Login: true,
-  //           token: result.token,
-  //         })
-  //       );
-        
-  //       setLogin(true);
-  //       history.push("/dashboard");
-  //       loginout();
-  //       // loginck(false);
-
-       
-  //     });
-  //   });
-  // }
-  // else{
-
-  // }
-  // };
 
   return (
     <>
@@ -127,6 +104,14 @@ const Login = () => {
             >
               Submit
             </button>
+
+
+            <h3 className="mt-4"><strong>Admin login</strong></h3>
+            <p><strong>username</strong>:shubham  <strong>password</strong>:123</p>
+
+            <h3 className="mt-4"><strong>User login</strong></h3>
+            <p><strong>username</strong>:niitka  <strong>password</strong>:123</p>
+
           </div>
         </div>
       </div>

@@ -15,6 +15,13 @@ const Protected = (prop) =>{
             localStorage.clear();
         }
 
+        if(localStorage.getItem('usertype') === "admin"){
+            history.push("/admin/dashboard");
+          }
+          else{
+            history.push("/");
+          }
+
     },[])
 
     const Cmd = prop.Cmd;

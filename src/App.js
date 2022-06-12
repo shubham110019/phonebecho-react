@@ -29,15 +29,16 @@ function App() {
       <Route path='/about' component={About} exact/>
       <Route path='/brand' component={Brand} exact/>
       <Route path='/brand/:id' component={Model} exact/>
+      <Route path='/model/:id' component={Brand} exact/>
       <Route path='/wp-login' component={Login} exact/>
       <Route path='/wp-singup' component={Singup} exact/>
-      <Route path='/dashboard' exact>
+      <Route path='/admin/dashboard' exact>
       <Protected Cmd={Profile}/>
       </Route>
-      <Route path='/add-brand' exact>
+      <Route path='/admin/add-brand' exact>
       <Protected Cmd={Addbrand}/>
       </Route>
-      <Route path='/add-model' exact>
+      <Route path='/admin/add-model' exact>
       <Protected Cmd={Addmodel}/>
       </Route>
       <Route path='/logout' exact>
