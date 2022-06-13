@@ -12,11 +12,9 @@ const Searchphone = () =>{
 
     const history = useHistory();
     const apiData = async () => {
-
         const apidata = await fetch('http://localhost:9000/phone/');
         // setData(await apidata.json());
         const brandapidata = await apidata.json();
-
         const fullbrand = brandapidata.brandapi;
         setApibrand(fullbrand);
     }
