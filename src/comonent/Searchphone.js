@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import SelectSearch from 'react-select-search';
 
-const Searchphone = () =>{
+const Searchphone = () => {
 
-    const[model,setModel]=useState();
-    const[btnck,setbtnck]=useState()
+    const [model, setModel] = useState();
+    const [btnck, setbtnck] = useState()
     const [apibrand, setApibrand] = useState();
     const [apimodel, setApimodel] = useState();
     const [selectedOptions, setSelectedOptions] = useState();
@@ -19,13 +19,13 @@ const Searchphone = () =>{
         setApibrand(fullbrand);
     }
 
-    const brandget = (options) =>{
+    const brandget = (options) => {
         setSelectedOptions(options);
-        fetch(`http://localhost:9000/phone/brand/${options.target.value}`).then((req)=>{
-            req.json().then((result)=>{
+        fetch(`http://localhost:9000/phone/brand/${options.target.value}`).then((req) => {
+            req.json().then((result) => {
                 setApimodel(result.findBrand);
             })
-        }).catch(err=>{
+        }).catch(err => {
             console.log(err)
         })
 
@@ -35,68 +35,64 @@ const Searchphone = () =>{
         apiData();
     }, []);
 
-    const searchmodel = (e) =>{
+    const searchmodel = (e) => {
 
-        if(model == undefined)
-        {
+        if (model == undefined) {
             console.log("select model");
             setbtnck(true);
         }
-        else{
-
-        setbtnck(false);
-        
-
-        console.log(model);
-
-        history.push(`/model/${model}`)
+        else {
+            setbtnck(false);
+            history.push(`/model/${model}`)
         }
 
     }
 
-    return(
+    return (
         <>
 
-             <div className="mobile-form shadow bg-white p-4 mb-n70">
-                            <h4 className='text-center mb-4'>Sell Your Old Phone</h4>
+            <div className="mobile-form shadow bg-white p-4 mb-n70">
+                <h4 className='text-center mb-4'>Sell Your Old Phone</h4>
 
-                          <p>{
-                          btnck?
-                          <>
+                <p>{
+                    btnck ?
+                        <>
                             <div class="alert alert-danger" role="alert">
                                 Select the model
                             </div>
-                          </>:null
-}</p> 
+                        </> : null
+                }</p>
 
-                        <select className="form-select" onChange={brandget}>
-                            <option >Select Brand</option>
-                                {
-                                      apibrand ?
-                                      apibrand.map((item,i)=>{
-                                      return(<>
-                                      <option value={item.brand} key={i}>{item.brand}</option>
-                                      </>
-                                      )}):<>data not fetch</>
-                                }
-                            </select>
+                <select className="form-select" onChange={brandget}>
+                    <option >Select Brand</option>
+                    {
+                        apibrand ?
+                            apibrand.map((item, i) => {
+                                return (<>
+                                    <option value={item.brand} key={i}>{item.brand}</option>
+                                </>
+                                )
+                            }) : <>data not fetch</>
+                    }
+                </select>
 
-                            <select className="form-select" onChange={(e)=>{setModel(e.target.value)}}>
-                            <option >Select Model</option>
+                <select className="form-select" onChange={(e) => { setModel(e.target.value) }}>
+                    <option >Select Model</option>
 
-                            {
-                                      apimodel ?
-                                      apimodel.map((item,i)=>{
-                                      return(<>
-                                      <option value={item.brand} key={i}>{item.name}</option>
-                                      </>
-                                      )}):<>data not fetch</>
-                                }
+                    {
+                        apimodel ?
+                            apimodel.map((item, i) => {
+                                return (<>
+                                    <option value={item.pageurl} key={i}>{item.modelname}</option>
+                                </>
+                                )
+                            }) : <>data not fetch</>
+                    }
 
-                            </select>
+                </select>
 
-                            <button className='btn btn-block w-100 btn-main' onClick={()=>{searchmodel()}} >Sell now</button>
-                        </div>
+                <button className='btn btn-block w-100 btn-main' onClick={() => { searchmodel() }} >Sell now</button>
+            </div>
         </>
     )
 }

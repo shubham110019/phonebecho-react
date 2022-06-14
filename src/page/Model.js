@@ -11,17 +11,19 @@ const Model = (prop) =>{
 
     const {id} = useParams();
 
-    console.log(id)
+
 
     fetch(`http://localhost:9000/phone/brand/${id}`).then((req)=>{
         req.json().then((result)=>{
-            setModel(result.findBrand);
+            setModel(result.findBrand); 
         })
     }).catch(err=>{
         console.log(err)
     })
 
+
     return(
+        
         <>
         <Navbar/>
              <div className="alt-topsell ptb-50">
@@ -37,7 +39,7 @@ const Model = (prop) =>{
               ? model.map((item, i) => {
                   return (
                     <>
-                      <Card value={item} link={`/model/${item.name}`} />
+                      <Card value={item} link={`/model/${item.pageurl}`} />
                     </>
                   );
                 })

@@ -16,6 +16,8 @@ import StateProvider from './StateProvider';
 import Brand from './page/Brand';
 import Model from './page/Model';
 import Logout from './admin/Logout';
+import Modeldetail from './page/Modeldetail';
+import Variant from './page/Variant';
 function App() {
 
   
@@ -25,11 +27,13 @@ function App() {
     <StateProvider>
     
     <Switch>
+  
       <Route path='/' component={Home} exact/>
       <Route path='/about' component={About} exact/>
       <Route path='/brand' component={Brand} exact/>
       <Route path='/brand/:id' component={Model} exact/>
-      <Route path='/model/:id' component={Brand} exact/>
+      <Route path='/model/:id' component={Modeldetail} exact/>
+      <Route path='/model/variant/:id' component={Variant} exact/>
       <Route path='/wp-login' component={Login} exact/>
       <Route path='/wp-singup' component={Singup} exact/>
       <Route path='/admin/dashboard' exact>

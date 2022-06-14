@@ -12,11 +12,6 @@ const Addmodel = () => {
   const [state, setState] = useState({
     brandname: "",
     modelname: "",
-    //  variant:[{
-    //   phonedata:"",
-    //   phoneprice:"",
-    //   phoneurl:""
-    // }],
     image: "",
     pageurl: "",
     series: "",
@@ -54,18 +49,18 @@ const Addmodel = () => {
   const [apibrand, setApibrand] = useState();
   const [variant, setVariant] = useState([{ variant: "" }]);
 
- 
 
-  const handleInputChange = (e,index) => {
+
+  const handleInputChange = (e, index) => {
     const { name, value } = e.target;
     setState({
       ...state,
       [name]: value,
     });
-    
+
   };
 
-  const handleVariant = (e,index) => {
+  const handleVariant = (e, index) => {
 
     const { name, value } = e.target;
     const list = [...variantdata];
@@ -73,18 +68,31 @@ const Addmodel = () => {
     setVariantdata(list);
   };
 
- 
 
-  
 
-  const modelsubmit = (e,index) => {
-  
-    const data ={
+
+
+  const modelsubmit = (e, index) => {
+
+    const data = {
       "variant": variantdata,
-    } 
-    const fulldata = {...state,...data}
+    }
+    const fulldata = { ...state, ...data }
 
-    console.log(fulldata);
+    fetch('http://localhost:9000/model',{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(fulldata)
+    }).then((res)=>{
+      console.log("data submit" + res)
+    }).catch((err)=>{
+      console.log(err);
+    })
+
+  
   };
 
 
@@ -99,7 +107,7 @@ const Addmodel = () => {
 
   const variantAdd = () => {
     setVariant([...variant, { variant: "" }]);
-    setVariantdata([...variantdata,{phonedata: "",phoneurl: "", phoneprice: "",}])
+    setVariantdata([...variantdata, { phonedata: "", phoneurl: "", phoneprice: "", }])
   };
   const variantRemove = (index) => {
     const list = [...variant];
@@ -211,7 +219,7 @@ const Addmodel = () => {
                             className="form-control"
                             placeholder="6Gb / 128GB"
                             value={element.phonedata}
-                            onChange={(e)=>{handleVariant(e,index)}}
+                            onChange={(e) => { handleVariant(e, index) }}
                             name="phonedata"
                           />
                         </div>
@@ -222,7 +230,7 @@ const Addmodel = () => {
                             type="text"
                             className="form-control"
                             value={element.phoneprice}
-                            onChange={(e)=>{handleVariant(e,index)}}
+                            onChange={(e) => { handleVariant(e, index) }}
                             name="phoneprice"
                           />
                         </div>
@@ -233,7 +241,7 @@ const Addmodel = () => {
                             type="text"
                             className="form-control"
                             value={element.phoneurl}
-                            onChange={(e)=>{handleVariant(e,index)}}
+                            onChange={(e) => { handleVariant(e, index) }}
                             name="phoneurl"
                           />
                         </div>
