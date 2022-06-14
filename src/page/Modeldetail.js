@@ -8,6 +8,7 @@ function Modeldetail(props) {
 
     const { id } = useParams();
     const [modeldata, setModeldata] = useState('data');
+    const[geturl,SetGeturl]=useState();
 
     const[pprice,setPprice]=useState();
     const[checkbtn,setCheckbtn]=useState(true);
@@ -18,6 +19,8 @@ function Modeldetail(props) {
             data.map((item, i) => {
                 if (item.pageurl === id) {
                     setModeldata(item)
+
+                    SetGeturl(item.pageurl)
                 }
 
             })
@@ -91,7 +94,8 @@ function Modeldetail(props) {
                                         :<>
                                             <h1 className='mb-4'>₹{pprice.phoneprice}</h1>
 
-                                            <button className='btn btn-success btn-xl btn-lg'>Get Exact Value</button>
+                                            <Link to={`/model/${geturl}/calculator/${pprice._id}`} className='btn btn-main'>Get Exact Value</Link>
+                                         
                                         </>
                                     }
 
