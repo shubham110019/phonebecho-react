@@ -13,8 +13,8 @@ const Card = (prop) => {
             <img src={prop.value.image} />
 
             {
-              model.name?
-              <p>{model.name}</p>
+              model.modelname?
+              <p>{model.modelname}</p>
              :null
             }
           </div>
