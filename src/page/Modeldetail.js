@@ -94,7 +94,7 @@ function Modeldetail(props) {
                                         :<>
                                             <h1 className='mb-4'>₹{pprice.phoneprice}</h1>
 
-                                            <Link to={`/model/${geturl}/calculator/${pprice._id}`} className='btn btn-main'>Get Exact Value</Link>
+                                            <Link to={`/model/${geturl}/calculator/${modeldata._id}/${pprice._id}`} className='btn btn-main'>Get Exact Value</Link>
                                          
                                         </>
                                     }

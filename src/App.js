@@ -33,7 +33,7 @@ function App() {
       <Route path='/brand' component={Brand} exact/>
       <Route path='/brand/:id' component={Model} exact/>
       <Route path='/model/:id' component={Modeldetail} exact/>
-      <Route path='/model/:id/calculator/:slug' component={Variant} exact/>
+      <Route path='/model/:id/calculator/:pid/:slug' component={Variant} exact/>
       <Route path='/wp-login' component={Login} exact/>
       <Route path='/wp-singup' component={Singup} exact/>
       <Route path='/admin/dashboard' exact>
