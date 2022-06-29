@@ -50,9 +50,7 @@ const Home = () =>{
                               )
                           })
 
-                          :<>
-                            <p>data not </p>
-                          </>
+                          :null
 }
                   </div>
               </div>
@@ -102,7 +100,6 @@ const Home = () =>{
                   </div>
         </div>
         </div>
-
         <Footer/>
         </>
     )
