@@ -11,24 +11,27 @@ const Variant = () => {
     const [issuedata, setIssuedata] = useState({});
     const [isChecked, setIsChecked] = useState(false);
     const [mainprice, setMainprice] = useState();
+    const [issecheck, setIssecheck] = useState(false);
+
+    const [phoneas, setPhoneas] = useState(false);
 
     const { id } = useParams();
 
-     // page id
-     const { pid } = useParams();
+    // page id
+    const { pid } = useParams();
 
 
     // price id
     const { slug } = useParams();
-   
+
 
     // console.log(slug);
     const [phonedata, setPhonedata] = useState('data');
     const [phoneprice, setPhoneprice] = useState('data');
 
- 
 
- 
+
+
 
     const phoneOncheck = (check) => {
 
@@ -51,12 +54,11 @@ const Variant = () => {
 
         if (checked === true) {
             console.log(value)
-           
+
             const data = parseInt(mainprice) - parseInt(value)
             setMainprice(data)
         }
-        else if(checked === false && name === name)
-        {
+        else if (checked === false) {
             const data = parseInt(mainprice) + parseInt(value)
             setMainprice(data)
         }
@@ -65,33 +67,49 @@ const Variant = () => {
 
     }
 
-useEffect(()=>{
-    fetch(`http://localhost:9000/model/${pid}`).then((resq) => {
-        resq.json().then((result) => {
-            const data = result.data;
-            setPhonedata(result.data)
-            // console.log(result.data)
+    const Phoneacessories = (e) => {
 
-            const ph = result.data.variant
+        const { name, checked, id, value } = e.target;
 
-            // console.log(ph)
+        if (checked === true) {
+            console.log(value)
 
-          ph.map((item,i)=>{
-              if(item._id === slug)
-              {
-                setPhoneprice(item)
+            const data = parseInt(mainprice) + parseInt(value)
+            setMainprice(data)
+        }
+        else if (checked === false) {
+            const data = parseInt(mainprice) - parseInt(value)
+            setMainprice(data)
+        }
 
-                setMainprice(item.phoneprice)
-              }
-          })
+    }
 
-            // if()
-           
+    useEffect(() => {
+        fetch(`http://localhost:9000/model/${pid}`).then((resq) => {
+            resq.json().then((result) => {
+                const data = result.data;
+                setPhonedata(result.data)
+                // console.log(result.data)
+
+                const ph = result.data.variant
+
+                // console.log(ph)
+
+                ph.map((item, i) => {
+                    if (item._id === slug) {
+                        setPhoneprice(item)
+
+                        setMainprice(item.phoneprice)
+                    }
+                })
+
+                // if()
+
+            })
+        }).catch(err => {
+            console.log(err)
         })
-    }).catch(err => {
-        console.log(err)
-    })
-},[])
+    }, [])
 
 
 
@@ -175,7 +193,7 @@ useEffect(()=>{
 
                                 </div>
 
-                                <div className={`function-check ${phoneoncheck ? '' : 'd-none'}`}>
+                                <div className={`function-check ${phoneoncheck ? '' : 'd-none'} ${issecheck ? 'd-none' : ''}`}>
                                     <h2>Please select the issues of your Phone</h2>
 
 
@@ -230,7 +248,7 @@ useEffect(()=>{
                                     </div>
 
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value={phonedata.battery}  id="Battery" onClick={(e) => { Phoneissues(e) }} />
+                                        <input class="form-check-input" type="checkbox" value={phonedata.battery} id="Battery" onClick={(e) => { Phoneissues(e) }} />
                                         <label class="form-check-label" for="Battery">
                                             Battery Faulty
                                         </label>
@@ -245,7 +263,7 @@ useEffect(()=>{
                                     </div>
 
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value={phonedata.powerbutton}  id="PowerButton" onClick={(e) => { Phoneissues(e) }} />
+                                        <input class="form-check-input" type="checkbox" value={phonedata.powerbutton} id="PowerButton" onClick={(e) => { Phoneissues(e) }} />
                                         <label class="form-check-label" for="PowerButton">
                                             Power Button not working
                                         </label>
@@ -255,7 +273,7 @@ useEffect(()=>{
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value={phonedata.chargingport} id="FaceSensor" onClick={(e) => { Phoneissues(e) }} />
                                         <label class="form-check-label" for="FaceSensor">
-                                        charging port not working
+                                            charging port not working
                                         </label>
                                     </div>
 
@@ -324,9 +342,38 @@ useEffect(()=>{
                                     </div>
 
 
-                                    <button>Next</button>
+                                    <button className='btn btn-info mt-4' onClick={() => { setIssecheck(true);setPhoneas(true)}}>Next</button>
 
 
+                                </div>
+
+                                <div className={`${phoneas ? '' : 'd-none'}`}>
+
+                                    <h2>Please select the available acessories</h2>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value={phonedata.box} id="box" onClick={(e) => { Phoneacessories(e) }} />
+                                        <label class="form-check-label" for="box">
+                                            Original Phone Box
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value={phonedata.originalcharger} id="originalcharger" onClick={(e) => { Phoneacessories(e) }} />
+                                        <label class="form-check-label" for="originalcharger">
+                                            Original Charger
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value={phonedata.audiojack} id="AudioJack" onClick={(e) => { Phoneacessories(e) }} />
+                                        <label class="form-check-label" for="AudioJack">
+                                            Original invoice
+                                        </label>
+                                    </div>
+
+                                    <button  className="btn btn-dark" onClick={() => { setIssecheck(false);setPhoneas(false)}}>Back</button>
+                                    <button className='btn btn-info'>Next</button>
                                 </div>
 
                             </div>

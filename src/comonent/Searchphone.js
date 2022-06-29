@@ -12,10 +12,10 @@ const Searchphone = () => {
 
     const history = useHistory();
     const apiData = async () => {
-        const apidata = await fetch('http://localhost:9000/phone/');
+        const apidata = await fetch('http://localhost:1337/api/phonebrands');
         // setData(await apidata.json());
         const brandapidata = await apidata.json();
-        const fullbrand = brandapidata.brandapi;
+        const fullbrand = brandapidata.data;
         setApibrand(fullbrand);
     }
 
@@ -69,7 +69,7 @@ const Searchphone = () => {
                         apibrand ?
                             apibrand.map((item, i) => {
                                 return (<>
-                                    <option value={item.brand} key={i}>{item.brand}</option>
+                                    <option value={item.attributes.name} key={i}>{item.attributes.name}</option>
                                 </>
                                 )
                             }) : <>data not fetch</>

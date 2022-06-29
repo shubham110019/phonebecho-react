@@ -1,22 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Searchphone from '../comonent/Searchphone';
 import Card from '../comonent/Card';
 import Navbar from '../comonent/Navbar';
 import Footer from '../comonent/Footer';
+import { Link } from 'react-router-dom';
 
 const Home = () =>{
 
     const[brand,setBrand]=useState();
 
-    fetch('http://localhost:9000/phone/').then((resq)=>{
-        resq.json().then((result)=>{
-            setBrand(result.brandapi);
-        }).catch((err)=>{
-            console.log(err);
+
+    useEffect(()=>{
+
+        fetch('http://localhost:1337/api/phonebrands?_limit=5').then((resq)=>{
+            resq.json().then((result)=>{
+                setBrand(result.data);
+            }).catch((err)=>{
+                console.log(err);
+            })
         })
-    })
+
+    },[]);
+
+
     return(
         <>
+
         <Navbar/>
           <div className='alt-box'>
             <div className='container'>
@@ -38,14 +47,25 @@ const Home = () =>{
                       <div className='col-md-12 alt-title'><h2>Top Selling Brands</h2></div>
                   </div>
 
-                  <div className='row'>
+                  <div className='row gy-4'>
 
                       {
                           brand ? 
                           brand.map((item,i)=>{
                               return(
                                   <>
-                                   <Card value={item} key={i} link={`brand/${item.brand}`}/>
+                                  
+
+                                   <div className="col-md-2">
+                                    <div className="card">
+                                       <Link to={`brand/${item.attributes.name}`}>
+                                    <div className="card-body">
+                                        <img src={item.attributes.image} />
+                                        <p>{item.attributes.name}</p>
+                                    </div>
+                                    </Link>
+                                    </div>
+                                </div>
                                   </>
                               )
                           })
