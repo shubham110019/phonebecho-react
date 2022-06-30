@@ -54,7 +54,7 @@ function App() {
    
     </StateProvider> */}
 
-    <h2>Home page</h2>
+    <h2>Home page 2</h2>
     
     </>
   );
