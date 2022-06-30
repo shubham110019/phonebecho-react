@@ -3,9 +3,7 @@ import {
   BrowserRouter as Router,
   Route,Switch
 } from "react-router-dom";
-import Navbar from './comonent/Navbar';
 import Home from './page/Home';
-import Footer from './comonent/Footer';
 import Login from './admin/Login';
 import Singup from './admin/Singup';
 import Profile from './admin/Profile';
@@ -24,7 +22,7 @@ function App() {
   return (
     <>
 
-    {/* <StateProvider>
+    <StateProvider>
     
     <Switch>
   
@@ -52,10 +50,9 @@ function App() {
       
     </Switch>
    
-    </StateProvider> */}
+    </StateProvider>
 
-    <h2>Home page 2</h2>
-    
+
     </>
   );
 }
