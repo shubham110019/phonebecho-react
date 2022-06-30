@@ -1,3 +1,25 @@
+.btn-info{
+  background: #FF8C32;
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  font-family: 'Poppins';
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.btn-info:hover{
+  background: #FF8C32 !important;
+  color: white !important;
+}
+.btn-dark{
+  color: white;
+    padding: 10px 25px;
+    border: none;
+    font-family: 'Poppins';
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-right: 10px;
+}
 .dfr{
   display: flow-root;
 }
