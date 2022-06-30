@@ -24,7 +24,7 @@ function App() {
   return (
     <>
 
-    <StateProvider>
+    {/* <StateProvider>
     
     <Switch>
   
@@ -52,7 +52,9 @@ function App() {
       
     </Switch>
    
-    </StateProvider>
+    </StateProvider> */}
+
+    <h2>Home page</h2>
     
     </>
   );
