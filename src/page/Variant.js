@@ -151,7 +151,7 @@ const Variant = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:9000/model/${pid}`).then((resq) => {
+        fetch(`https://phonebecho-api.herokuapp.com/model/${pid}`).then((resq) => {
             resq.json().then((result) => {
                 const data = result.data;
                 setPhonedata(result.data)

@@ -13,7 +13,7 @@ const Model = (prop) =>{
 
 
 
-    fetch(`http://localhost:9000/phone/brand/${id}`).then((req)=>{
+    fetch(`https://phonebecho-api.herokuapp.com/phone/brand/${id}`).then((req)=>{
         req.json().then((result)=>{
             setModel(result.findBrand); 
         })

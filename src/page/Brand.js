@@ -5,7 +5,7 @@ import Footer from "../comonent/Footer";
 const Brand = () => {
   const [brand, setBrand] = useState();
 
-  fetch("http://localhost:9000/phone/").then((resq) => {
+  fetch("https://phonebecho-api.herokuapp.com/phone/").then((resq) => {
     resq
       .json()
       .then((result) => {
