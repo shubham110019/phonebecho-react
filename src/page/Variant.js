@@ -182,26 +182,8 @@ const Variant = (props) => {
         }
     }
 
-    const Phoneinvoice = (e) => {
-
-        const { name, checked, id, value } = e.target;
-
-        if (checked === true) {
-
-            setOldphone(true);
-
-        }
-        else if (checked === false) {
-
-            setOldphone(false);
-
-        }
-
-    }
 
     useEffect(() => {
-
-        setIst(phoneissuedata)
 
         fetch(`http://localhost:9000/model/${pid}`).then((resq) => {
             resq.json().then((result) => {
@@ -389,13 +371,6 @@ const Variant = (props) => {
                                         }
 
 
-                                        {/* <div className="form-check cat sports">
-                                            <label className="form-check-label" htmlFor="invoice">
-                                                <input className="form-check-input" type="checkbox" id="invoice" onClick={(e) => { Phoneinvoice(e) }} />
-
-                                                <span> Original invoice</span>
-                                            </label>
-                                        </div> */}
                                     </div>
                                     <div className='col-md-12'>
                                         <button className="btn btn-dark" onClick={() => { setIssecheck(false); setPhoneas(false) }}>Back</button>
