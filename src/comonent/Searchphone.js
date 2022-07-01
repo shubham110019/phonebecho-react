@@ -12,7 +12,7 @@ const Searchphone = () => {
 
     const history = useHistory();
     const apiData = async () => {
-        const apidata = await fetch('https://phonebecho-api.herokuapp.com/phone/');
+        const apidata = await fetch('http://localhost:9000/phone/');
         // setData(await apidata.json());
         const brandapidata = await apidata.json();
         const fullbrand = brandapidata.brandapi;
@@ -21,7 +21,7 @@ const Searchphone = () => {
 
     const brandget = (options) => {
         setSelectedOptions(options);
-        fetch(`https://phonebecho-api.herokuapp.com/phone/brand/${options.target.value}`).then((req) => {
+        fetch(`http://localhost:9000/phone/brand/${options.target.value}`).then((req) => {
             req.json().then((result) => {
                 setApimodel(result.findBrand);
             })

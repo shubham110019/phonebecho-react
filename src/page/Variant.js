@@ -182,32 +182,10 @@ const Variant = (props) => {
         }
     }
 
-    const Phoneinvoice = (e) => {
-
-        const { name, checked, id, value } = e.target;
-
-        if (checked === true) {
-
-            setOldphone(true);
-
-        }
-        else if (checked === false) {
-
-            setOldphone(false);
-
-        }
-
-    }
 
     useEffect(() => {
-<<<<<<< HEAD
-        fetch(`https://phonebecho-api.herokuapp.com/model/${pid}`).then((resq) => {
-=======
-
-        setIst(phoneissuedata)
 
         fetch(`http://localhost:9000/model/${pid}`).then((resq) => {
->>>>>>> cd2d3fc107d0ad127bc248788c2cae93b36ea3fb
             resq.json().then((result) => {
                 const data = result.data;
                 setPhonedata(result.data)
@@ -393,13 +371,6 @@ const Variant = (props) => {
                                         }
 
 
-                                        {/* <div className="form-check cat sports">
-                                            <label className="form-check-label" htmlFor="invoice">
-                                                <input className="form-check-input" type="checkbox" id="invoice" onClick={(e) => { Phoneinvoice(e) }} />
-
-                                                <span> Original invoice</span>
-                                            </label>
-                                        </div> */}
                                     </div>
                                     <div className='col-md-12'>
                                         <button className="btn btn-dark" onClick={() => { setIssecheck(false); setPhoneas(false) }}>Back</button>
