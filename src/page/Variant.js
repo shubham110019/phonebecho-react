@@ -27,13 +27,9 @@ const Variant = (props) => {
 
     const phoneisse = useRef(null);
 
-
-
-
     const [userinfo, setUserInfo] = useState({
         response: []
     });
-
 
     const [phoneas, setPhoneas] = useState(false);
 
