@@ -13,7 +13,7 @@ function Modeldetail(props) {
     const[pprice,setPprice]=useState();
     const[checkbtn,setCheckbtn]=useState(true);
 
-    fetch("http://localhost:9000/model/").then((resq) => {
+    fetch("https://phonebecho-api.herokuapp.com/model/").then((resq) => {
         resq.json().then((result) => {
             const data = result.phoneModel;
             data.map((item, i) => {

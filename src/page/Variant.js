@@ -204,10 +204,12 @@ const Variant = (props) => {
     }
 
     useEffect(() => {
+macbook
 
         setIst(phoneissuedata)
 
         fetch(`http://localhost:9000/model/${pid}`).then((resq) => {
+
             resq.json().then((result) => {
                 const data = result.data;
                 setPhonedata(result.data)
