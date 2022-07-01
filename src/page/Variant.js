@@ -13,6 +13,7 @@ const Variant = (props) => {
     const [phoneonc, setPhoneonc] = useState();
     const [issues, setIssues] = useState(false);
     const [issuedata, setIssuedata] = useState([]);
+    const [phoneasdata, setPhoneasdata] = useState([]);
     const [isChecked, setIsChecked] = useState(false);
     const [mainprice, setMainprice] = useState();
     const [issecheck, setIssecheck] = useState(false);
@@ -79,6 +80,12 @@ const Variant = (props) => {
         { id: 20, name: 'Audio Jack not working', price: phonedata.audiojack }
     ]
 
+    const phoneacessories = [
+        { id: 31, name: "Original Phone Box", price: phonedata.box},
+        { id: 32, name: "Original Charger", price: phonedata.originalcharger},
+        { id: 33, name: "Original invoice", price: 0},
+    ]
+
 
 
 
@@ -123,25 +130,45 @@ const Variant = (props) => {
         }
 
         setIssuedata(updatedList);
-        console.log(issuedata);
 
 
 
     }
 
-    const Phoneacessories = (e) => {
+    const HandlePhoneacessories = (e) => {
 
         const { name, checked, id, value } = e.target;
 
+        var updatedList = [...phoneasdata];
+
         if (checked === true) {
+
+            if(id === '33')
+            {
+                setOldphone(true);
+            }
+
+            updatedList = [...phoneasdata, name];
 
             const data = parseInt(mainprice) + parseInt(value)
             setMainprice(data)
+
+           
         }
         else if (checked === false) {
+
+            if(id === '33')
+            {
+                setOldphone(false);
+            }
+            updatedList.splice(phoneasdata.indexOf(name), 1);
             const data = parseInt(mainprice) - parseInt(value)
             setMainprice(data)
         }
+
+        setPhoneasdata(updatedList);
+
+     
 
     }
 
@@ -237,59 +264,78 @@ const Variant = (props) => {
 
                                 <hr />
 
-                                <div class="overflow-auto">
+                                <div class="overflow-auto h-300">
 
-                                {
-                                    phoneonc ?
-                                        <>
-                                            <h5>Does your Phone Switch On ?</h5>
+                                    {
+                                        phoneonc ?
+                                            <>
+                                                <h5>Does your Phone Switch On ?</h5>
 
+
+                                                <ul>
+                                                    <li>{phoneonc}</li>
+                                                </ul>
+                                            </>
+                                            : null
+                                    }
+
+                                    {
+                                        issuedata ?
+                                            <>
+                                                <h5>Please select the issues of your Phone</h5>
+                                                <ul>
+
+                                                    {issuedata.map((item, i) => {
+                                                        return (
+                                                            <>
+                                                                <li>{item}</li>
+                                                            </>
+                                                        )
+                                                    })}
+
+                                                </ul>
+                                            </>
+
+                                            : null
+                                    }
+
+                                    {
+                                        phoneasdata?
+                                            <>
+
+                                            <h5>Available Acessories</h5>
 
                                             <ul>
-                                                <li>{phoneonc}</li>
+                                               {phoneasdata.map(item=>{
+                                                return(
+                                                    <li>{item}</li>
+                                                )
+                                               })}
                                             </ul>
-                                        </>
-                                        : null
-                                }
+                                            
+                                            </>
+                                        :null
+                                    }
 
-                                {
-                                    issuedata ?
-                                        <>
-                                            <h5>Please select the issues of your Phone</h5>
-                                            <ul>
+                                  
 
-                                                {issuedata.map((item, i) => {
-                                                    return (
-                                                        <>
-                                                            <li>{item}</li>
-                                                        </>
-                                                    )
-                                                })}
+                                    <h5>Please select the age of your device</h5>
+                                    <ul>
+                                        <li></li>
+                                    </ul>
 
-                                            </ul>
-                                        </>
-
-                                        : null
-                                }
-
-
-
-
-
-
-</div>
-
-
+                                    <h5>Please select Phone condition</h5>
+                                    <ul>
+                                        <li></li>
+                                    </ul>
+                                </div>
 
                             </div>
                         </div>
 
                         <div className='col-md-8 px-2'>
                             <div className='box shadow-sm rounded p-4'>
-
-
                                 <div className={`phone-on-check ${phoneoncheck ? 'd-none' : ''} radio-toolbar`}>
-
                                     <h2>Does your device switch On?</h2>
                                     <div className='my-4 row'>
                                         <div className="form-check col-md-2">
@@ -305,73 +351,55 @@ const Variant = (props) => {
                                             </label>
                                         </div>
                                     </div>
-
-
-
                                 </div>
-
-
 
                                 <div className={`function-check ${phoneoncheck ? '' : 'd-none'} ${issecheck ? 'd-none' : ''}`}>
                                     <h2>Please select the issues of your Phone</h2>
-
-
-
                                     <div className='dfr mt-4'>
-
-
-
-                                        {
-
-                                            phoneissuedata.map((item, i) => {
-                                                return <>
-                                                    <div className="form-check cat action" key={i}>
-                                                        <label className="form-check-label">
-                                                            <input className="form-check-input" type="checkbox" name={item.name} value={item.price} id={item.id} onChange={(e) => { HandPhoneissues(e); }} />
-                                                            <span>{item.name}</span>
-                                                        </label>
-                                                    </div>
-                                                </>
-                                            })
-
-
-
-                                        }
+                                        {phoneissuedata.map((item, i) => {
+                                            return <>
+                                                <div className="form-check cat action" key={i}>
+                                                    <label className="form-check-label">
+                                                        <input className="form-check-input" type="checkbox" name={item.name} value={item.price} id={item.id} onChange={(e) => { HandPhoneissues(e); }} />
+                                                        <span>{item.name}</span>
+                                                    </label>
+                                                </div>
+                                            </>
+                                        })}
 
                                     </div>
-
                                     <button className='btn btn-info mt-4' onClick={() => { setIssecheck(true); setPhoneas(true) }}>Next</button>
-
-
                                 </div>
 
                                 <div className={`${phoneas ? '' : 'd-none'}`}>
 
                                     <h2>Please select the available acessories</h2>
                                     <div className='dfr my-4'>
-                                        <div className="form-check cat sports">
-                                            <label className="form-check-label" htmlFor="box">
-                                                <input className="form-check-input" type="checkbox" value={phonedata.box} id="box" onClick={(e) => { Phoneacessories(e) }} />
 
-                                                <span>Original Phone Box</span>
-                                            </label>
-                                        </div>
 
-                                        <div className="form-check cat sports">
-                                            <label className="form-check-label" htmlFor="originalcharger">
-                                                <input className="form-check-input" type="checkbox" value={phonedata.originalcharger} id="originalcharger" onClick={(e) => { Phoneacessories(e) }} />
+                                        {phoneacessories.map(item=>{
+                                            return(
+                                                <>
+                                                    
+                                                    <div className="form-check cat sports">
+                                                        <label className="form-check-label" htmlFor={item.id}>
+                                                            <input className="form-check-input" type="checkbox" name={item.name} value={item.price} id={item.id} onClick={(e) => { HandlePhoneacessories(e) }} />
+                                                            <span>{item.name}</span>
+                                                        </label>
+                                                    </div>
+                                                </>
+                                            )
+                                        })
+                                        }
 
-                                                <span> Original Charger</span>
-                                            </label>
-                                        </div>
 
-                                        <div className="form-check cat sports">
+                                        {/* <div className="form-check cat sports">
                                             <label className="form-check-label" htmlFor="invoice">
                                                 <input className="form-check-input" type="checkbox" id="invoice" onClick={(e) => { Phoneinvoice(e) }} />
 
                                                 <span> Original invoice</span>
                                             </label>
-                                        </div>
+                                        </div> */}
                                     </div>
                                     <div className='col-md-12'>
                                         <button className="btn btn-dark" onClick={() => { setIssecheck(false); setPhoneas(false) }}>Back</button>
