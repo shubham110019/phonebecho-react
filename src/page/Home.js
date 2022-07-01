@@ -39,7 +39,6 @@ const Home = () =>{
                   </div>
 
                   <div className='row'>
-
                       {
                           brand ? 
                           brand.map((item,i)=>{
