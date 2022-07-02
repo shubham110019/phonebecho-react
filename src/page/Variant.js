@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import Footer from '../comonent/Footer';
 import Navbar from '../comonent/Navbar';
+import Button from '@mui/material/Button';
 import '../css/Formpage.css';
 
 
@@ -24,6 +25,12 @@ const Variant = (props) => {
     const [formsb, setFormsb] = useState(false);
     const [notbuy, setNotbuy] = useState(false);
     const [checked, setChecked] = useState({});
+    const[agephone,setAgephone]=useState(0);
+    const [phoneagedata,setPhoneagedata]=useState();
+
+    const [phonecdata,setPhonecdata]=useState();
+    const [phonecprice,setPhonecprice]=useState(0);
+
 
     const phoneisse = useRef(null);
 
@@ -82,6 +89,18 @@ const Variant = (props) => {
         { id: 33, name: "Original invoice", price: 0},
     ]
 
+    const ageDevice = [
+        {id:41,name:"0-3 Months",price:phonedata.bill3},
+        {id:42,name:"3-6 Months",price:phonedata.bill3to6},
+        {id:43,name:"6-11 Months",price:phonedata.bill6to11},
+        {id:44,name:"11 Months",price:phonedata.bill11out}, 
+    ]
+
+    const conditiondata = [
+        {id:51,name:"Good Condition",price:phonedata.conditiongood},
+        {id:52,name:"Average Condition",price:phonedata.conditionbelow},
+        {id:53,name:"Below Average Condition",price:phonedata.conditionpoor},
+    ]
 
 
 
@@ -100,9 +119,7 @@ const Variant = (props) => {
 
     }
 
-    const HandPhoneissues = (e, i) => {
-
-
+    const HandPhoneissues = (e,price, i) => {
 
         const { name, checked, id, value } = e.target;
 
@@ -112,7 +129,7 @@ const Variant = (props) => {
 
             updatedList = [...issuedata, name];
 
-            const data = parseInt(mainprice) - parseInt(value)
+            const data = parseInt(mainprice) - parseInt(price)
             setIssues(false)
             setMainprice(data)
         }
@@ -120,7 +137,7 @@ const Variant = (props) => {
 
             updatedList.splice(issuedata.indexOf(name), 1);
 
-            const data = parseInt(mainprice) + parseInt(value)
+            const data = parseInt(mainprice) + parseInt(price)
             setMainprice(data)
             setIssues(true)
         }
@@ -131,7 +148,7 @@ const Variant = (props) => {
 
     }
 
-    const HandlePhoneacessories = (e) => {
+    const HandlePhoneacessories = (e,price) => {
 
         const { name, checked, id, value } = e.target;
 
@@ -146,7 +163,7 @@ const Variant = (props) => {
 
             updatedList = [...phoneasdata, name];
 
-            const data = parseInt(mainprice) + parseInt(value)
+            const data = parseInt(mainprice) + parseInt(price)
             setMainprice(data)
 
            
@@ -158,30 +175,45 @@ const Variant = (props) => {
                 setOldphone(false);
             }
             updatedList.splice(phoneasdata.indexOf(name), 1);
-            const data = parseInt(mainprice) - parseInt(value)
+            const data = parseInt(mainprice) - parseInt(price)
             setMainprice(data)
         }
 
         setPhoneasdata(updatedList);
-
-     
-
     }
 
-    const Phoneold = (e) => {
+    const HandPhoneold = (e,data,price) => {
         const { name, checked, id, value } = e.target;
 
-        if (checked === true) {
-            const data = parseInt(mainprice) + parseInt(value)
-            setMainprice(data)
-
-        }
-        else if (checked === false) {
-            const data = parseInt(mainprice) - parseInt(value)
-            setMainprice(data)
-        }
+        setPhoneagedata(data)
+        setAgephone(price)
     }
 
+    const Handaddage = () =>{
+        const data = parseInt(mainprice) + parseInt(agephone)
+        setMainprice(data)
+    }
+
+    const Handsubage = (e) =>{
+        const data = parseInt(mainprice) - parseInt(e)
+        setMainprice(data)
+    }
+
+    const HandPhonecondition = (e,data,price) => {
+        const { name, checked, id, value } = e.target;
+        setPhonecdata(data)
+        setPhonecprice(price)
+    }
+
+    const Handaddcd = (e) =>{
+        const data = parseInt(mainprice) + parseInt(e)
+        setMainprice(data)
+    }
+
+    const Handsubcd = (e) =>{
+        const data = parseInt(mainprice) - parseInt(phonecprice)
+        setMainprice(data)
+    }
 
     useEffect(() => {
 
@@ -238,6 +270,9 @@ const Variant = (props) => {
 
                                 <div className='box'>
                                     <h5>phone data:{phoneprice.phonedata}</h5> <h5>Price: {mainprice}</h5>
+
+                                    <h5>Phone Age : {agephone}</h5>
+                                    <h5>Phone condition : {phonecprice}</h5>
                                 </div>
 
                                 <hr />
@@ -295,17 +330,29 @@ const Variant = (props) => {
                                         :null
                                     }
 
-                                  
-
-                                    <h5>Please select the age of your device</h5>
+                                  {
+                                    phoneagedata?
+                                    <>
+                                     <h5>Please select the age of your device</h5>
                                     <ul>
-                                        <li></li>
+                                        <li>{phoneagedata}</li>
                                     </ul>
+                                    </>
+                                    :null
+                                  }
 
-                                    <h5>Please select Phone condition</h5>
-                                    <ul>
-                                        <li></li>
-                                    </ul>
+                                   
+                                  {
+                                    phonecdata?
+                                        <>
+                                            <h5>Please select Phone condition</h5>
+                                            <ul>
+                                                <li>{phonecdata}</li>
+                                            </ul>
+                                        </>
+                                    :null
+                                  }
+                                    
                                 </div>
 
                             </div>
@@ -336,9 +383,9 @@ const Variant = (props) => {
                                     <div className='dfr mt-4'>
                                         {phoneissuedata.map((item, i) => {
                                             return <>
-                                                <div className="form-check cat action" key={i}>
+                                                <div className={`form-check cat action ${item.price? '' :'d-none'}`} key={i}>
                                                     <label className="form-check-label">
-                                                        <input className="form-check-input" type="checkbox" name={item.name} value={item.price} id={item.id} onChange={(e) => { HandPhoneissues(e); }} />
+                                                        <input className="form-check-input" type="checkbox" name={item.name} id={item.id} onChange={(e) => { HandPhoneissues(e,item.price); }} />
                                                         <span>{item.name}</span>
                                                     </label>
                                                 </div>
@@ -361,7 +408,7 @@ const Variant = (props) => {
                                                     
                                                     <div className="form-check cat sports">
                                                         <label className="form-check-label" htmlFor={item.id}>
-                                                            <input className="form-check-input" type="checkbox" name={item.name} value={item.price} id={item.id} onClick={(e) => { HandlePhoneacessories(e) }} />
+                                                            <input className="form-check-input" type="checkbox" name={item.name} id={item.id} onClick={(e) => { HandlePhoneacessories(e,item.price) }} />
                                                             <span>{item.name}</span>
                                                         </label>
                                                     </div>
@@ -378,10 +425,10 @@ const Variant = (props) => {
                                         {
                                             oldphone ?
                                                 <>
-                                                    <button className='btn btn-info' onClick={() => { setPhoneas(false); setPhoneold(true) }}>Next</button>
+                                                    <button className='btn btn-info' onClick={() => { setPhoneas(false); setPhoneold(true) }}>With Bill Next</button>
                                                 </>
                                                 :
-                                                <> <button className='btn btn-info' onClick={() => { setPhoneas(false); setCondition(true) }}>Next 2</button></>
+                                                <> <button className='btn btn-info' onClick={() => { setPhoneas(false); setCondition(true) }}>Next</button></>
                                         }
 
                                     </div>
@@ -393,47 +440,31 @@ const Variant = (props) => {
                                     <div className='dfr my-4'>
 
 
-                                        <div className="form-check">
-                                            <label className="form-check-label" htmlFor="old1">
-                                                <input className="form-check-input" type="radio" name="phoneage" id="old1" value={phonedata.bill3} onChange={(e) => { Phoneold(e) }} />
+                                        {
+                                            ageDevice.map(item=>{
+                                                return(
+                                                    <>
+                                                     <div className="form-check cat sports">
+                                                        <label className="form-check-label" htmlFor={item.id}>
+                                                            <input className="form-check-input" type="radio" name="phoneage" id={item.id} onChange={(e) => { HandPhoneold(e,item.name,item.price) }} />
 
-                                                <span>0-3 Months</span>
-                                            </label>
-                                        </div>
+                                                            <span>{item.name}</span>
+                                                        </label>
+                                                    </div>
+                                                    </>
+                                                )
+                                            })
+                                        }
+                                       
 
-
-                                        <div className="form-check ">
-                                            <label className="form-check-label" htmlFor="old2">
-                                                <input className="form-check-input" type="radio" name="phoneage" id="old2" value={phonedata.bill3to6} onChange={(e) => { Phoneold(e) }} />
-
-                                                <span>3-6 Months</span>
-                                            </label>
-                                        </div>
-
-                                        <div className="form-check ">
-                                            <label className="form-check-label" htmlFor="old3">
-                                                <input className="form-check-input" type="radio" name="phoneage" id="old3" value={phonedata.bill6to11} onChange={(e) => { Phoneold(e) }} />
-
-                                                <span> 6-11 Months</span>
-                                            </label>
-                                        </div>
-
-                                        <div className="form-check">
-                                            <label className="form-check-label" htmlFor="old4">
-                                                <input className="form-check-input" type="radio" name="phoneage" id="old4" value={phonedata.bill11out} onChange={(e) => { Phoneold(e) }} />
-
-                                                <span>11 Months</span>
-                                            </label>
-                                        </div>
-
-
+                                    
 
 
                                     </div>
 
                                     <div className='col-md-12'>
-                                        <button className="btn btn-dark" onClick={() => { setPhoneold(false); setPhoneas(true) }}>Back</button>
-                                        <button className='btn btn-info' onClick={() => { setPhoneas(false); setPhoneold(false); setCondition(true) }}>Next</button>
+                                        <button className="btn btn-dark" onClick={() => { setPhoneold(false); setPhoneas(true)}}>Back</button>
+                                        <button className='btn btn-info' onClick={() => { setPhoneas(false); setPhoneold(false); setCondition(true); Handaddage();}}>Next</button>
                                     </div>
 
                                 </div>
@@ -442,30 +473,23 @@ const Variant = (props) => {
                                     <h2>Please select the Phone condition</h2>
 
                                     <div className='dfr my-4'>
-                                        <div className="form-check cat sports">
-                                            <label className="form-check-label" htmlFor="Good">
-                                                <input className="form-check-input" type="checkbox" name="Good" id="Good" value={phonedata.bill3} onClick={(e) => { Phoneold(e) }} />
 
-                                                <span>Good</span>
-                                            </label>
-                                        </div>
 
-                                        <div className="form-check cat sports">
-                                            <label className="form-check-label" htmlFor="Average">
-                                                <input className="form-check-input" htmlFor="checkbox" name="Average" id="Average" value={phonedata.bill3} onClick={(e) => { Phoneold(e) }} />
+                                    {
+                                            conditiondata.map(item=>{
+                                                return(
+                                                    <>
+                                                     <div className="form-check cat sports">
+                                                        <label className="form-check-label" htmlFor={item.id}>
+                                                            <input className="form-check-input" type="radio" name="phone" id={item.id} onChange={(e) => { HandPhonecondition(e,item.name,item.price) }} />
 
-                                                <span>Average</span>
-                                            </label>
-                                        </div>
-
-                                        <div className="form-check cat sports">
-                                            <label className="form-check-label" htmlFor="Below">
-                                                <input className="form-check-input" type="checkbox" name="Below" id="Below" value={phonedata.bill3} onClick={(e) => { Phoneold(e) }} />
-
-                                                <span>Below Average</span>
-                                            </label>
-                                        </div>
-
+                                                            <span>{item.name}</span>
+                                                        </label>
+                                                    </div>
+                                                    </>
+                                                )
+                                            })
+                                        }
 
 
                                     </div>
@@ -475,11 +499,11 @@ const Variant = (props) => {
 
                                         {
                                             oldphone ?
-                                                <button className="btn btn-dark" onClick={() => { setCondition(false); setPhoneold(true) }}>Back</button>
-                                                : <button className="btn btn-dark" onClick={() => { setCondition(false); setPhoneas(true) }}>Back</button>
+                                                <button className="btn btn-dark" onClick={() => { setCondition(false); setPhoneold(true);Handsubage(agephone) }}>Back</button>
+                                                : <button className="btn btn-dark" onClick={() => { setCondition(false); setPhoneas(true); }}>Back</button>
                                         }
 
-                                        <button className='btn btn-info' onClick={() => { setCondition(false); setPriceshow(true) }}>Next</button>
+                                        <button className='btn btn-info' onClick={() => { setCondition(false); setPriceshow(true);Handsubcd(); }}>Next</button>
                                     </div>
 
 
@@ -491,8 +515,9 @@ const Variant = (props) => {
                                     <h3>₹ {mainprice}</h3>
 
                                     <div className='col-md-12'>
-                                        <button className="btn btn-dark" onClick={() => { setPriceshow(false); setCondition(true) }}>Back</button>
+                                        <button className="btn btn-dark" onClick={() => { setPriceshow(false); setCondition(true);Handaddcd(phonecprice) }}>Back</button>
                                         <button className='btn btn-info' onClick={() => { setPriceshow(false); setFormsb(true) }}>Next</button>
+                                        
                                     </div>
                                 </div>
 
