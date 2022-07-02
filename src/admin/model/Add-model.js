@@ -96,7 +96,6 @@ const Addmodel = () => {
   };
 
 
-
   const apiData = async () => {
     const apidata = await fetch("http://localhost:9000/phone/");
     // setData(await apidata.json());

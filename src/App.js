@@ -10,6 +10,8 @@ import Profile from './admin/Profile';
 import Protected from './comonent/Protected';
 import Addbrand from './admin/brand/Addbrand';
 import Addmodel from './admin/model/Add-model';
+import Viewmodel from './admin/model/View-model';
+import Updatemodel from './admin/model/Update-model';
 import StateProvider from './StateProvider';
 import Brand from './page/Brand';
 import Model from './page/Model';
@@ -43,6 +45,17 @@ function App() {
       <Route path='/admin/add-model' exact>
       <Protected Cmd={Addmodel}/>
       </Route>
+
+      <Route path='/admin/view-model' exact>
+      <Protected Cmd={Viewmodel}/>
+      </Route>
+
+      <Route path='/admin/update-model/:id' exact>
+      <Protected Cmd={Updatemodel}/>
+      </Route>
+
+      
+      
       <Route path='/logout' exact>
       <Protected Cmd={Logout}/>
       </Route>

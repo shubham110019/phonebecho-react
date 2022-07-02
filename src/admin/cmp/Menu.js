@@ -23,7 +23,7 @@ const Menu = () => {
             </Link>
           </li>
           <li>
-            <Link to="/admin/add-model">
+            <Link to="/admin/view-model">
               <i className="bx bx-list-ul"></i>
               <span className="links_name">Phone Model</span>
             </Link>
