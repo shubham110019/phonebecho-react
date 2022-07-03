@@ -54,13 +54,14 @@ const Updatemodel = () => {
         conditionpoor: "",
     });
 
-   
+
     const fetchaptdata = () => {
         fetch(`http://localhost:9000/model/${id}`).then((resq) => {
             resq.json().then((result) => {
                 // console.log(result.data)
                 setPhonedata(result.data)
                 setState(result.data);
+                setVariantdata(result.data.variant)
             })
         }).catch(err => {
             console.log(err)
@@ -77,53 +78,53 @@ const Updatemodel = () => {
 
 
     const modeldetail = [
-        { id: 61, name: "phone Name", value: phonedata.modelname,data:"modelname" },
-        { id: 62, name: "Image link", value: phonedata.image,data:"image" },
-        { id: 62, name: "Page Url", value: phonedata.pageurl,data:"pageurl" },
-        { id: 62, name: "Model Series", value: phonedata.series,data:"series" },
+        { id: 61, name: "phone Name", value: phonedata.modelname, data: "modelname" },
+        { id: 62, name: "Image link", value: phonedata.image, data: "image" },
+        { id: 62, name: "Page Url", value: phonedata.pageurl, data: "pageurl" },
+        { id: 62, name: "Model Series", value: phonedata.series, data: "series" },
     ]
 
 
 
     const phoneissuedata = [
-        { id: 1, name: 'Display Not Work', value: phonedata.display,data:"display" },
-        { id: 2, name: 'Display Glass crack', value: phonedata.displayglass,data:"" },
-        { id: 3, name: 'Front Camera not working', value: phonedata.frontcamera,data:"" },
-        { id: 4, name: 'Back Camera not working', value: phonedata.backcamera,data:"" },
-        { id: 5, name: 'Volume Button not working', value: phonedata.volumebutton,data:"" },
-        { id: 6, name: 'Finger Touch not working', value: phonedata.fingertouch,data:"" },
-        { id: 7, name: 'WiFi not working', value: phonedata.wifi,data:"" },
-        { id: 8, name: 'Battery Faulty', value: phonedata.battery,data:"" },
-        { id: 9, name: 'Speaker Faulty', value: phonedata.speaker,data:"" },
-        { id: 10, name: 'Power Button not working', value: phonedata.powerbutton,data:"" },
-        { id: 11, name: 'charging port not working', value: phonedata.chargingport,data:"" },
-        { id: 12, name: 'Face Sensor not working', value: phonedata.facesensor,data:"" },
-        { id: 13, name: 'Silent Button not working', value: phonedata.silentbutton,data:"" },
-        { id: 14, name: 'Audio Receiver not working', value: phonedata.audioreceiver,data:"" },
-        { id: 15, name: 'Camera Glass Broken', value: phonedata.cameraglass,data:"" },
-        { id: 16, name: 'Bluetooth not working', value: phonedata.bluetooth,data:"" },
-        { id: 17, name: 'Vibrator is not working', value: phonedata.vibrator,data:"" },
-        { id: 18, name: 'Microphone not working', value: phonedata.microphone,data:"" },
-        { id: 19, name: 'Proximity Sensor not working', value: phonedata.proximitysensor,data:"" },
-        { id: 20, name: 'Audio Jack not working', value: phonedata.audiojack,data:"" }
+        { id: 1, name: 'Display Not Work', value: phonedata.display, data: "display" },
+        { id: 2, name: 'Display Glass crack', value: phonedata.displayglass, data: "displayglass" },
+        { id: 3, name: 'Front Camera not working', value: phonedata.frontcamera, data: "frontcamera" },
+        { id: 4, name: 'Back Camera not working', value: phonedata.backcamera, data: "backcamera" },
+        { id: 5, name: 'Volume Button not working', value: phonedata.volumebutton, data: "volumebutton" },
+        { id: 6, name: 'Finger Touch not working', value: phonedata.fingertouch, data: "fingertouch" },
+        { id: 7, name: 'WiFi not working', value: phonedata.wifi, data: "wifi" },
+        { id: 8, name: 'Battery Faulty', value: phonedata.battery, data: "battery" },
+        { id: 9, name: 'Speaker Faulty', value: phonedata.speaker, data: "speaker" },
+        { id: 10, name: 'Power Button not working', value: phonedata.powerbutton, data: "powerbutton" },
+        { id: 11, name: 'charging port not working', value: phonedata.chargingport, data: "chargingport" },
+        { id: 12, name: 'Face Sensor not working', value: phonedata.facesensor, data: "facesensor" },
+        { id: 13, name: 'Silent Button not working', value: phonedata.silentbutton, data: "silentbutton" },
+        { id: 14, name: 'Audio Receiver not working', value: phonedata.audioreceiver, data: "audioreceiver" },
+        { id: 15, name: 'Camera Glass Broken', value: phonedata.cameraglass, data: "cameraglass" },
+        { id: 16, name: 'Bluetooth not working', value: phonedata.bluetooth, data: "bluetooth" },
+        { id: 17, name: 'Vibrator is not working', value: phonedata.vibrator, data: "vibrator" },
+        { id: 18, name: 'Microphone not working', value: phonedata.microphone, data: "microphone" },
+        { id: 19, name: 'Proximity Sensor not working', value: phonedata.proximitysensor, data: "proximitysensor" },
+        { id: 20, name: 'Audio Jack not working', value: phonedata.audiojack, data: "audiojack" }
     ]
 
     const phoneacessories = [
-        { id: 31, name: "Original Phone Box", value: phonedata.box,data:"" },
-        { id: 32, name: "Original Charger", value: phonedata.originalcharger,data:"" },
+        { id: 31, name: "Original Phone Box", value: phonedata.box, data: "box" },
+        { id: 32, name: "Original Charger", value: phonedata.originalcharger, data: "originalcharger" },
     ]
 
     const ageDevice = [
-        { id: 41, name: "0-3 Months", value: phonedata.bill3,data:"" },
-        { id: 42, name: "3-6 Months", value: phonedata.bill3to6,data:"" },
-        { id: 43, name: "6-11 Months", value: phonedata.bill6to11,data:"" },
-        { id: 44, name: "11 Months", value: phonedata.bill11out,data:"" },
+        { id: 41, name: "0-3 Months", value: phonedata.bill3, data: "bill3" },
+        { id: 42, name: "3-6 Months", value: phonedata.bill3to6, data: "bill3to6" },
+        { id: 43, name: "6-11 Months", value: phonedata.bill6to11, data: "bill6to11" },
+        { id: 44, name: "11 Months", value: phonedata.bill11out, data: "bill11out" },
     ]
 
     const conditiondata = [
-        { id: 51, name: "Good Condition", value: phonedata.conditiongood,data:"" },
-        { id: 52, name: "Average Condition", value: phonedata.conditionbelow,data:"" },
-        { id: 53, name: "Below Average Condition", value: phonedata.conditionpoor,data:"" },
+        { id: 51, name: "Good Condition", value: phonedata.conditiongood, data: "conditiongood" },
+        { id: 52, name: "Average Condition", value: phonedata.conditionbelow, data: "conditionbelow" },
+        { id: 53, name: "Below Average Condition", value: phonedata.conditionpoor, data: "conditionpoor" },
     ]
 
 
@@ -134,10 +135,10 @@ const Updatemodel = () => {
         list[index][name] = value;
         setVariantdata(list);
 
-        setVariantdata({
-            ...variantdata,
-            [name]: value,
-          });
+        // setVariantdata({
+        //     ...variantdata,
+        //     [name]: value,
+        // });
 
         console.log(variantdata);
 
@@ -146,24 +147,32 @@ const Updatemodel = () => {
     const Handmodelupdate = (e) => {
         const { name, value } = e.target;
         setState({
-          ...state,
-          [name]: value,
+            ...state,
+            [name]: value,
         });
-  
-        console.log(state)
 
+        console.log(state)
     }
 
-    const fmupdate = (e) =>{
+    const variantAdd = () => {
+        setVariant([ { variant: "" }]);
+        setVariantdata([...variantdata, { phonedata: "", phoneurl: "", phoneprice: "", }])
+    };
 
-      
-        
+    const variantRemove = (index) => {
+        const list = [...variant];
+        list.splice(index, 1);
+        setVariant(list);
+    };
+
+    const fmupdate = (e) => {
+
         const data = {
             "variant": variantdata,
-          }
-          const fulldata = { ...state, ...data }
+        }
+        const fulldata = { ...state, ...data }
 
-        console.log(state);
+        console.log(fulldata);
     }
 
     useEffect(() => {
@@ -185,7 +194,7 @@ const Updatemodel = () => {
                         <div className='row'>
                             <div className='col-md-12 p-2'>
                                 <div className='border p-3 bg-white row'>
-                                    
+
 
                                     <div className='col-md-12 my-3'>
                                         <h4>Model detail</h4>
@@ -198,7 +207,7 @@ const Updatemodel = () => {
                                             aria-label="Default select example"
                                             name="brandname"
                                             defaultValue={phonedata.brandname}
-                                            onChange={(e)=>Handmodelupdate(e)}
+                                            onChange={(e) => Handmodelupdate(e)}
                                         >
                                             <option>select one</option>
                                             {apibrand ? (
@@ -232,8 +241,8 @@ const Updatemodel = () => {
                                                                         className="form-control"
                                                                         defaultValue={item.value}
                                                                         name={item.data}
-                                                                        onChange={(e)=>{Handmodelupdate(e)}}
-                                                                        
+                                                                        onChange={(e) => { Handmodelupdate(e) }}
+
 
                                                                     />
                                                                 </div>
@@ -253,52 +262,135 @@ const Updatemodel = () => {
                                     </div>
 
                                     {
-                                        phonedata.variant?
-                                        phonedata.variant.map((item, index) => {
-                                            return (
-                                                <>
-                                                    <div className="mb-3 col-md-4">
-                                                        <label className="form-label">Ram and Rom</label>
-                                                        <input
-                                                            type="text"
-                                                            className="form-control"
-                                                            placeholder="6Gb / 128GB"
-                                                            defaultValue={item.phonedata}
-                                                            onChange={(e) => { handleVariant(e, index) }}
-                                                            name="phonedata"
-                                                        />
-                                                    </div>
+                                        phonedata.variant ?
+                                            phonedata.variant.map((item, index) => {
+                                                return (
+                                                    <>
 
-                                                    <div className="mb-3 col-md-4">
-                                                        <label className="form-label">Price</label>
-                                                        <input
-                                                            type="text"
-                                                            className="form-control"
-                                                            defaultValue={item.phoneprice}
-                                                            onChange={(e) => { handleVariant(e, index) }}
-                                                            name="phoneprice"
-                                                        />
-                                                    </div>
+<div className="mb-3 col-md-4">
+                                                                        <label className="form-label">Ram and Rom</label>
+                                                                        <input
+                                                                            type="text"
+                                                                            className="form-control"
+                                                                            placeholder="6Gb / 128GB"
+                                                                            defaultValue={item.phonedata}
+                                                                            onChange={(e) => { handleVariant(e, index) }}
+                                                                            name="phonedata"
+                                                                        />
+                                                                    </div>
 
-                                                    <div className="mb-3 col-md-4">
-                                                        <label className="form-label">url</label>
-                                                        <input
-                                                            type="text"
-                                                            className="form-control"
-                                                            defaultValue={item.phoneurl}
-                                                            onChange={(e) => { handleVariant(e, index) }}
-                                                            name="phoneurl"
-                                                        />
-                                                    </div>
-                                                </>
-                                            )
-                                        })
+                                                                    <div className="mb-3 col-md-3">
+                                                                        <label className="form-label">Price</label>
+                                                                        <input
+                                                                            type="text"
+                                                                            className="form-control"
+                                                                            defaultValue={item.phoneprice}
+                                                                            onChange={(e) => { handleVariant(e, index) }}
+                                                                            name="phoneprice"
+                                                                        />
+                                                                    </div>
 
-                                        :null
+                                                                    <div className="mb-3 col-md-4">
+                                                                        <label className="form-label">url</label>
+                                                                        <input
+                                                                            type="text"
+                                                                            className="form-control"
+                                                                            defaultValue={item.phoneurl}
+                                                                            onChange={(e) => { handleVariant(e, index) }}
+                                                                            name="phoneurl"
+                                                                        />
+                                                                    </div>
+
+                                                                   
+                                                                        <div className="col-md-1">
+                                                                            <label className="form-label">&nbsp;</label>
+                                                                            <button
+                                                                                className="btn btn-danger"
+                                                                                onClick={() => {
+                                                                                    variantRemove();
+                                                                                }}
+                                                                            >
+                                                                                remove
+                                                                            </button>
+                                                                        </div>
+                                                                    
+                                                                    
+
+                                                                    </>
+                                                )
+                                            })
+
+                                            : null
                                     }
+                                                        {variant.map((element, index) => {
+                                                            return (
+                                                                <>
+                                                                    <div className="mb-3 col-md-4">
+                                                                        <label className="form-label">Ram and Rom</label>
+                                                                        <input
+                                                                            type="text"
+                                                                            className="form-control"
+                                                                            placeholder="6Gb / 128GB"
+                                                                            
+                                                                            onChange={(e) => { handleVariant(e, index) }}
+                                                                            name="phonedata"
+                                                                        />
+                                                                    </div>
+
+                                                                    <div className="mb-3 col-md-3">
+                                                                        <label className="form-label">Price</label>
+                                                                        <input
+                                                                            type="text"
+                                                                            className="form-control"
+                                                                            
+                                                                            onChange={(e) => { handleVariant(e, index) }}
+                                                                            name="phoneprice"
+                                                                        />
+                                                                    </div>
+
+                                                                    <div className="mb-3 col-md-4">
+                                                                        <label className="form-label">url</label>
+                                                                        <input
+                                                                            type="text"
+                                                                            className="form-control"
+                                                                          
+                                                                            onChange={(e) => { handleVariant(e, index) }}
+                                                                            name="phoneurl"
+                                                                        />
+                                                                    </div>
+
+                                                                    {variant.length > 1 && (
+                                                                        <div className="col-md-1">
+                                                                            <label className="form-label">&nbsp;</label>
+                                                                            <button
+                                                                                className="btn btn-danger"
+                                                                                onClick={() => {
+                                                                                    variantRemove();
+                                                                                }}
+                                                                            >
+                                                                                remove
+                                                                            </button>
+                                                                        </div>
+                                                                    )}
+                                                                </>
+                                                            );
+                                                        })}
+
+                                             
+
+                                    <div className="col-md-12 text-right">
+                                        <button
+                                            className="btn btn-info"
+                                            onClick={() => {
+                                                variantAdd();
+                                            }}
+                                        >
+                                            Add more
+                                        </button>
+                                    </div>
 
 
-                                  
+
 
                                     <div className='col-md-12 my-3'>
                                         <h4>Functional or Physical Problems</h4>
@@ -429,7 +521,7 @@ const Updatemodel = () => {
                                     }
 
                                     <div className='col-md-12 py-3'>
-                                        <button className='btn btn-info' onClick={()=>{fmupdate()}}>Update</button>
+                                        <button className='btn btn-info' onClick={() => { fmupdate() }}>Update</button>
                                     </div>
 
                                 </div>
