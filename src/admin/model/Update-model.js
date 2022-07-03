@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import Menu from "../cmp/Menu";
 import Topmenu from "../cmp/Topmenu";
@@ -7,13 +7,60 @@ const Updatemodel = () => {
 
     const { id } = useParams();
 
-    const [phonedata, setPhonedata] = useState();
+    const ref = useRef();
+    const [phonedata, setPhonedata] = useState("0");
+    const [phoneissedata, setPhoneissedata] = useState(0);
+    const [apibrand, setApibrand] = useState("");
+    const [variant, setVariant] = useState([{ variant: "" }]);
+    const [variantdata, setVariantdata] = useState([{
+        phonedata: "",
+        phoneurl: "",
+        phoneprice: "",
+    }]);
+    const [state, setState] = useState({
+        brandname: "",
+        modelname: "",
+        image: "",
+        pageurl: "",
+        series: "",
+        display: "",
+        displayglass: "",
+        frontcamera: "",
+        backcamera: "",
+        volumebutton: "",
+        fingertouch: "",
+        wifi: "",
+        battery: "",
+        speaker: "",
+        powerbutton: "",
+        chargingport: "",
+        facesensor: "",
+        silentbutton: "",
+        audioreceiver: "",
+        cameraglass: "",
+        bluetooth: "",
+        vibrator: "",
+        microphone: "",
+        proximitysensor: "",
+        audiojack: "",
+        box: "",
+        originalcharger: "",
+        bill3: "",
+        bill3to6: "",
+        bill6to11: "",
+        bill11out: "",
+        conditiongood: "",
+        conditionbelow: "",
+        conditionpoor: "",
+    });
 
+   
     const fetchaptdata = () => {
         fetch(`http://localhost:9000/model/${id}`).then((resq) => {
             resq.json().then((result) => {
+                // console.log(result.data)
                 setPhonedata(result.data)
-                console.log("data : " + result.data)
+                setState(result.data);
             })
         }).catch(err => {
             console.log(err)
@@ -21,32 +68,107 @@ const Updatemodel = () => {
 
     }
 
-    const phoneissuedata = [
-        // { id: 1, name: 'Display Not Work', price: phonedata.display},
-        // { id: 2, name: 'Display Glass crack', price: phonedata.displayglass },
-        // { id: 3, name: 'Front Camera not working', price: phonedata.frontcamera },
-        // { id: 4, name: 'Back Camera not working', price: phonedata.backcamera },
-        // { id: 5, name: 'Volume Button not working', price: phonedata.volumebutton },
-        // { id: 6, name: 'Finger Touch not working', price: phonedata.fingertouch },
-        // { id: 7, name: 'WiFi not working', price: phonedata.wifi },
-        // { id: 8, name: 'Battery Faulty', price: phonedata.battery },
-        // { id: 9, name: 'Speaker Faulty', price: phonedata.speaker },
-        // { id: 10, name: 'Power Button not working', price: phonedata.powerbutton },
-        // { id: 11, name: 'charging port not working', price: phonedata.chargingport },
-        // { id: 12, name: 'Face Sensor not working', price: phonedata.facesensor },
-        // { id: 13, name: 'Silent Button not working', price: phonedata.silentbutton },
-        // { id: 14, name: 'Audio Receiver not working', price: phonedata.audioreceiver },
-        // { id: 15, name: 'Camera Glass Broken', price: phonedata.cameraglass },
-        // { id: 16, name: 'Bluetooth not working', price: phonedata.bluetooth },
-        // { id: 17, name: 'Vibrator is not working', price: phonedata.vibrator },
-        // { id: 18, name: 'Microphone not working', price: phonedata.microphone },
-        // { id: 19, name: 'Proximity Sensor not working', price: phonedata.proximitysensor },
-        // { id: 20, name: 'Audio Jack not working', price: phonedata.audiojack }
+    const apiData = async () => {
+        const apidata = await fetch("http://localhost:9000/phone/");
+        const brandapidata = await apidata.json();
+        const fullbrand = brandapidata.brandapi;
+        setApibrand(fullbrand);
+    };
+
+
+    const modeldetail = [
+        { id: 61, name: "phone Name", value: phonedata.modelname,data:"modelname" },
+        { id: 62, name: "Image link", value: phonedata.image,data:"image" },
+        { id: 62, name: "Page Url", value: phonedata.pageurl,data:"pageurl" },
+        { id: 62, name: "Model Series", value: phonedata.series,data:"series" },
     ]
 
 
+
+    const phoneissuedata = [
+        { id: 1, name: 'Display Not Work', value: phonedata.display,data:"display" },
+        { id: 2, name: 'Display Glass crack', value: phonedata.displayglass,data:"" },
+        { id: 3, name: 'Front Camera not working', value: phonedata.frontcamera,data:"" },
+        { id: 4, name: 'Back Camera not working', value: phonedata.backcamera,data:"" },
+        { id: 5, name: 'Volume Button not working', value: phonedata.volumebutton,data:"" },
+        { id: 6, name: 'Finger Touch not working', value: phonedata.fingertouch,data:"" },
+        { id: 7, name: 'WiFi not working', value: phonedata.wifi,data:"" },
+        { id: 8, name: 'Battery Faulty', value: phonedata.battery,data:"" },
+        { id: 9, name: 'Speaker Faulty', value: phonedata.speaker,data:"" },
+        { id: 10, name: 'Power Button not working', value: phonedata.powerbutton,data:"" },
+        { id: 11, name: 'charging port not working', value: phonedata.chargingport,data:"" },
+        { id: 12, name: 'Face Sensor not working', value: phonedata.facesensor,data:"" },
+        { id: 13, name: 'Silent Button not working', value: phonedata.silentbutton,data:"" },
+        { id: 14, name: 'Audio Receiver not working', value: phonedata.audioreceiver,data:"" },
+        { id: 15, name: 'Camera Glass Broken', value: phonedata.cameraglass,data:"" },
+        { id: 16, name: 'Bluetooth not working', value: phonedata.bluetooth,data:"" },
+        { id: 17, name: 'Vibrator is not working', value: phonedata.vibrator,data:"" },
+        { id: 18, name: 'Microphone not working', value: phonedata.microphone,data:"" },
+        { id: 19, name: 'Proximity Sensor not working', value: phonedata.proximitysensor,data:"" },
+        { id: 20, name: 'Audio Jack not working', value: phonedata.audiojack,data:"" }
+    ]
+
+    const phoneacessories = [
+        { id: 31, name: "Original Phone Box", value: phonedata.box,data:"" },
+        { id: 32, name: "Original Charger", value: phonedata.originalcharger,data:"" },
+    ]
+
+    const ageDevice = [
+        { id: 41, name: "0-3 Months", value: phonedata.bill3,data:"" },
+        { id: 42, name: "3-6 Months", value: phonedata.bill3to6,data:"" },
+        { id: 43, name: "6-11 Months", value: phonedata.bill6to11,data:"" },
+        { id: 44, name: "11 Months", value: phonedata.bill11out,data:"" },
+    ]
+
+    const conditiondata = [
+        { id: 51, name: "Good Condition", value: phonedata.conditiongood,data:"" },
+        { id: 52, name: "Average Condition", value: phonedata.conditionbelow,data:"" },
+        { id: 53, name: "Below Average Condition", value: phonedata.conditionpoor,data:"" },
+    ]
+
+
+    const handleVariant = (e, index) => {
+
+        const { name, value } = e.target;
+        const list = [...variantdata];
+        list[index][name] = value;
+        setVariantdata(list);
+
+        setVariantdata({
+            ...variantdata,
+            [name]: value,
+          });
+
+        console.log(variantdata);
+
+    }
+
+    const Handmodelupdate = (e) => {
+        const { name, value } = e.target;
+        setState({
+          ...state,
+          [name]: value,
+        });
+  
+        console.log(state)
+
+    }
+
+    const fmupdate = (e) =>{
+
+      
+        
+        const data = {
+            "variant": variantdata,
+          }
+          const fulldata = { ...state, ...data }
+
+        console.log(state);
+    }
+
     useEffect(() => {
 
+        apiData();
         fetchaptdata();
 
     }, [])
@@ -62,28 +184,57 @@ const Updatemodel = () => {
                         </div>
                         <div className='row'>
                             <div className='col-md-12 p-2'>
-                                <div className='border p-3 bg-white'>
+                                <div className='border p-3 bg-white row'>
+                                    
 
-
-                                    <div className='col-md-12'>
-                                        <h4>Functional or Physical Problems</h4>
-
+                                    <div className='col-md-12 my-3'>
+                                        <h4>Model detail</h4>
                                     </div>
 
+                                    <div className="mb-3 col-md-4">
+                                        <label className="form-label">Brand Name</label>
+                                        <select
+                                            class="form-select"
+                                            aria-label="Default select example"
+                                            name="brandname"
+                                            defaultValue={phonedata.brandname}
+                                            onChange={(e)=>Handmodelupdate(e)}
+                                        >
+                                            <option>select one</option>
+                                            {apibrand ? (
+                                                apibrand.map((item, i) => {
+                                                    return (
+                                                        <>
+                                                            <option value={item.brand} key={i} >
+                                                                {item.brand}
+                                                            </option>
+                                                        </>
+                                                    );
+                                                })
+                                            ) : (
+                                                <></>
+                                            )}
+                                        </select>
+                                    </div>
+
+
                                     {
-                                        phoneissuedata ?
+                                        modeldetail ?
                                             <>
                                                 {
-                                                    phoneissuedata.map((item, i) => {
+                                                    modeldetail.map((item, i) => {
                                                         return (
                                                             <>
-                                                                <div className="mb-3 col-md-4">
+                                                                <div className="mb-3 col-md-4" key={i}>
                                                                     <label className="form-label">{item.name}</label>
                                                                     <input
                                                                         type="text"
                                                                         className="form-control"
+                                                                        defaultValue={item.value}
+                                                                        name={item.data}
+                                                                        onChange={(e)=>{Handmodelupdate(e)}}
                                                                         
-                                                                        name="modelname"
+
                                                                     />
                                                                 </div>
                                                             </>
@@ -95,6 +246,191 @@ const Updatemodel = () => {
                                             </>
                                             : null
                                     }
+
+
+                                    <div className='col-md-12 my-3'>
+                                        <h4>Variant</h4>
+                                    </div>
+
+                                    {
+                                        phonedata.variant?
+                                        phonedata.variant.map((item, index) => {
+                                            return (
+                                                <>
+                                                    <div className="mb-3 col-md-4">
+                                                        <label className="form-label">Ram and Rom</label>
+                                                        <input
+                                                            type="text"
+                                                            className="form-control"
+                                                            placeholder="6Gb / 128GB"
+                                                            defaultValue={item.phonedata}
+                                                            onChange={(e) => { handleVariant(e, index) }}
+                                                            name="phonedata"
+                                                        />
+                                                    </div>
+
+                                                    <div className="mb-3 col-md-4">
+                                                        <label className="form-label">Price</label>
+                                                        <input
+                                                            type="text"
+                                                            className="form-control"
+                                                            defaultValue={item.phoneprice}
+                                                            onChange={(e) => { handleVariant(e, index) }}
+                                                            name="phoneprice"
+                                                        />
+                                                    </div>
+
+                                                    <div className="mb-3 col-md-4">
+                                                        <label className="form-label">url</label>
+                                                        <input
+                                                            type="text"
+                                                            className="form-control"
+                                                            defaultValue={item.phoneurl}
+                                                            onChange={(e) => { handleVariant(e, index) }}
+                                                            name="phoneurl"
+                                                        />
+                                                    </div>
+                                                </>
+                                            )
+                                        })
+
+                                        :null
+                                    }
+
+
+                                  
+
+                                    <div className='col-md-12 my-3'>
+                                        <h4>Functional or Physical Problems</h4>
+
+                                    </div>
+
+                                    {
+                                        phoneissuedata ?
+                                            <>
+                                                {
+                                                    phoneissuedata.map((item, i) => {
+                                                        return (
+                                                            <>
+                                                                <div className="mb-3 col-md-4" key={i}>
+                                                                    <label className="form-label">{item.name}</label>
+                                                                    <input
+                                                                        type="text"
+                                                                        className="form-control"
+                                                                        defaultValue={item.value}
+                                                                        name={item.data}
+                                                                        onChange={(e) => { Handmodelupdate(e) }}
+                                                                    />
+                                                                </div>
+                                                            </>
+                                                        )
+                                                    })
+                                                }
+
+
+                                            </>
+                                            : null
+                                    }
+
+
+                                    <div className='col-md-12 my-3'>
+                                        <h4>Accessories</h4>
+
+                                    </div>
+
+
+                                    {
+                                        phoneacessories ?
+                                            <>
+                                                {
+                                                    phoneacessories.map((item, i) => {
+                                                        return (
+                                                            <>
+                                                                <div className="mb-3 col-md-4" key={i}>
+                                                                    <label className="form-label">{item.name}</label>
+                                                                    <input
+                                                                        type="text"
+                                                                        className="form-control"
+                                                                        defaultValue={item.value}
+                                                                        name={item.data}
+                                                                        onChange={(e) => { Handmodelupdate(e) }}
+                                                                    />
+                                                                </div>
+                                                            </>
+                                                        )
+                                                    })
+                                                }
+
+
+                                            </>
+                                            : null
+                                    }
+
+                                    <div className='col-md-12 my-3'>
+                                        <h4>Bill</h4>
+                                    </div>
+
+                                    {
+                                        ageDevice ?
+                                            <>
+                                                {
+                                                    ageDevice.map((item, i) => {
+                                                        return (
+                                                            <>
+                                                                <div className="mb-3 col-md-3" key={i}>
+                                                                    <label className="form-label">{item.name}</label>
+                                                                    <input
+                                                                        type="text"
+                                                                        className="form-control"
+                                                                        defaultValue={item.value}
+                                                                        name={item.data}
+                                                                        onChange={(e) => { Handmodelupdate(e) }}
+                                                                    />
+                                                                </div>
+                                                            </>
+                                                        )
+                                                    })
+                                                }
+
+
+                                            </>
+                                            : null
+                                    }
+
+                                    <div className='col-md-12 my-3'>
+                                        <h4>Condition</h4>
+                                    </div>
+
+                                    {
+                                        conditiondata ?
+                                            <>
+                                                {
+                                                    conditiondata.map((item, i) => {
+                                                        return (
+                                                            <>
+                                                                <div className="mb-3 col-md-4" key={i}>
+                                                                    <label className="form-label">{item.name}</label>
+                                                                    <input
+                                                                        type="text"
+                                                                        className="form-control"
+                                                                        defaultValue={item.value}
+                                                                        name={item.data}
+                                                                        onChange={(e) => { Handmodelupdate(e) }}
+                                                                    />
+                                                                </div>
+                                                            </>
+                                                        )
+                                                    })
+                                                }
+
+
+                                            </>
+                                            : null
+                                    }
+
+                                    <div className='col-md-12 py-3'>
+                                        <button className='btn btn-info' onClick={()=>{fmupdate()}}>Update</button>
+                                    </div>
 
                                 </div>
                             </div>

@@ -260,8 +260,8 @@ const Variant = (props) => {
                     <div className='row'>
 
 
-                        <div className='col-md-4 p-2'>
-                            <div className='box shadow-sm rounded p-4'>
+                        <div className='col-md-4'>
+                            <div className='box rounded p-4 border'>
                                 <div className='phone-top-data d-flex flex-row align-items-center'>
                                     <img src={phonedata.image} style={{ height: "100px" }} />
                                     <h5>{phonedata.modelname} {phoneprice.phonedata}</h5>
@@ -269,10 +269,10 @@ const Variant = (props) => {
                                 </div>
 
                                 <div className='box'>
-                                    <h5>phone data:{phoneprice.phonedata}</h5> <h5>Price: {mainprice}</h5>
+                                    {/* <h5>phone data:{phoneprice.phonedata}</h5> <h5>Price: {mainprice}</h5> */}
 
-                                    <h5>Phone Age : {agephone}</h5>
-                                    <h5>Phone condition : {phonecprice}</h5>
+                                    {/* <h5>Phone Age : {agephone}</h5>
+                                    <h5>Phone condition : {phonecprice}</h5> */}
                                 </div>
 
                                 <hr />
@@ -359,7 +359,7 @@ const Variant = (props) => {
                         </div>
 
                         <div className='col-md-8 px-2'>
-                            <div className='box shadow-sm rounded p-4'>
+                            <div className='box rounded p-4 border'>
                                 <div className={`phone-on-check ${phoneoncheck ? 'd-none' : ''} radio-toolbar`}>
                                     <h2>Does your device switch On?</h2>
                                     <div className='my-4 row'>
