@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Menu from "../cmp/Menu";
+import { useHistory } from "react-router-dom";
 import Topmenu from "../cmp/Topmenu";
 
 const Addmodel = () => {
+
+  const history = useHistory();
   const [variantdata, setVariantdata] = useState([{
     phonedata: "",
     phoneurl: "",
@@ -87,7 +90,9 @@ const Addmodel = () => {
       },
       body: JSON.stringify(fulldata)
     }).then((res)=>{
+      history.push('./view-model')
       console.log("data submit" + res)
+
     }).catch((err)=>{
       console.log(err);
     })
@@ -106,7 +111,7 @@ const Addmodel = () => {
 
   const variantAdd = () => {
     setVariant([...variant, { variant: "" }]);
-    setVariantdata([...variantdata, { phonedata: "", phoneurl: "", phoneprice: "", }])
+    setVariantdata([...variantdata, {phonedata: "", phoneurl: "", phoneprice: "", }])
   };
   const variantRemove = (index) => {
     const list = [...variant];
@@ -211,7 +216,10 @@ const Addmodel = () => {
                   {variant.map((element, index) => {
                     return (
                       <>
+
+
                         <div className="mb-3 col-md-4">
+                          
                           <label className="form-label">Ram and Rom</label>
                           <input
                             type="text"

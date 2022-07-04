@@ -84,7 +84,7 @@ function Modeldetail(props) {
                                                         variant.map((item, i) => {
                                                             return (
                                                                 <>
-                                                                    <button className='btn btn-main' onClick={()=>{handlephonedata(item.phoneurl)}} >{item.phonedata}</button>
+                                                                    <button className={`btn btn-main ${item.phonedata === "" ? 'd-none': ''}`} onClick={()=>{handlephonedata(item.phoneurl)}} >{item.phonedata}</button>
                                                                     {/* <Link to={`/model/${item.phoneurl}`} className='btn btn-main'>{item.phonedata}</Link> */}
                                                                 </>
                                                             )

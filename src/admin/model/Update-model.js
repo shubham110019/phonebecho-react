@@ -11,7 +11,7 @@ const Updatemodel = () => {
     const [phonedata, setPhonedata] = useState("0");
     const [phoneissedata, setPhoneissedata] = useState(0);
     const [apibrand, setApibrand] = useState("");
-    const [variant, setVariant] = useState([{ variant: "" }]);
+    const [variant, setVariant] = useState([{}]);
     const [variantdata, setVariantdata] = useState([{
         phonedata: "",
         phoneurl: "",
@@ -135,11 +135,6 @@ const Updatemodel = () => {
         list[index][name] = value;
         setVariantdata(list);
 
-        // setVariantdata({
-        //     ...variantdata,
-        //     [name]: value,
-        // });
-
         console.log(variantdata);
 
     }
@@ -155,24 +150,45 @@ const Updatemodel = () => {
     }
 
     const variantAdd = () => {
-        setVariant([ { variant: "" }]);
+        // setVariant([...variant, { variant: "" }]);
         setVariantdata([...variantdata, { phonedata: "", phoneurl: "", phoneprice: "", }])
     };
 
     const variantRemove = (index) => {
-        const list = [...variant];
+        const list = [...variantdata];
         list.splice(index, 1);
-        setVariant(list);
+        setVariantdata(list);
+
     };
 
-    const fmupdate = (e) => {
+    const fmupdate = (pageid) => {
 
         const data = {
             "variant": variantdata,
         }
+
+        console.log(data)
+
         const fulldata = { ...state, ...data }
 
         console.log(fulldata);
+
+
+        fetch(`http://localhost:9000/model/${pageid}`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify(fulldata),
+          })
+            .then((resq) => {
+                alert('model update')
+                console.log(fulldata)
+            })
+            .catch((err) => {
+              console.log(err);
+            });
     }
 
     useEffect(() => {
@@ -260,135 +276,132 @@ const Updatemodel = () => {
                                     <div className='col-md-12 my-3'>
                                         <h4>Variant</h4>
                                     </div>
-
+{/* 
                                     {
                                         phonedata.variant ?
                                             phonedata.variant.map((item, index) => {
                                                 return (
                                                     <>
 
-<div className="mb-3 col-md-4">
-                                                                        <label className="form-label">Ram and Rom</label>
-                                                                        <input
-                                                                            type="text"
-                                                                            className="form-control"
-                                                                            placeholder="6Gb / 128GB"
-                                                                            defaultValue={item.phonedata}
-                                                                            onChange={(e) => { handleVariant(e, index) }}
-                                                                            name="phonedata"
-                                                                        />
-                                                                    </div>
 
-                                                                    <div className="mb-3 col-md-3">
-                                                                        <label className="form-label">Price</label>
-                                                                        <input
-                                                                            type="text"
-                                                                            className="form-control"
-                                                                            defaultValue={item.phoneprice}
-                                                                            onChange={(e) => { handleVariant(e, index) }}
-                                                                            name="phoneprice"
-                                                                        />
-                                                                    </div>
 
-                                                                    <div className="mb-3 col-md-4">
-                                                                        <label className="form-label">url</label>
-                                                                        <input
-                                                                            type="text"
-                                                                            className="form-control"
-                                                                            defaultValue={item.phoneurl}
-                                                                            onChange={(e) => { handleVariant(e, index) }}
-                                                                            name="phoneurl"
-                                                                        />
-                                                                    </div>
+                                                        <div className="mb-3 col-md-4">
+                                                            <label className="form-label">Ram and Rom</label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                placeholder="6Gb / 128GB"
+                                                                defaultValue={item.phonedata}
+                                                                onChange={(e) => { handleVariant(e, index) }}
+                                                                name="phonedata"
+                                                            />
+                                                        </div>
 
-                                                                   
-                                                                        <div className="col-md-1">
-                                                                            <label className="form-label">&nbsp;</label>
-                                                                            <button
-                                                                                className="btn btn-danger"
-                                                                                onClick={() => {
-                                                                                    variantRemove();
-                                                                                }}
-                                                                            >
-                                                                                remove
-                                                                            </button>
-                                                                        </div>
-                                                                    
-                                                                    
+                                                        <div className="mb-3 col-md-4">
+                                                            <label className="form-label">Price</label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                defaultValue={item.phoneprice}
+                                                                onChange={(e) => { handleVariant(e, index) }}
+                                                                name="phoneprice"
+                                                            />
+                                                        </div>
 
-                                                                    </>
+                                                        <div className="mb-3 col-md-4">
+                                                            <label className="form-label">url</label>
+                                                            <input
+                                                                type="text"
+                                                                className="form-control"
+                                                                defaultValue={item.phoneurl}
+                                                                onChange={(e) => { handleVariant(e, index) }}
+                                                                name="phoneurl"
+                                                            />
+                                                        </div>
+
+
+
+
+
+
+                                                    </>
                                                 )
                                             })
 
                                             : null
-                                    }
-                                                        {variant.map((element, index) => {
-                                                            return (
-                                                                <>
-                                                                    <div className="mb-3 col-md-4">
-                                                                        <label className="form-label">Ram and Rom</label>
-                                                                        <input
-                                                                            type="text"
-                                                                            className="form-control"
-                                                                            placeholder="6Gb / 128GB"
-                                                                            
-                                                                            onChange={(e) => { handleVariant(e, index) }}
-                                                                            name="phonedata"
-                                                                        />
-                                                                    </div>
+                                    } */}
 
-                                                                    <div className="mb-3 col-md-3">
-                                                                        <label className="form-label">Price</label>
-                                                                        <input
-                                                                            type="text"
-                                                                            className="form-control"
-                                                                            
-                                                                            onChange={(e) => { handleVariant(e, index) }}
-                                                                            name="phoneprice"
-                                                                        />
-                                                                    </div>
 
-                                                                    <div className="mb-3 col-md-4">
-                                                                        <label className="form-label">url</label>
-                                                                        <input
-                                                                            type="text"
-                                                                            className="form-control"
-                                                                          
-                                                                            onChange={(e) => { handleVariant(e, index) }}
-                                                                            name="phoneurl"
-                                                                        />
-                                                                    </div>
+{variantdata.map((element, index) => {
+                    return (
+                      <>
 
-                                                                    {variant.length > 1 && (
-                                                                        <div className="col-md-1">
-                                                                            <label className="form-label">&nbsp;</label>
-                                                                            <button
-                                                                                className="btn btn-danger"
-                                                                                onClick={() => {
-                                                                                    variantRemove();
-                                                                                }}
-                                                                            >
-                                                                                remove
-                                                                            </button>
-                                                                        </div>
-                                                                    )}
-                                                                </>
-                                                            );
-                                                        })}
 
-                                             
+                        <div className="mb-3 col-md-4">
+                          
+                          <label className="form-label">Ram and Rom</label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            placeholder="6Gb / 128GB"
+                            defaultValue={element.phonedata}
+                            onChange={(e) => { handleVariant(e, index) }}
+                            name="phonedata"
+                          />
+                        </div>
 
-                                    <div className="col-md-12 text-right">
-                                        <button
-                                            className="btn btn-info"
-                                            onClick={() => {
-                                                variantAdd();
-                                            }}
-                                        >
-                                            Add more
-                                        </button>
-                                    </div>
+                        <div className="mb-3 col-md-3">
+                          <label className="form-label">Price</label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            defaultValue={element.phoneprice}
+                            onChange={(e) => { handleVariant(e, index) }}
+                            name="phoneprice"
+                          />
+                        </div>
 
+                        <div className="mb-3 col-md-4">
+                          <label className="form-label">url</label>
+                          <input
+                            type="text"
+                            className="form-control"
+                            defaultValue={element.phoneurl}
+                            onChange={(e) => { handleVariant(e, index) }}
+                            name="phoneurl"
+                          />
+                        </div>
+
+                      
+                        {variantdata.length > 1 && (
+                          <div className="col-md-1">
+                            <label className="form-label">&nbsp;</label>
+                            <button
+                              className="btn btn-danger"
+                              onClick={() => {
+                                variantRemove();
+                              }}
+                            >
+                              remove
+                            </button>
+                          </div>
+                        )}
+                      </>
+                    );
+                  })}
+
+
+<div className="col-md-12 text-right">
+                    <button
+                      className="btn btn-info"
+                      onClick={() => {
+                        variantAdd();
+                      }}
+                    >
+                      Add more
+                    </button>
+                  </div>
+                                  
 
 
 
@@ -521,7 +534,7 @@ const Updatemodel = () => {
                                     }
 
                                     <div className='col-md-12 py-3'>
-                                        <button className='btn btn-info' onClick={() => { fmupdate() }}>Update</button>
+                                        <button className='btn btn-info' onClick={() => { fmupdate(id) }}>Update</button>
                                     </div>
 
                                 </div>
