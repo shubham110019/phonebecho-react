@@ -9,7 +9,7 @@ const Home = () => {
     const [brand, setBrand] = useState();
 
     useEffect(() => {
-        fetch('http://localhost:9000/phone/').then((resq) => {
+        fetch('http://localhost:9000/phone/?_limit=1').then((resq) => {
             resq.json().then((result) => {
                 setBrand(result.brandapi);
             }).catch((err) => {
