@@ -29,6 +29,13 @@ const Menu = () => {
             </Link>
           </li>
 
+          <li>
+            <Link to="/admin/view-booking">
+              <i className="bx bx-list-ul"></i>
+              <span className="links_name">Booking</span>
+            </Link>
+          </li>
+
           <li className="log_out">
             <Link to="/logout">
               <i className="bx bx-log-out"></i>

@@ -91,7 +91,7 @@ const Addmodel = () => {
       body: JSON.stringify(fulldata)
     }).then((res)=>{
       history.push('./view-model')
-      console.log("data submit" + res)
+      // console.log("data submit" + res)
 
     }).catch((err)=>{
       console.log(err);
@@ -252,6 +252,7 @@ const Addmodel = () => {
                             name="phoneurl"
                           />
                         </div>
+
 
                         {variant.length > 1 && (
                           <div className="col-md-1">

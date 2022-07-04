@@ -12,6 +12,7 @@ import Addbrand from './admin/brand/Addbrand';
 import Addmodel from './admin/model/Add-model';
 import Viewmodel from './admin/model/View-model';
 import Updatemodel from './admin/model/Update-model';
+import Viewbooking from './admin/booking/Viewbooking';
 import StateProvider from './StateProvider';
 import Brand from './page/Brand';
 import Model from './page/Model';
@@ -53,6 +54,11 @@ function App() {
       <Route path='/admin/update-model/:id' exact>
       <Protected Cmd={Updatemodel}/>
       </Route>
+
+      <Route path='/admin/view-booking' exact>
+      <Protected Cmd={Viewbooking}/>
+      </Route>
+
 
       
       

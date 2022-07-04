@@ -26,10 +26,24 @@ const Variant = (props) => {
     const [notbuy, setNotbuy] = useState(false);
     const [checked, setChecked] = useState({});
     const[agephone,setAgephone]=useState(0);
-    const [phoneagedata,setPhoneagedata]=useState();
+    const [phoneagedata,setPhoneagedata]=useState("");
+
+    const[fullmodelname,setFullmodelname]=useState("");
 
     const [phonecdata,setPhonecdata]=useState();
     const [phonecprice,setPhonecprice]=useState(0);
+
+    const[userdata,setUserdata]=useState({
+        fullname:"",
+        email:"",
+        phone:"",
+        pincode:"",
+        city:"",
+        address:"",
+        pickupdate:"",
+    })
+
+    const[buttond,setButtond]=useState(true);
 
 
     const phoneisse = useRef(null);
@@ -185,6 +199,7 @@ const Variant = (props) => {
     const HandPhoneold = (e,data,price) => {
         const { name, checked, id, value } = e.target;
 
+        setButtond(false)
         setPhoneagedata(data)
         setAgephone(price)
     }
@@ -230,7 +245,7 @@ const Variant = (props) => {
                 ph.map((item, i) => {
                     if (item._id === slug) {
                         setPhoneprice(item)
-
+                        setFullmodelname(result.data.modelname +" " + item.phonedata)
                         setMainprice(item.phoneprice)
                     }
                 })
@@ -247,6 +262,72 @@ const Variant = (props) => {
     }, [])
 
 
+    const Handleuserinput = (e) =>{
+        const {name,value} = e.target;
+        setUserdata({
+            ...userdata,
+            [name]:value
+        })
+
+        console.log(userdata)
+    }
+
+
+    const modelbooking = () =>{
+
+       
+        alert(phonedata.modelname +" "+phoneprice.phonedata)
+
+        const phoneissues = {
+            "phoneissues": {...issuedata},
+        }
+
+        const phoneacessories = {
+            "phoneacessories": {...phoneasdata},
+        }
+
+        const phoneage = {
+            "phoneage": phoneagedata,
+        }
+
+        const phonecondition = {
+            "phonecondition": phonecdata,
+        }
+
+        const pickupprice = {
+            "pickupprice": mainprice,
+        }
+
+        const bookingtype = {
+            "bookingtype": "web",
+        }
+
+
+        const modelnamefull = 
+        {
+            "modelnamefull": fullmodelname,
+        }
+
+        const fulldata = { ...phoneissues, ...phoneacessories, ...phoneage, ...phonecondition, ...pickupprice,...bookingtype, ...userdata,...modelnamefull }
+
+
+        fetch('http://localhost:9000/phonebook',{
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            body: JSON.stringify(fulldata)
+          }).then((res)=>{
+            console.log(res);
+            console.log(fulldata)
+      
+          }).catch((err)=>{
+            console.log(err);
+          })
+      
+       
+    }
 
     return (
         <>
@@ -264,8 +345,12 @@ const Variant = (props) => {
                             <div className='box rounded p-4 border'>
                                 <div className='phone-top-data d-flex flex-row align-items-center'>
                                     <img src={phonedata.image} style={{ height: "100px" }} />
-                                    <h5>{phonedata.modelname} {phoneprice.phonedata}</h5>
 
+                                 
+                                    <h5>{fullmodelname}</h5>
+
+                                    
+                                    
                                 </div>
 
                                 <div className='box'>
@@ -455,10 +540,7 @@ const Variant = (props) => {
                                                 )
                                             })
                                         }
-                                       
-
-                                    
-
+          
 
                                     </div>
 
@@ -528,46 +610,47 @@ const Variant = (props) => {
                                     <div className='row'>
                                         <div className="form-group col-md-6 mb-2">
                                             <label htmlFor="exampleInputEmail1">Full Name</label>
-                                            <input type="text" className="form-control" />
+                                            <input type="text" className="form-control" name="fullname" value={userdata.fullname} onChange={(e)=>Handleuserinput(e)}/>
                                         </div>
 
                                         <div className="form-group col-md-6 mb-2">
                                             <label htmlFor="exampleInputEmail1">Email</label>
-                                            <input type="email" className="form-control" />
+                                            <input type="email" className="form-control" name="email" value={userdata.email} onChange={(e)=>Handleuserinput(e)}/>
                                         </div>
 
                                         <div className="form-group col-md-6 mb-2">
                                             <label htmlFor="exampleInputEmail1">Phone</label>
-                                            <input type="text" className="form-control" />
+                                            <input type="text" className="form-control" name="phone" value={userdata.phone} onChange={(e)=>Handleuserinput(e)}/>
                                         </div>
 
                                         <div className="form-group col-md-6 mb-2">
                                             <label htmlFor="exampleInputEmail1">Zip Postal Code</label>
-                                            <input type="text" className="form-control" />
+                                            <input type="text" className="form-control" name="pincode" value={userdata.pincode} onChange={(e)=>Handleuserinput(e)}/>
                                         </div>
 
                                         <div className="form-group col-md-6 mb-2">
                                             <label htmlFor="exampleInputEmail1">Select City</label>
-                                            <input type="text" className="form-control" />
+                                            <input type="text" className="form-control" name="city" value={userdata.city} onChange={(e)=>Handleuserinput(e)}/>
                                         </div>
 
                                         <div className="form-group col-md-6 mb-2">
                                             <label htmlFor="exampleInputEmail1">Pickup Date</label>
-                                            <input type="date" className="form-control" />
+                                            <input type="date" className="form-control" name="pickupdate" value={userdata.pickupdate} onChange={(e)=>Handleuserinput(e)}/>
                                         </div>
 
 
 
                                         <div className="form-group">
                                             <label htmlFor="exampleInputEmail1">Address</label>
-                                            <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+                                            <input type="text" className="form-control"  name="address" value={userdata.address} onChange={(e)=>Handleuserinput(e)}/>
                                         </div>
 
-
+                                 
 
 
                                         <div className='col-md-12 mt-4'>
-                                            <button className='btn btn-info'> Submit</button>
+                                        <button className="btn btn-dark" onClick={() => {setFormsb(false); setPriceshow(true);}}>Back</button>
+                                            <button className='btn btn-info' onClick={()=>(modelbooking())}> Submit</button>
                                         </div>
 
 
