@@ -2,36 +2,102 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import Menu from "../cmp/Menu";
 import Topmenu from "../cmp/Topmenu";
+import DataTable from "react-data-table-component";
 
 const Viewmodel = () => {
 
-    const[data,setData]=useState();
+    const [data, setData] = useState();
 
-    const brandapifetch = () =>{
-        fetch('http://localhost:9000/model/').then((resq)=>{
-            resq.json().then((result)=>{
+    const [datafull, setDatafull] = useState([]);
+    const [search, setSearch] = useState("");
+    const [fillerdata, setFillerdata] = useState([]);
+
+    const brandapifetch = () => {
+        fetch('http://localhost:9000/model/').then((resq) => {
+            resq.json().then((result) => {
                 setData(result.phoneModel)
             })
-        }).catch((err)=>{
+        }).catch((err) => {
             console.log(err);
         })
     }
 
-    const handdeletemodel = (id) =>{
-        fetch(`http://localhost:9000/model/${id}`,{
+    const apidata = () => {
+        fetch("http://localhost:9000/model/")
+          .then((resq) => {
+            resq.json().then((result) => {
+              setDatafull(result.phoneModel)
+              setFillerdata(result.phoneModel)
+              console.log(datafull);
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
+
+    const handdeletemodel = (id) => {
+        fetch(`http://localhost:9000/model/${id}`, {
             method: "DELETE",
-        }).then((res)=>{
-            brandapifetch()
+        }).then((res) => {
+            apidata()
         }).catch((err) => {
             console.log(err);
         });
     }
 
-    useEffect(()=>{
-        brandapifetch()
+
+    const columns = [
+        {
+          name: "Brand",
+          cell: (row) => row.brandname,
+          sortable: true,
+        },
+        {
+          name: "Model Name",
+          cell: (row) => row.modelname,
+          sortable: true,
+        },
+        ,
+        {
+          name: "Variant",
+          cell: (row) => row.variant.length,
+          sortable: true,
+        },
+        {
+          name: "Edit",
+          cell: (row) => <Link className="btn btn-success btn-sm" to={`/admin/update-model/${row._id}`}>Edit</Link>,
+        },
+        {
+          name: "Delete",
+          cell: (row) => (
+            <button
+              className="btn btn-danger btn-sm"
+              onClick={() => {
+                handdeletemodel(row._id)
+              }}
+            >
+              Delete
+            </button>
+          ),
+        },
+      ];
     
 
-    },[])
+    useEffect(() => {
+        brandapifetch()
+        apidata()
+
+    }, [])
+
+    useEffect(()=>{
+        const result = datafull.filter(data=>{
+            return data.modelname.toLowerCase().match(search.toLowerCase())
+        })
+    
+        setFillerdata(result);
+    
+      },[search])
     return (
         <>
             <Menu />
@@ -43,7 +109,7 @@ const Viewmodel = () => {
                     <div className="container px-4">
 
                         <div className='row align-items-center'>
-                             <div className='col-md-6'><h2>View Model</h2></div>
+                            <div className='col-md-6'><h2>View Model</h2></div>
                             <div className='col-md-6 text-end'><Link to={`./add-model`} className="btn btn-info">Add Model</Link></div>
                         </div>
 
@@ -52,41 +118,13 @@ const Viewmodel = () => {
 
                             <div className='col-md-12 p-2'>
                                 <div className='border p-3 bg-white'>
-                                <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Id</th>
-      <th scope="col">Brand</th>
-      <th scope="col">Model Name</th>
-      <th scope="col">Status</th>
-    </tr>
-  </thead>
-  <tbody>
 
-    {
-        data?
-        data.map((item,i)=>{
-            return(
-                <>
-                 <tr key={i}>
-                    <th >{i}</th>
-                    <td>{item.brandname}</td>
-                    <td>{item.modelname}</td>
-                    <td>
-                        <Link to={`./update-model/${item._id}`}>Edit</Link>
-                        <button className='btn' onClick={(e)=>handdeletemodel(item._id)}>Delete</button>
-                    </td>
-                    </tr>
-                </>
-            )
-        })
+                                <DataTable columns={columns} data={fillerdata} pagination selectableRows defaultSortAsc={true} subHeader 
+      subHeaderComponent={
+      <input type="text" className="form-control w-25" placeholder="search" value={search} onChange={(e)=>{setSearch(e.target.value)}}/>
+      }/>
 
-        :null
-    }
-   
-   
-  </tbody>
-</table>
+                                   
                                 </div>
                             </div>
                         </div>
