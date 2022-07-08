@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import Footer from '../comonent/Footer';
 import Navbar from '../comonent/Navbar';
+import Apiurl from '../Apidata';
 
 function Modeldetail(props) {
 
@@ -13,7 +14,7 @@ function Modeldetail(props) {
     const[pprice,setPprice]=useState();
     const[checkbtn,setCheckbtn]=useState(true);
 
-    fetch("http://localhost:9000/model/").then((resq) => {
+    fetch(`${Apiurl}model/`).then((resq) => {
         resq.json().then((result) => {
             const data = result.phoneModel;
             data.map((item, i) => {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import SelectSearch from 'react-select-search';
+import Apiurl from '../Apidata';
 
 const Searchphone = () => {
 
@@ -12,7 +13,7 @@ const Searchphone = () => {
 
     const history = useHistory();
     const apiData = async () => {
-        const apidata = await fetch('http://localhost:9000/phone/');
+        const apidata = await fetch(`${Apiurl}phone/`);
         // setData(await apidata.json());
         const brandapidata = await apidata.json();
         const fullbrand = brandapidata.brandapi;
@@ -21,7 +22,7 @@ const Searchphone = () => {
 
     const brandget = (options) => {
         setSelectedOptions(options);
-        fetch(`http://localhost:9000/phone/brand/${options.target.value}`).then((req) => {
+        fetch(`${Apiurl}phone/brand/${options.target.value}`).then((req) => {
             req.json().then((result) => {
                 setApimodel(result.findBrand);
             })

@@ -3,13 +3,14 @@ import Searchphone from '../comonent/Searchphone';
 import Card from '../comonent/Card';
 import Navbar from '../comonent/Navbar';
 import Footer from '../comonent/Footer';
+import Apiurl from '../Apidata';
 
 const Home = () => {
 
     const [brand, setBrand] = useState();
 
     useEffect(() => {
-        fetch('http://localhost:9000/phone/?_limit=1').then((resq) => {
+        fetch(`${Apiurl}phone/`).then((resq) => {
             resq.json().then((result) => {
                 setBrand(result.brandapi);
             }).catch((err) => {

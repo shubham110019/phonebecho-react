@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Menu from "../cmp/Menu";
 import Topmenu from "../cmp/Topmenu";
+import Apiurl from "../../Apidata";
 
 const Addbrand = () => {
   const [brandapi, setBrandapi] = useState();
@@ -11,11 +12,12 @@ const Addbrand = () => {
   const [checkfrom, setCheckfrom] = useState();
   const [updatecheck, setUpdatecheck] = useState(false);
 
+
   const brandsubmit = (e) => {
     if (brand && image) {
       const data = { brand, image };
 
-      fetch("http://localhost:9000/phone", {
+      fetch(`${Apiurl}phone`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -37,7 +39,7 @@ const Addbrand = () => {
   };
 
   const brandapifetch = () => {
-    fetch("http://localhost:9000/phone").then((resq) => {
+    fetch(`${Apiurl}phone`).then((resq) => {
       resq.json().then((result) => {
         setBrandapi(result.brandapi);
       });
@@ -45,7 +47,7 @@ const Addbrand = () => {
   };
 
   const deleteBrand = (id) => {
-    fetch(`http://localhost:9000/phone/${id}`, {
+    fetch(`${Apiurl}phone/${id}`, {
       method: "DELETE",
     })
       .then((res) => {
@@ -58,7 +60,7 @@ const Addbrand = () => {
 
   const updateBrand = (brandid) => {
     setUpdatecheck(true);
-    fetch(`http://localhost:9000/phone/${brandid}`).then((resq) => {
+    fetch(`${Apiurl}phone/${brandid}`).then((resq) => {
       resq.json().then((result) => {
         setBrand(result.PhoneBrandData.brand);
         setImage(result.PhoneBrandData.image);
@@ -71,7 +73,7 @@ const Addbrand = () => {
     if (brand && image) {
       const data = { brand, image };
 
-      fetch(`http://localhost:9000/phone/${brandidc}`, {
+      fetch(`${Apiurl}phone/${brandidc}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

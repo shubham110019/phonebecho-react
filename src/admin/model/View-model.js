@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Menu from "../cmp/Menu";
 import Topmenu from "../cmp/Topmenu";
 import DataTable from "react-data-table-component";
+import Apiurl from '../../Apidata';
 
 const Viewmodel = () => {
 
@@ -13,7 +14,7 @@ const Viewmodel = () => {
     const [fillerdata, setFillerdata] = useState([]);
 
     const brandapifetch = () => {
-        fetch('http://localhost:9000/model/').then((resq) => {
+        fetch(`${Apiurl}model/`).then((resq) => {
             resq.json().then((result) => {
                 setData(result.phoneModel)
             })
@@ -23,7 +24,7 @@ const Viewmodel = () => {
     }
 
     const apidata = () => {
-        fetch("http://localhost:9000/model/")
+        fetch(`${Apiurl}model/`)
           .then((resq) => {
             resq.json().then((result) => {
               setDatafull(result.phoneModel)
@@ -37,7 +38,7 @@ const Viewmodel = () => {
       };
 
     const handdeletemodel = (id) => {
-        fetch(`http://localhost:9000/model/${id}`, {
+        fetch(`${Apiurl}model/${id}`, {
             method: "DELETE",
         }).then((res) => {
             apidata()

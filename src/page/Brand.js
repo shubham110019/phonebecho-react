@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import Card from "../comonent/Card";
 import Navbar from "../comonent/Navbar";
 import Footer from "../comonent/Footer";
+import Apiurl from '../Apidata';
+
 const Brand = () => {
   const [brand, setBrand] = useState();
 
-  fetch("http://localhost:9000/phone/").then((resq) => {
+  fetch(`${Apiurl}phone/`).then((resq) => {
     resq
       .json()
       .then((result) => {

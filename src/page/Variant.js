@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import Footer from '../comonent/Footer';
 import Navbar from '../comonent/Navbar';
-
+import Apiurl from '../Apidata';
 import '../css/Formpage.css';
 
 
@@ -232,7 +232,7 @@ const Variant = (props) => {
 
     useEffect(() => {
 
-        fetch(`http://localhost:9000/model/${pid}`).then((resq) => {
+        fetch(`${Apiurl}model/${pid}`).then((resq) => {
             resq.json().then((result) => {
                 const data = result.data;
                 setPhonedata(result.data)
@@ -311,7 +311,7 @@ const Variant = (props) => {
         const fulldata = { ...phoneissues, ...phoneacessories, ...phoneage, ...phonecondition, ...pickupprice,...bookingtype, ...userdata,...modelnamefull }
 
 
-        fetch('http://localhost:9000/phonebook',{
+        fetch(`${Apiurl}phonebook`,{
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -354,9 +354,9 @@ const Variant = (props) => {
                                 </div>
 
                                 <div className='box'>
-                                    {/* <h5>phone data:{phoneprice.phonedata}</h5> <h5>Price: {mainprice}</h5> */}
+                                    {/* <h5>phone data:{phoneprice.phonedata}</h5> <h5>Price: {mainprice}</h5> 
 
-                                    {/* <h5>Phone Age : {agephone}</h5>
+                                     <h5>Phone Age : {agephone}</h5>
                                     <h5>Phone condition : {phonecprice}</h5> */}
                                 </div>
 
