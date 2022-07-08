@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Menu from "../cmp/Menu";
 import { useHistory } from "react-router-dom";
 import Topmenu from "../cmp/Topmenu";
-import Apiurl from "../../Apidata";
+
 
 const Addmodel = () => {
 
@@ -83,7 +83,7 @@ const Addmodel = () => {
     }
     const fulldata = { ...state, ...data }
 
-    fetch(`${Apiurl}model`,{
+    fetch(`https://phonebecho-api.herokuapp.com/model`,{
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -103,7 +103,7 @@ const Addmodel = () => {
 
 
   const apiData = async () => {
-    const apidata = await fetch(`${Apiurl}phone/`);
+    const apidata = await fetch(`https://phonebecho-api.herokuapp.com/phone/`);
     // setData(await apidata.json());
     const brandapidata = await apidata.json();
     const fullbrand = brandapidata.brandapi;

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import Footer from '../comonent/Footer';
 import Navbar from '../comonent/Navbar';
-import Apiurl from '../Apidata';
+
 
 function Modeldetail(props) {
 
@@ -14,7 +14,7 @@ function Modeldetail(props) {
     const[pprice,setPprice]=useState();
     const[checkbtn,setCheckbtn]=useState(true);
 
-    fetch(`${Apiurl}model/`).then((resq) => {
+    fetch(`https://phonebecho-api.herokuapp.com/model/`).then((resq) => {
         resq.json().then((result) => {
             const data = result.phoneModel;
             data.map((item, i) => {

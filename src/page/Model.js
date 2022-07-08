@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import Card from '../comonent/Card';
 import Navbar from '../comonent/Navbar';
 import Footer from '../comonent/Footer';
-import Apiurl from '../Apidata';
+
 
 const Model = (prop) =>{
 
@@ -13,7 +13,7 @@ const Model = (prop) =>{
 
 
 
-    fetch(`${Apiurl}phone/brand/${id}`).then((req)=>{
+    fetch(`https://phonebecho-api.herokuapp.com/phone/brand/${id}`).then((req)=>{
         req.json().then((result)=>{
             setModel(result.findBrand); 
         })

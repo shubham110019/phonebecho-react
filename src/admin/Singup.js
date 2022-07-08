@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import Apiurl from '../Apidata';
+
 
 const Singup = () => {
 
@@ -22,7 +22,7 @@ const Singup = () => {
 
     const userSubmit = (e) =>{
         const data = {username,phone,email,password};
-        fetch(`${Apiurl}user/signup`,{
+        fetch(`https://phonebecho-api.herokuapp.com/user/signup`,{
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json',

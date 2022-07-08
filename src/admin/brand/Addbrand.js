@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Menu from "../cmp/Menu";
 import Topmenu from "../cmp/Topmenu";
-import Apiurl from "../../Apidata";
+
 
 const Addbrand = () => {
   const [brandapi, setBrandapi] = useState();
@@ -17,7 +17,7 @@ const Addbrand = () => {
     if (brand && image) {
       const data = { brand, image };
 
-      fetch(`${Apiurl}phone`, {
+      fetch(`https://phonebecho-api.herokuapp.com/phone`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,7 +39,7 @@ const Addbrand = () => {
   };
 
   const brandapifetch = () => {
-    fetch(`${Apiurl}phone`).then((resq) => {
+    fetch(`https://phonebecho-api.herokuapp.com/phone`).then((resq) => {
       resq.json().then((result) => {
         setBrandapi(result.brandapi);
       });
@@ -47,7 +47,7 @@ const Addbrand = () => {
   };
 
   const deleteBrand = (id) => {
-    fetch(`${Apiurl}phone/${id}`, {
+    fetch(`https://phonebecho-api.herokuapp.com/phone/${id}`, {
       method: "DELETE",
     })
       .then((res) => {
@@ -60,7 +60,7 @@ const Addbrand = () => {
 
   const updateBrand = (brandid) => {
     setUpdatecheck(true);
-    fetch(`${Apiurl}phone/${brandid}`).then((resq) => {
+    fetch(`https://phonebecho-api.herokuapp.com/phone/${brandid}`).then((resq) => {
       resq.json().then((result) => {
         setBrand(result.PhoneBrandData.brand);
         setImage(result.PhoneBrandData.image);
@@ -73,7 +73,7 @@ const Addbrand = () => {
     if (brand && image) {
       const data = { brand, image };
 
-      fetch(`${Apiurl}phone/${brandidc}`, {
+      fetch(`https://phonebecho-api.herokuapp.com/phone/${brandidc}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

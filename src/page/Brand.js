@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import Card from "../comonent/Card";
 import Navbar from "../comonent/Navbar";
 import Footer from "../comonent/Footer";
-import Apiurl from '../Apidata';
+
 
 const Brand = () => {
   const [brand, setBrand] = useState();
 
-  fetch(`${Apiurl}phone/`).then((resq) => {
+  fetch(`https://phonebecho-api.herokuapp.com/phone/`).then((resq) => {
     resq
       .json()
       .then((result) => {

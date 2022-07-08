@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import Menu from "../cmp/Menu";
 import Topmenu from "../cmp/Topmenu";
-import Apiurl from '../../Apidata';
+
 
 const Updatemodel = () => {
 
@@ -57,7 +57,7 @@ const Updatemodel = () => {
 
 
     const fetchaptdata = () => {
-        fetch(`${Apiurl}model/${id}`).then((resq) => {
+        fetch(`https://phonebecho-api.herokuapp.com/model/${id}`).then((resq) => {
             resq.json().then((result) => {
                 // console.log(result.data)
                 setPhonedata(result.data)
@@ -71,7 +71,7 @@ const Updatemodel = () => {
     }
 
     const apiData = async () => {
-        const apidata = await fetch(`${Apiurl}phone/`);
+        const apidata = await fetch(`https://phonebecho-api.herokuapp.com/phone/`);
         const brandapidata = await apidata.json();
         const fullbrand = brandapidata.brandapi;
         setApibrand(fullbrand);
@@ -175,7 +175,7 @@ const Updatemodel = () => {
         console.log(fulldata);
 
 
-        fetch(`${Apiurl}model/${pageid}`, {
+        fetch(`https://phonebecho-api.herokuapp.com/model/${pageid}`, {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",

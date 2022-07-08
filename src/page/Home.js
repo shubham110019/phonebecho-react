@@ -3,14 +3,14 @@ import Searchphone from '../comonent/Searchphone';
 import Card from '../comonent/Card';
 import Navbar from '../comonent/Navbar';
 import Footer from '../comonent/Footer';
-import Apiurl from '../Apidata';
+
 
 const Home = () => {
 
     const [brand, setBrand] = useState();
 
     useEffect(() => {
-        fetch(`${Apiurl}phone/`).then((resq) => {
+        fetch(`https://phonebecho-api.herokuapp.com/phone/`).then((resq) => {
             resq.json().then((result) => {
                 setBrand(result.brandapi);
             }).catch((err) => {
