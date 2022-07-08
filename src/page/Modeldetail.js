@@ -64,7 +64,7 @@ function Modeldetail(props) {
                     </div>
                     <div className='row'>
 
-                        <div className='col-md-12 shadow-sm rounded p-4'>
+                        <div className='col-md-12 border rounded p-4'>
                             <div className='row'>
                                 <div className='col-md-3 text-center'>
                                     <img src={modeldata.image} />
