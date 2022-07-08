@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import SelectSearch from 'react-select-search';
 import Apiurl from '../Apidata';
 
 const Searchphone = () => {
