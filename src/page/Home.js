@@ -28,7 +28,7 @@ const Home = () => {
             <div className='alt-box'>
                 <div className='container'>
                     <div className='row align-items-center'>
-                        <div className='col-lg-8'>
+                        <div className='col-lg-8 media-991-center media-991-pb4'>
                             <h1 className='mb-4'>Sell your Mobile Phone<br />for Instant Cash</h1>
                             <p className='h4'>Free Pickup | Instant Payment</p>
                         </div>
@@ -45,7 +45,7 @@ const Home = () => {
                         <div className='col-md-12 alt-title'><h2>Top Selling Brands</h2></div>
                     </div>
 
-                    <div className='row'>
+                    <div className='row gy-4'>
 
                         {
                             brand ?
@@ -66,13 +66,13 @@ const Home = () => {
 
 
 
-            <div className='bg-grey ptb-50'>
+            <div className='bg-main ptb-50'>
                 <div className='container'>
                     <div className='row mb-4 '>
                         <div className='col-md-12 alt-title'><h3 className='text-center mb-4'>How PhoneBecho Works</h3></div>
                     </div>
 
-                    <div className='row'>
+                    <div className='row gy-4'>
 
                         <div className='col-md-4'>
                             <div className='work-box'>
@@ -103,6 +103,23 @@ const Home = () => {
                                 <p>Did we mention you get paid as soon as our executive picks up your device? It's instant payment all the way!</p>
                             </div>
                         </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div className='ptb-50'>
+                <div className='container'>
+                    <div className='row mb-4 '>
+                        <div className='col-md-12 alt-title'><h3 className='text-center mb-4'>Blogs</h3></div>
+                    </div>
+
+                    <div className='row'>
+
+                       
+                      
 
                     </div>
                 </div>

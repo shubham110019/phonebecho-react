@@ -30,12 +30,12 @@ const Model = (prop) =>{
              <div className="alt-topsell ptb-50">
               <div className='container'>
                   <div className='row mb-4 '>
-                      <div className='col-md-12 alt-title'><h2 className='mb-5'>Sell Old Mobile Phone</h2>
+                      <div className='col-md-12 alt-title'><h2 className='mb-5 text-cp'>Sell Old {id} Mobile Phone</h2>
                       <h4>Select Model</h4>
                       </div>
                   </div>
 
-                  <div className='row'>
+                  <div className='row gy-4'>
                   {model
               ? model.map((item, i) => {
                   return (

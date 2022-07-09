@@ -10,10 +10,10 @@ h1,h2,h3,h4,h5{
 }
 .alt-box{
   padding: 50px 0px;
-  background: #264d64;
+  background: #f4f8ff;
 }
 .alt-box h1, .alt-box p{
-  color: #FFF;
+  color: black;
 }
 .mb-n70{
   margin-bottom: -70px;
@@ -62,7 +62,10 @@ h1,h2,h3,h4,h5{
   font-size: 14px;
 }
 .bg-grey{
-  background: #EEEEEE;
+  background: #f2f2f2;
+}
+.bg-main{
+  background: #f4f8ff;
 }
 .work-box {
   padding: 20px;
@@ -82,10 +85,37 @@ h1,h2,h3,h4,h5{
 }
 .btn-main{
   margin-right: 10px;
-      background: #FFF !important;
-      font-weight: 600;
-      font-size: 16px !important;
-      padding: 8px 20px;
-      border: 1px solid black;
-      color:black !important;
+  background: #fe8848 !important;
+  font-size: 20px !important;
+  padding: 8px 20px;
+  border: 1px solid #fe8848;
+  color: #FFF;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
+.btn-main:hover{
+  color:#FFF !important;
+  border: 1px solid #fe8848 !important;
+}
+
+.text-cp{
+  text-transform: capitalize;
+}
+@media (max-width: 991.98px) { 
+
+  .media-991-center{
+    text-align: center !important;
+  }
+  .media-991-pb4{
+    padding-bottom: 1.5rem!important;
+  }
+  
+  .mb-n70{
+    margin-bottom: 0 !important;
+  }
+
+ }
+
+ @media (max-width: 767.98px) { 
+
+  }

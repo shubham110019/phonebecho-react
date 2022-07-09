@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <>
  
-      <nav className="navbar navbar-expand-lg bg-light">
+      <nav className="navbar navbar-expand-lg bg-main">
         <div className="container">
           <Link className="navbar-brand" to="/">
             <strong>PhoneBecho</strong>
@@ -43,7 +43,7 @@ const Navbar = () => {
                 </Link>
               </li>
 
-              
+
 
            
               {!localStorage.getItem('login') ? (

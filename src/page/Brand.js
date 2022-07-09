@@ -31,7 +31,7 @@ const Brand = () => {
             </div>
           </div>
 
-          <div className="row">
+          <div className="row gy-4">
             {brand
               ? brand.map((item, i) => {
                   return (
