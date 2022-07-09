@@ -1,6 +1,8 @@
 import React, { useState,useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import Apiurl from '../Apidata';
+import Navbar from '../comonent/Navbar';
+import Footer from '../comonent/Footer';
 
 const Singup = () => {
 
@@ -38,7 +40,7 @@ const Singup = () => {
 
     return (
         <>
-
+    <Navbar/>
         <div className='container'>
             <div className='row py-5'>
                 <div className='col-md-6 offset-md-3 p-5 shadow'>
@@ -64,6 +66,7 @@ const Singup = () => {
                 <button type="submit" className="btn btn-primary" onClick={()=>{userSubmit()}}>Submit</button>
                 </div></div>
         </div>
+        <Footer/>
         </>
     )
 }

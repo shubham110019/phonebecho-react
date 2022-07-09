@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { StateContent } from "../StateProvider";
 import Apiurl from "../Apidata";
+import Navbar from "../comonent/Navbar";
+import Footer from "../comonent/Footer";
 
 const Login = () => {
   const{loginck,loginupdate,loginout}= useContext(StateContent);
@@ -70,6 +72,7 @@ const Login = () => {
     {/* {
       console.log("login check " + logincheck)
     } */}
+    <Navbar/>
       <div className="container">
         <div className="row py-5">
           <div className="col-md-6 offset-md-3 p-5 shadow">
@@ -115,6 +118,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };
