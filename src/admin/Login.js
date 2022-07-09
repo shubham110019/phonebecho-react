@@ -106,11 +106,11 @@ const Login = () => {
             </button>
 
 
-            <h3 className="mt-4"><strong>Admin login</strong></h3>
+            {/* <h3 className="mt-4"><strong>Admin login</strong></h3>
             <p><strong>username</strong>:shubham  <strong>password</strong>:123</p>
 
             <h3 className="mt-4"><strong>User login</strong></h3>
-            <p><strong>username</strong>:niitka  <strong>password</strong>:123</p>
+            <p><strong>username</strong>:niitka  <strong>password</strong>:123</p> */}
 
           </div>
         </div>
