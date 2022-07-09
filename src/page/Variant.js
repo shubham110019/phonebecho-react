@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import Footer from '../comonent/Footer';
 import Navbar from '../comonent/Navbar';
-
+import Apiurl from '../Apidata';
 import '../css/Formpage.css';
 
 
@@ -232,7 +232,7 @@ const Variant = (props) => {
 
     useEffect(() => {
 
-        fetch(`https://phonebecho-api.herokuapp.com/model/${pid}`).then((resq) => {
+        fetch(`${Apiurl}model/${pid}`).then((resq) => {
             resq.json().then((result) => {
                 const data = result.data;
                 setPhonedata(result.data)
@@ -311,7 +311,7 @@ const Variant = (props) => {
         const fulldata = { ...phoneissues, ...phoneacessories, ...phoneage, ...phonecondition, ...pickupprice,...bookingtype, ...userdata,...modelnamefull }
 
 
-        fetch(`https://phonebecho-api.herokuapp.com/phonebook`,{
+        fetch(`${Apiurl}phonebook`,{
             method: "POST",
             headers: {
               "Content-Type": "application/json",

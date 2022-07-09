@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { StateContent } from "../StateProvider";
-
+import Apiurl from "../Apidata";
 
 const Login = () => {
   const{loginck,loginupdate,loginout}= useContext(StateContent);
@@ -24,7 +24,7 @@ const Login = () => {
 
     if(username && password)
     {
-      let result = await fetch(`https://phonebecho-api.herokuapp.com/user/login`,{
+      let result = await fetch(`${Apiurl}user/login`,{
         method: "POST",
         headers:{
           "Content-Type": "application/json",

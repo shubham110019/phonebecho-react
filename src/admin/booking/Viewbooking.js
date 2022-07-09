@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Menu from "../cmp/Menu";
 import Topmenu from "../cmp/Topmenu";
 import DataTable from "react-data-table-component";
-
+import Apiurl from '../../Apidata';
 
 const Viewbooking = () => {
 
@@ -12,7 +12,7 @@ const Viewbooking = () => {
 
 
     const apidata = () => {
-        fetch(`https://phonebecho-api.herokuapp.com/phonebook`)
+        fetch(`${Apiurl}phonebook`)
           .then((resq) => {
             resq.json().then((result) => {
               setDatafull(result.data)
@@ -27,7 +27,7 @@ const Viewbooking = () => {
 
       const bookingDataDelete = (id) =>{
 
-        fetch(`https://phonebecho-api.herokuapp.com/phonebook/${id}`,{
+        fetch(`${Apiurl}phonebook/${id}`,{
             method:"DELETE",
         }).then(res=>{
             console.log(res)
