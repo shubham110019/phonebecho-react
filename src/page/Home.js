@@ -4,16 +4,19 @@ import Card from '../comonent/Card';
 import Navbar from '../comonent/Navbar';
 import Footer from '../comonent/Footer';
 import Apiurl from '../Apidata';
+import Cardloading from '../comonent/Cardloading';
 
 
 const Home = () => {
 
     const [brand, setBrand] = useState();
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         fetch(`${Apiurl}phone/`).then((resq) => {
             resq.json().then((result) => {
                 setBrand(result.brandapi);
+                setIsLoading(false)
             }).catch((err) => {
                 console.log(err);
             })
@@ -48,17 +51,34 @@ const Home = () => {
                     <div className='row gy-4'>
 
                         {
-                            brand ?
-                                brand.map((item, i) => {
-                                    return (
-                                        <>
-                                            <Card value={item} key={i} link={`brand/${item.brand}`} />
-                                        </>
-                                    )
-                                })
+                            isLoading
+                                ?
+                                <>
+                                <Cardloading/>
 
-                                : null
+                                </>
+                                
+
+                                :
+
+
+                                brand ?
+                                    brand.map((item, i) => {
+                                        return (
+                                            <>
+                                                <Card value={item} key={i} link={`brand/${item.brand}`} />
+                                            </>
+                                        )
+                                    })
+
+                                    : null
+
+
                         }
+
+
+
+
                     </div>
                 </div>
             </div>
@@ -118,8 +138,8 @@ const Home = () => {
 
                     <div className='row'>
 
-                       
-                      
+
+
 
                     </div>
                 </div>

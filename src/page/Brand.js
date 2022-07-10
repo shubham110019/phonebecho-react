@@ -3,17 +3,19 @@ import Card from "../comonent/Card";
 import Navbar from "../comonent/Navbar";
 import Footer from "../comonent/Footer";
 import Apiurl from "../Apidata";
+import Cardloading from "../comonent/Cardloading";
 
 
 const Brand = () => {
   const [brand, setBrand] = useState();
+  const [isLoading, setIsLoading] = useState(true);
 
   fetch(`${Apiurl}phone/`).then((resq) => {
     resq
       .json()
       .then((result) => {
-        // console.log(result.brandapi);
         setBrand(result.brandapi);
+        setIsLoading(false)
       })
       .catch((err) => {
         console.log(err);
@@ -32,7 +34,17 @@ const Brand = () => {
           </div>
 
           <div className="row gy-4">
-            {brand
+
+            {
+              isLoading
+              ?
+              <>
+                <Cardloading/>
+              </>
+
+              :
+
+              brand
               ? brand.map((item, i) => {
                   return (
                     <>
@@ -40,7 +52,10 @@ const Brand = () => {
                     </>
                   );
                 })
-              : null}
+              : null
+
+            }
+           
           </div>
         </div>
       </div>
