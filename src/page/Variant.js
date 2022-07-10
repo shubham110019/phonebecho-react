@@ -11,6 +11,7 @@ import '../css/Formpage.css';
 const Variant = (props) => {
 
     const [phoneoncheck, setPhoneoncheck] = useState();
+    const [phoncheck,setPhoncheck]=useState(true);
     const [phoneonc, setPhoneonc] = useState();
     const [issues, setIssues] = useState(false);
     const [issuedata, setIssuedata] = useState([]);
@@ -83,7 +84,7 @@ const Variant = (props) => {
         {id:63,type:'number',title:'Phone',name:'phone',value:userdata.phone},
         {id:64,type:'number',title:'Zip Postal Code',name:'pincode',value:userdata.pincode},
         {id:65,type:'text',title:'Select City',name:'city',value:userdata.city},
-        {id:66,type:'date',title:'Pickup Date',name:'pickupdate',value:userdata.pickupdate},
+        {id:66,type:'date',title:'Pickup Date',name:'pickupdate',value:userdata.pickupdate,min:new Date().toISOString().slice(0,10)},
         {id:67,type:'text',title:'Address',name:'address',value:userdata.address},
     ]
 
@@ -142,6 +143,7 @@ const Variant = (props) => {
         else {
             setPhoneoncheck(true)
             setPhoneonc('Yes')
+            setPhoncheck(false)
         }
 
     }
@@ -483,6 +485,12 @@ const Variant = (props) => {
                                     </div>
                                 </div>
 
+                                <div className={`${phoncheck ? '' : 'd-none'}`}>
+                                       
+                                </div>
+
+                                <div className={`${phoncheck ? 'd-none' : ''}`}>
+
                                 <div className={`function-check ${phoneoncheck ? '' : 'd-none'} ${issecheck ? 'd-none' : ''}`}>
                                     <h2>Please select the issues of your Phone</h2>
                                     <div className='dfr mt-4'>
@@ -658,7 +666,7 @@ const Variant = (props) => {
                                                     <>
                                                      <div className="form-group col-md-6 mb-2">
                                                         <label htmlFor="exampleInputEmail1">{item.title}</label>
-                                                        <input type={item.type} className="form-control" name={item.name} value={item.value} onChange={(e) => Handleuserinput(e)} />
+                                                        <input type={item.type} className="form-control" name={item.name} value={item.value} onChange={(e) => Handleuserinput(e)} min={item.min}/>
                                                         <span>{formErrors.name}</span>
                                                     </div>
                                                     
@@ -676,6 +684,8 @@ const Variant = (props) => {
 
 
                                     </div>
+                                </div>
+
                                 </div>
                             </div>
 
