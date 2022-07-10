@@ -84,7 +84,7 @@
   width: calc(100% - 60px);
   left: 60px;
 }
-.home-section nav{
+.home-section .nav{
   display: flex;
   justify-content: space-between;
   height: 80px;
@@ -99,28 +99,28 @@
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   transition: all 0.5s ease;
 }
-.sidebar.active ~ .home-section nav{
+.sidebar.active ~ .home-section .nav{
   left: 60px;
   width: calc(100% - 60px);
 }
-.home-section nav .sidebar-button{
+.home-section .nav .sidebar-button{
   display: flex;
   align-items: center;
   font-size: 24px;
   font-weight: 500;
 }
-nav .sidebar-button i{
+.nav .sidebar-button i{
   font-size: 35px;
   margin-right: 10px;
 }
-.home-section nav .search-box{
+.home-section .nav .search-box{
   position: relative;
   height: 50px;
   max-width: 550px;
   width: 100%;
   margin: 0 20px;
 }
-nav .search-box input{
+.nav .search-box input{
   height: 100%;
   width: 100%;
   outline: none;
@@ -130,7 +130,7 @@ nav .search-box input{
   font-size: 18px;
   padding: 0 15px;
 }
-nav .search-box .bx-search{
+.nav .search-box .bx-search{
   position: absolute;
   height: 40px;
   width: 40px;
@@ -145,7 +145,7 @@ nav .search-box .bx-search{
   font-size: 22px;
   transition: all 0.4 ease;
 }
-.home-section nav .profile-details{
+.home-section .nav .profile-details{
   display: flex;
   align-items: center;
   background: #F5F6FA;
@@ -155,20 +155,20 @@ nav .search-box .bx-search{
   min-width: 190px;
   padding: 0 15px 0 2px;
 }
-nav .profile-details img{
+.nav .profile-details img{
   height: 40px;
   width: 40px;
   border-radius: 6px;
   object-fit: cover;
 }
-nav .profile-details .admin_name{
+.nav .profile-details .admin_name{
   font-size: 15px;
   font-weight: 500;
   color: #333;
   margin: 0 10px;
   white-space: nowrap;
 }
-nav .profile-details i{
+.nav .profile-details i{
   font-size: 25px;
   color: #333;
 }

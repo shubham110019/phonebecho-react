@@ -60,7 +60,6 @@ const Viewmodel = () => {
           cell: (row) => row.modelname,
           sortable: true,
         },
-        ,
         {
           name: "Variant",
           cell: (row) => row.variant.length,

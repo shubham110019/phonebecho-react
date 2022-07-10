@@ -14,7 +14,7 @@ const Topmenu = () => {
 
   return (
     <div>
-      <nav>
+      <nav className="nav">
         <div className="sidebar-button">
           <i className="bx bx-menu sidebarBtn"></i>
           <span className="dashboard">Dashboard</span>
