@@ -24,18 +24,26 @@ const Singup = () => {
 
     const userSubmit = (e) =>{
         const data = {username,phone,email,password};
-        fetch(`${Apiurl}user/signup`,{
-            method: 'POST',
-            headers:{
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            },
-            body: JSON.stringify(data)
-        }).then(res=>{console.log(res);
-            setSubmit(true);
-        }).catch(error=>{
-            console.log(error);
-        })
+
+        if(!username || !phone || !email || !password)
+        {
+            alert('fill this form')
+        }
+        else{
+            fetch(`${Apiurl}user/signup`,{
+                method: 'POST',
+                headers:{
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then(res=>{console.log(res);
+                setSubmit(true);
+            }).catch(error=>{
+                console.log(error);
+            })
+        }
+        
     }
 
     return (
@@ -43,6 +51,7 @@ const Singup = () => {
     <Navbar/>
         <div className='container'>
             <div className='row py-5'>
+            <h2 className="mb-4 text-center">Singup page</h2>
                 <div className='col-md-6 offset-md-3 p-5 shadow'>
                     {
                         submit? `data submit`: null

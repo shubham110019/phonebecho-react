@@ -81,7 +81,7 @@ const Login = () => {
             <p>{error}</p>
 
             <div className="mb-3">
-              <label className="form-label">Email address</label>
+              <label className="form-label">Username</label>
               <input
                 type="text"
                 className="form-control"

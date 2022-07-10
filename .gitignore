@@ -4,7 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
-/Apidata.js
+/src/Apidata.js
 
 # testing
 /coverage

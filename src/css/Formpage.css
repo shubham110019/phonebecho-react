@@ -1,3 +1,21 @@
+.check-btn{
+  border: none !important;
+    color: #FFF !important;
+    font-size: 18px !important;
+    padding: 10px 35px !important;
+    font-weight: 600;
+}
+.check-btn-yes{
+  background: green !important;
+}
+.check-btn-no{
+  background: black !important;
+}
+
+.font-18 h5{
+  font-size: 18px !important;
+}
+
 .h-300{
   height: 300px;
 }
