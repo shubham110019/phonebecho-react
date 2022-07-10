@@ -19,6 +19,9 @@ import Model from './page/Model';
 import Logout from './admin/Logout';
 import Modeldetail from './page/Modeldetail';
 import Variant from './page/Variant';
+import Bookingdetail from './admin/booking/Bookingdetail';
+
+
 function App() {
 
   
@@ -59,7 +62,13 @@ function App() {
       <Protected Cmd={Viewbooking}/>
       </Route>
 
+      <Route path='/admin/booking-detail/:id' exact>
+      <Protected Cmd={Bookingdetail}/>
+      </Route>
 
+
+
+      
       
       
       <Route path='/logout' exact>

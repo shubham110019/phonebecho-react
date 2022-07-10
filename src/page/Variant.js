@@ -299,11 +299,11 @@ const Variant = (props) => {
         else{
             alert("submit")
             const phoneissues = {
-                "phoneissues": { ...issuedata },
+                "phoneissues": issuedata,
             }
     
             const phoneacessories = {
-                "phoneacessories": { ...phoneasdata },
+                "phoneacessories": phoneasdata,
             }
     
             const phoneage = {
