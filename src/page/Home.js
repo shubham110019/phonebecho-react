@@ -13,7 +13,7 @@ const Home = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`${Apiurl}phone/`).then((resq) => {
+        fetch(`${Apiurl}phone/?limit=6`).then((resq) => {
             resq.json().then((result) => {
                 setBrand(result.brandapi);
                 setIsLoading(false)

@@ -23,6 +23,9 @@ const Singup = () => {
 
 
     const userSubmit = (e) =>{
+
+        
+
         const data = {username,phone,email,password};
 
         if(!username || !phone || !email || !password)

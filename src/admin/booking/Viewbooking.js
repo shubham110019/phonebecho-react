@@ -56,7 +56,7 @@ const Viewbooking = () => {
     },
     {
       name: "Booking Date",
-      cell: (row) => row.bookingdate,
+      cell: (row) => row.createdAt,
       sortable: true,
     },
     {
