@@ -36,6 +36,20 @@ const Menu = () => {
             </Link>
           </li>
 
+          <li>
+            <Link to="/admin/tablet-brand">
+              <i className="bx bx-list-ul"></i>
+              <span className="links_name">Table Brand</span>
+            </Link>
+          </li>
+
+          <li>
+            <Link to="/admin/table-model">
+              <i className="bx bx-list-ul"></i>
+              <span className="links_name">Table Model</span>
+            </Link>
+          </li>
+
           <li className="log_out">
             <Link to="/logout">
               <i className="bx bx-log-out"></i>

@@ -9,11 +9,15 @@ import Singup from './admin/Singup';
 import Profile from './admin/Profile';
 import Protected from './comonent/Protected';
 import Addbrand from './admin/brand/Addbrand';
+import Tablebrand from './admin/brand/TabletBrand';
 import Addmodel from './admin/model/Add-model';
 import Viewmodel from './admin/model/View-model';
 import Updatemodel from './admin/model/Update-model';
 import Viewbooking from './admin/booking/Viewbooking';
 import StateProvider from './StateProvider';
+import TableModelview from './admin/model/TableModelview';
+import TabletAddModel from './admin/model/TabletAddModel';
+import TabletEditModel from './admin/model/TabletEditModel';
 import Brand from './page/Brand';
 import Model from './page/Model';
 import Logout from './admin/Logout';
@@ -67,7 +71,23 @@ function App() {
       </Route>
 
 
+      <Route path='/admin/tablet-brand' exact>
+      <Protected Cmd={Tablebrand}/>
+      </Route>
 
+
+      <Route path='/admin/table-model' exact>
+      <Protected Cmd={TableModelview}/>
+      </Route>
+
+      <Route path='/admin/table-model/add' exact>
+      <Protected Cmd={TabletAddModel}/>
+      </Route>
+      
+
+      <Route path='/admin/table-model/view/:id' exact>
+      <Protected Cmd={TabletEditModel}/>
+      </Route>
       
       
       

@@ -4,7 +4,7 @@ import Menu from "../cmp/Menu";
 import Topmenu from "../cmp/Topmenu";
 import Apiurl from '../../Apidata';
 
-const Updatemodel = () => {
+const TabletEditModel = () => {
 
     const { id } = useParams();
 
@@ -57,7 +57,7 @@ const Updatemodel = () => {
 
 
     const fetchaptdata = () => {
-        fetch(`${Apiurl}model/${id}`).then((resq) => {
+        fetch(`${Apiurl}tabletmodel/${id}`).then((resq) => {
             resq.json().then((result) => {
                 // console.log(result.data)
                 setPhonedata(result.data)
@@ -71,9 +71,9 @@ const Updatemodel = () => {
     }
 
     const apiData = async () => {
-        const apidata = await fetch(`${Apiurl}phone/`);
+        const apidata = await fetch(`${Apiurl}tablet/`);
         const brandapidata = await apidata.json();
-        const fullbrand = brandapidata.brandapi;
+        const fullbrand = brandapidata.data;
         setApibrand(fullbrand);
     };
 
@@ -175,7 +175,7 @@ const Updatemodel = () => {
         console.log(fulldata);
 
 
-        fetch(`${Apiurl}model/${pageid}`, {
+        fetch(`${Apiurl}tabletmodel/${pageid}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -548,4 +548,4 @@ const Updatemodel = () => {
     )
 }
 
-export default Updatemodel;
+export default TabletEditModel;
