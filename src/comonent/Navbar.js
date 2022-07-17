@@ -38,8 +38,25 @@ const Navbar = () => {
               </li>
 
               <li className="nav-item">
-                <Link className="nav-link" to="/brand">
-                  Brand
+                <Link className="nav-link" to="/sell-old-mobile-phone">
+                  Sell Phone
+                </Link>
+              </li>
+
+              <li className="nav-item dropdown">
+                <Link className="nav-link dropdown-toggle" to="/sell-old-mobile-phone/brand" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Sell Phone
+                </Link>
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a className="dropdown-item" href="#">Action</a></li>
+                  <li><a className="dropdown-item" href="#">Another action</a></li>
+                  <li><Link className="dropdown-item" to="/sell-old-mobile-phone/brand">More</Link></li>
+                </ul>
+              </li>
+
+              <li className="nav-item">
+                <Link className="nav-link" to="/sell-old-tablet">
+                  Sell Tablet
                 </Link>
               </li>
 

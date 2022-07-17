@@ -4,6 +4,8 @@ import {
   Route,Switch
 } from "react-router-dom";
 import Home from './page/Home';
+import Sellphone from './page/Sellphone';
+import Selltablet from './page/tablet/Selltablet';
 import Login from './admin/Login';
 import Singup from './admin/Singup';
 import Profile from './admin/Profile';
@@ -18,7 +20,11 @@ import StateProvider from './StateProvider';
 import TableModelview from './admin/model/TableModelview';
 import TabletAddModel from './admin/model/TabletAddModel';
 import TabletEditModel from './admin/model/TabletEditModel';
+
 import Brand from './page/Brand';
+import Tabletbrandd from './page/tablet/Tabletbrand';
+import Tabletmodel from './page/tablet/Tabletmodel';
+
 import Model from './page/Model';
 import Logout from './admin/Logout';
 import Modeldetail from './page/Modeldetail';
@@ -37,11 +43,25 @@ function App() {
     <Switch>
   
       <Route path='/' component={Home} exact/>
+
+      <Route path='/sell-old-mobile-phone' component={Sellphone} exact/>
+      <Route path='/sell-old-tablet' component={Selltablet} exact/>
+
       <Route path='/about' component={About} exact/>
-      <Route path='/brand' component={Brand} exact/>
-      <Route path='/brand/:id' component={Model} exact/>
-      <Route path='/model/:id' component={Modeldetail} exact/>
-      <Route path='/model/:id/calculator/:pid/:slug' component={Variant} exact/>
+
+      {/* phone url */}
+      
+      <Route path='/sell-old-mobile-phone/brand' component={Brand} exact/>
+      <Route path='/sell-old-mobile-phone/brand/:id' component={Model} exact/>
+      <Route path='/sell-old-mobile-phone/model/:id' component={Modeldetail} exact/>
+      <Route path='/sell-old-mobile-phone/model/:id/calculator/:pid/:slug' component={Variant} exact/>
+
+      {/* table url */}
+
+
+      <Route path='/sell-old-tablet/brand' component={Tabletbrandd} exact/>
+      <Route path='/sell-old-tablet/brand/:id' component={Tabletmodel} exact/>
+
       <Route path='/wp-login' component={Login} exact/>
       <Route path='/wp-singup' component={Singup} exact/>
       <Route path='/admin/dashboard' exact>
