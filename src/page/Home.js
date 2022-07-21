@@ -5,6 +5,10 @@ import Navbar from '../comonent/Navbar';
 import Footer from '../comonent/Footer';
 import Apiurl from '../Apidata';
 import Cardloading from '../comonent/Cardloading';
+import { Link } from 'react-router-dom';
+import sellphoneimg from '../img/sell-phone.png';
+import selltabletimg from '../img/sell-tablet.png';
+import selllaptopimg from '../img/sell-laptop.png';
 
 
 const Home = () => {
@@ -54,24 +58,52 @@ const Home = () => {
                             isLoading
                                 ?
                                 <>
-                                <Cardloading/>
+                                    <Cardloading />
 
                                 </>
-                                
+
 
                                 :
+                                <>
+                                <div className="col-md-2">
+                                    <div className="card">
+                                        <Link to={'/sell-old-mobile-phone'}>
+                                            <div className="card-body">
+                                                <img src={sellphoneimg} />
+                                                <p>Sell Phone</p>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                </div>
+
+                            
+
+                                <div className="col-md-2">
+                                    <div className="card">
+                                        <Link to={'/sell-old-tablet'}>
+                                            <div className="card-body">
+                                                <img src={selltabletimg} />
+                                                <p>Sell Tablet</p>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                </div>
 
 
-                                brand ?
-                                    brand.map((item, i) => {
-                                        return (
-                                            <>
-                                                <Card value={item} key={i} link={`brand/${item.brand}`} />
-                                            </>
-                                        )
-                                    })
+                                <div className="col-md-2">
+                                    <div className="card">
+                                        <Link to={'/sell-old-laptop'}>
+                                            <div className="card-body">
+                                                <img src={selllaptopimg} />
+                                                <p>Sell Laptop</p>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                </div>
 
-                                    : null
+                              
+
+                                </>
 
 
                         }
@@ -139,14 +171,14 @@ const Home = () => {
                     <div className='row'>
 
                         <div className='col-md-4'>
-                        <div class="card mb-3">
-  <img src="https://picsum.photos/200/150?grayscale" class="card-img-top" alt="..."/>
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-  </div>
-</div>
+                            <div class="card mb-3">
+                                <img src="https://picsum.photos/200/150?grayscale" class="card-img-top" alt="..." />
+                                <div class="card-body">
+                                    <h5 class="card-title">Card title</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                </div>
+                            </div>
                         </div>
 
 

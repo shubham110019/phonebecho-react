@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <>
  
-      <nav className="navbar navbar-expand-lg sticky-top bg-white">
+      <nav className="navbar navbar-expand-lg sticky-top bg-white border-bottom p-3">
         <div className="container">
           <Link className="navbar-brand" to="/">
             <strong>PhoneBecho</strong>
@@ -43,7 +43,7 @@ const Navbar = () => {
                 </Link>
               </li>
 
-              <li className="nav-item dropdown">
+              {/* <li className="nav-item dropdown">
                 <Link className="nav-link dropdown-toggle" to="/sell-old-mobile-phone/brand" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Sell Phone
                 </Link>
@@ -52,13 +52,20 @@ const Navbar = () => {
                   <li><a className="dropdown-item" href="#">Another action</a></li>
                   <li><Link className="dropdown-item" to="/sell-old-mobile-phone/brand">More</Link></li>
                 </ul>
-              </li>
+              </li> */}
 
               <li className="nav-item">
                 <Link className="nav-link" to="/sell-old-tablet">
                   Sell Tablet
                 </Link>
               </li>
+
+              <li className="nav-item">
+                <Link className="nav-link" to="/sell-old-tablet">
+                  Sell Laptop
+                </Link>
+              </li>
+
 
 
 
@@ -79,8 +86,10 @@ const Navbar = () => {
                  </>
               ) : (
                 <>
-                  
-                  <li className="nav-item">
+
+                {localStorage.getItem('usertype') === 'admin' ?
+                 <>
+                   <li className="nav-item">
                     <Link className="nav-link" to="/admin/dashboard">
                   Dashboard
                     </Link>
@@ -94,6 +103,29 @@ const Navbar = () => {
                       Logout
                     </Link>
                   </li>
+                </> 
+                : 
+                <>
+
+
+              <li className="nav-item dropdown">
+                <Link className="nav-link dropdown-toggle" to="/sell-old-mobile-phone/brand" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Profile
+                </Link>
+                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a className="dropdown-item" href="#">Profile</a></li>
+                  <li><a className="dropdown-item" href="#">Setting</a></li>
+                  <hr/>
+                  <li><Link className="dropdown-item" to="/logout">Logout</Link></li>
+                </ul>
+              </li>
+                
+
+                
+                </>}
+                
+
+                 
                 </>
               
               )}

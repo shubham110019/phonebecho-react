@@ -28,8 +28,10 @@ const Sellphone = () => {
     return (
         <>
             <Navbar />
-            <div className='alt-box'>
-                <div className='container'>
+
+
+              <div className='container'>
+                <div className='bg-main p-5 mt-5'>
                     <div className='row align-items-center'>
                         <div className='col-lg-8 media-991-center media-991-pb4'>
                             <h1 className='mb-4'>Sell your Mobile Phone<br />for Instant Cash</h1>
@@ -39,8 +41,9 @@ const Sellphone = () => {
                             <Searchphone />
                         </div>
                     </div>
+                    </div>
                 </div>
-            </div>
+           
 
             <div className="alt-topsell ptb-50">
                 <div className='container'>

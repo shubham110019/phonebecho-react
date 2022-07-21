@@ -10,6 +10,8 @@ const Login = () => {
   const [username, setUsername] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const[passwordError,setPasswordError]=useState("");
+  const[emailError,setEmailError]=useState("");
   const [login, setLogin] = useState(false);
   const [error,setError]=useState();
 
@@ -41,7 +43,8 @@ const Login = () => {
       
       if(!result.token)
       {
-        setError(result.mess);
+        setEmailError(result.emailError);
+        setPasswordError(result.passwordError)
       }
       else{
         localStorage.setItem("login",JSON.stringify({token: result.token,email:result.email}));
@@ -90,6 +93,7 @@ const Login = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
+               <p style={{"color":"red","fontSize":"12px"}}>{emailError}</p>
             </div>
             <div className="mb-3">
               <label className="form-label">Password</label>
@@ -99,6 +103,7 @@ const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+              <p style={{"color":"red","fontSize":"12px"}}>{passwordError}</p>
             </div>
             <button
               type="submit"
