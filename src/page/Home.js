@@ -32,8 +32,8 @@ const Home = () => {
                 <div className='container'>
                     <div className='row align-items-center'>
                         <div className='col-lg-8 media-991-center media-991-pb4'>
-                            <h1 className='mb-4'>Sell your Mobile Phone<br />for Instant Cash</h1>
-                            <p className='h4'>Free Pickup | Instant Payment</p>
+                            <h1 className='mb-4'>SELL OLD MOBILE PHONE & TABLET & LAPTOPS</h1>
+                            <p className='h4'>Now Experience the fast Payment for your old mobile phone, laptop, iPad, tablet, macbook with our quickest and simplest Process in less than a minute.</p>
                         </div>
                         <div className='col-lg-4'>
                             <Searchphone />
@@ -45,7 +45,7 @@ const Home = () => {
             <div className="alt-topsell ptb-50">
                 <div className='container'>
                     <div className='row mb-4 '>
-                        <div className='col-md-12 alt-title'><h2>Top Selling Brands</h2></div>
+                        <div className='col-md-12 alt-title'><h2>Sell for cash</h2></div>
                     </div>
 
                     <div className='row gy-4'>
@@ -138,7 +138,16 @@ const Home = () => {
 
                     <div className='row'>
 
-
+                        <div className='col-md-4'>
+                        <div class="card mb-3">
+  <img src="https://picsum.photos/200/150?grayscale" class="card-img-top" alt="..."/>
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  </div>
+</div>
+                        </div>
 
 
                     </div>

@@ -8,6 +8,7 @@ import Footer from "../comonent/Footer";
 const Login = () => {
   const{loginck,loginupdate,loginout}= useContext(StateContent);
   const [username, setUsername] = useState();
+  const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [login, setLogin] = useState(false);
   const [error,setError]=useState();
@@ -22,9 +23,9 @@ const Login = () => {
 
   const loginFrom = async () =>{
 
-    const userdata = { username, password };
+    const userdata = { email, password };
 
-    if(username && password)
+    if(email && password)
     {
       let result = await fetch(`${Apiurl}user/login`,{
         method: "POST",
@@ -43,8 +44,9 @@ const Login = () => {
         setError(result.mess);
       }
       else{
-        localStorage.setItem("login",JSON.stringify({token: result.token,username:result.username}));
+        localStorage.setItem("login",JSON.stringify({token: result.token,email:result.email}));
         localStorage.setItem("username",result.username)
+        localStorage.setItem("email",result.email)
         localStorage.setItem("usertype",result.userType)
         localStorage.setItem("userid",result.userId)
         // console.log("user id is : " + localStorage.getItem("userid"))
@@ -81,12 +83,12 @@ const Login = () => {
             <p>{error}</p>
 
             <div className="mb-3">
-              <label className="form-label">Username</label>
+              <label className="form-label">Email</label>
               <input
                 type="text"
                 className="form-control"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="mb-3">

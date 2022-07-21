@@ -10,7 +10,7 @@ const Navbar = () => {
   return (
     <>
  
-      <nav className="navbar navbar-expand-lg bg-main">
+      <nav className="navbar navbar-expand-lg sticky-top bg-white">
         <div className="container">
           <Link className="navbar-brand" to="/">
             <strong>PhoneBecho</strong>
