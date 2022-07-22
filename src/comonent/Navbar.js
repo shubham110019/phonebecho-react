@@ -113,7 +113,7 @@ const Navbar = () => {
                 Profile
                 </Link>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a className="dropdown-item" href="#">Profile</a></li>
+                  <li><Link className="dropdown-item" to="/profile">Profile</Link></li>
                   <li><a className="dropdown-item" href="#">Setting</a></li>
                   <hr/>
                   <li><Link className="dropdown-item" to="/logout">Logout</Link></li>

@@ -57,7 +57,7 @@ const Login = () => {
 
         if(result.userType === "admin"){
           history.push("/admin/dashboard");
-        loginout();
+          loginout();
         }
         else{
           history.push("/");

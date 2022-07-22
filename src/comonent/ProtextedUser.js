@@ -2,7 +2,7 @@ import React, { useEffect, } from 'react';
 import { useHistory } from 'react-router-dom';
 import { StateContent } from '../StateProvider';
 
-const Protected = (prop) =>{
+const ProtextedUser = (prop) =>{
 
 
     const history = useHistory();
@@ -15,17 +15,6 @@ const Protected = (prop) =>{
             localStorage.clear();
         }
 
-        if(localStorage.getItem('usertype') === "admin"){
-            // history.push("/admin/dashboard");
-          }
-          else{
-            history.push("/");
-          }
-         
-        //   else{
-        //     history.push("/");
-        //   }
-
     },[])
 
     const Cmd = prop.Cmd;
@@ -36,4 +25,4 @@ const Protected = (prop) =>{
     )
 }
 
-export default Protected;
+export default ProtextedUser;

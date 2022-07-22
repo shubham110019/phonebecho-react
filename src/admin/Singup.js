@@ -6,8 +6,6 @@ import Footer from '../comonent/Footer';
 import * as yup from 'yup';
 import { Formik, Form, Field } from 'formik';
 
-
-
 const Singup = () => {
 
     const history = useHistory();
@@ -45,18 +43,6 @@ const Singup = () => {
     const[ssemail,setSsemail] =useState(false);
 
 
-    const emailcheck = () =>{
-        fetch('http://localhost:9000/user').then((resq)=>{
-            resq.json().then((result)=>{
-                console.log(result.data)
-                setApidata(result.data)
-
-
-            })
-        })
-    }
-
-
     const validate = () => {
         let username = "";
         let email = "";
@@ -90,11 +76,6 @@ const Singup = () => {
         else{
             password = "";
         }
-       
-
-        
-      
-   
         if (email || username || password || phone) {
             setUsererrordata({ ...usererrordata, username, email, password, phone });
             return false;
@@ -102,35 +83,17 @@ const Singup = () => {
         return true;
     }
 
-
-
     const Handmodelupdate = (e) => {
         const { name, value } = e.target;
-
-
         setUserdata({
             ...userdata,
             [name]: value,
         });
-
-     
-
-
-
     }
 
 
-    useEffect(() => {
-        emailcheck()
-    }, [])
 
-
-    const userSubmit = (e) => {
-
-
-     
-
-
+    const userSubmit =  (e) => {
         if (validate()) {
             fetch(`${Apiurl}user/signup`, {
                 method: 'POST',
@@ -140,19 +103,19 @@ const Singup = () => {
                 },
                 body: JSON.stringify(userdata)
             }).then(res => {
-                history.push("/wp-login");
+                // history.push("/wp-login");
+                res = res.json();
                 console.log(res);
                 setSubmit(true);
             }).catch(error => {
-                console.log(error);
+                console.log(error)
             })
+
+           
         }
         else {
             console.log('not submit')
         }
-
-
-
     }
 
     return (

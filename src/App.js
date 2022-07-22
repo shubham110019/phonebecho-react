@@ -10,6 +10,7 @@ import Login from './admin/Login';
 import Singup from './admin/Singup';
 import Profile from './admin/Profile';
 import Protected from './comonent/Protected';
+import ProtextedUser from './comonent/ProtextedUser';
 import Addbrand from './admin/brand/Addbrand';
 import Tablebrand from './admin/brand/TabletBrand';
 import Addmodel from './admin/model/Add-model';
@@ -32,6 +33,9 @@ import Variant from './page/Variant';
 import Bookingdetail from './admin/booking/Bookingdetail';
 
 
+
+import UserProfile from './page/user/Profile';
+
 function App() {
 
   
@@ -49,6 +53,8 @@ function App() {
 
       <Route path='/about' component={About} exact/>
 
+      {/* user page */}
+
       {/* phone url */}
       
       <Route path='/sell-old-mobile-phone/brand' component={Brand} exact/>
@@ -57,6 +63,10 @@ function App() {
       <Route path='/sell-old-mobile-phone/model/:id/calculator/:pid/:slug' component={Variant} exact/>
 
       {/* table url */}
+
+      <Route path='/profile' exact>
+      <ProtextedUser Cmd={UserProfile}/>
+      </Route>
 
 
       <Route path='/sell-old-tablet/brand' component={Tabletbrandd} exact/>
