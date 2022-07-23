@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import sellphoneimg from '../img/sell-phone.png';
 import selltabletimg from '../img/sell-tablet.png';
 import selllaptopimg from '../img/sell-laptop.png';
+import Searchall from '../comonent/Searchall';
 
 
 const Home = () => {
@@ -40,7 +41,7 @@ const Home = () => {
                             <p className='h4'>Now Experience the fast Payment for your old mobile phone, laptop, iPad, tablet, macbook with our quickest and simplest Process in less than a minute.</p>
                         </div>
                         <div className='col-lg-4'>
-                            <Searchphone />
+                            <Searchall />
                         </div>
                     </div>
                 </div>

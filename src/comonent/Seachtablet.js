@@ -12,6 +12,7 @@ const Seachtablet = () => {
     const [selectedOptions, setSelectedOptions] = useState();
 
     const history = useHistory();
+
     const apiData = async () => {
         const apidata = await fetch(`${Apiurl}tablet/`);
         // setData(await apidata.json());
@@ -44,7 +45,7 @@ const Seachtablet = () => {
         }
         else {
             setbtnck(false);
-            history.push(`/model/${model}`)
+            history.push(`/sell-old-tablet/model/${model}`)
         }
 
     }
