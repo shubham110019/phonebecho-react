@@ -31,6 +31,7 @@ import Logout from './admin/Logout';
 import Modeldetail from './page/Modeldetail';
 import Variant from './page/Variant';
 import Bookingdetail from './admin/booking/Bookingdetail';
+import Pickupcity from './admin/city/Pickupcity';
 
 
 
@@ -118,6 +119,12 @@ function App() {
       <Route path='/admin/table-model/view/:id' exact>
       <Protected Cmd={TabletEditModel}/>
       </Route>
+
+      <Route path='/admin/pickup-city' exact>
+      <Protected Cmd={Pickupcity}/>
+      </Route>
+      
+
       
       
       

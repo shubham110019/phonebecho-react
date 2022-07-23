@@ -50,6 +50,13 @@ const Menu = () => {
             </Link>
           </li>
 
+          <li>
+            <Link to="/admin/pickup-city">
+              <i className="bx bx-list-ul"></i>
+              <span className="links_name">Pick Citys</span>
+            </Link>
+          </li>
+
           <li className="log_out">
             <Link to="/logout">
               <i className="bx bx-log-out"></i>

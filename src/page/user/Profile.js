@@ -15,7 +15,7 @@ const Profile = () => {
 
 
               <div class="text-center">
-                <img src="https://templates.joomla-monster.com/joomla30/jm-news-portal/components/com_djclassifieds/assets/images/default_profile.png" class="rounded h-20" alt="..." />
+                <img src="https://templates.joomla-monster.com/joomla30/jm-news-portal/components/com_djclassifieds/assets/images/default_profile.png" class="h-20" style={{"height":"100px","borderRadius":"50%"}} />
               </div>
 
               <div className='user-data mt-4'>

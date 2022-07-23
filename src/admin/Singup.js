@@ -93,23 +93,45 @@ const Singup = () => {
 
 
 
-    const userSubmit =  (e) => {
+    const userSubmit =  async (e) => {
+
         if (validate()) {
-            fetch(`${Apiurl}user/signup`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
+
+
+            let result = await fetch(`${Apiurl}user/signup`,{
+                method: "POST",
+                headers:{
+                  "Content-Type": "application/json",
+                  "Accept": "application/json",
                 },
                 body: JSON.stringify(userdata)
-            }).then(res => {
-                // history.push("/wp-login");
-                res = res.json();
-                console.log(res);
-                setSubmit(true);
-            }).catch(error => {
-                console.log(error)
-            })
+              });
+          
+              result = await result.json();
+              console.log(result);
+
+              if(!result.token)
+              {
+                setUsererrordata({...usererrordata, email: result.emailError})
+              }
+            
+
+
+            // fetch(`${Apiurl}user/signup`, {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //         'Accept': 'application/json'
+            //     },
+            //     body: JSON.stringify(userdata)
+            // }).then(res => {
+            //     // history.push("/wp-login");
+            //     // res = res.json();
+            //     console.log(res);
+            //     setSubmit(true);
+            // }).catch(error => {
+            //     console.log(error)
+            // })
 
            
         }
@@ -121,6 +143,8 @@ const Singup = () => {
     return (
         <>
             <Navbar />
+
+            
             <div className='container'>
                 <div className='row py-5'>
                     <h2 className="mb-4 text-center">Singup page</h2>

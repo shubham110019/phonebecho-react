@@ -44,7 +44,7 @@ const Searchphone = () => {
         }
         else {
             setbtnck(false);
-            history.push(`/model/${model}`)
+            history.push(`/sell-old-mobile-phone/model/${model}`)
         }
 
     }
