@@ -10,10 +10,11 @@ h1,h2,h3,h4,h5{
 }
 .alt-box{
   padding: 50px 0px;
-  background: #f4f8ff;
+  background: #563d7c;
+  color: #FFF !important;
 }
 .alt-box h1, .alt-box p{
-  color: black;
+  color: #FFF;
 }
 .mb-n70{
   margin-bottom: -70px;
@@ -26,12 +27,12 @@ h1,h2,h3,h4,h5{
   font-weight: 800;
 }
 .alt-title h2{
-  border-left: 5px solid #FF8C32;
+  border-left: 5px solid #563d7c;
   padding-left: 15px;
   font-size: 26px;
 }
 .btn-main{
-  background: #264d64;
+  background: #563d7c;
   color: #FFF;
   padding: 8px;
   font-size: 20px;
@@ -65,7 +66,9 @@ h1,h2,h3,h4,h5{
   background: #f2f2f2;
 }
 .bg-main{
-  background: #f4f8ff;
+  background: #563d7c;
+  color: #FFF;
+  border-radius: 8px !important;
 }
 .work-box {
   padding: 20px;
@@ -79,23 +82,26 @@ h1,h2,h3,h4,h5{
   margin-bottom: 15px;
   margin-top: 10px;
 }
+.bg-main .work-boximg h4 , .bg-main .work-boximg p{
+  color: #000 !important;
+}
 .form-select:focus {
   border-color: black;
   box-shadow: none !important;
 }
 .btn-main{
   margin-right: 10px;
-  background: #fe8848 !important;
+  background: #563d7c !important;
   font-size: 20px !important;
   padding: 8px 20px;
-  border: 1px solid #fe8848;
+  border: 1px solid #563d7c;
   color: #FFF;
   font-weight: 700;
   letter-spacing: 0.5px;
 }
 .btn-main:hover{
   color:#FFF !important;
-  border: 1px solid #fe8848 !important;
+  border: 1px solid #563d7c !important;
 }
 
 .text-cp{

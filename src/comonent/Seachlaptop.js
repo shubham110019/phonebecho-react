@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import Apiurl from "../Apidata";
 
-
-const Seachtablet = () => {
+const Seachlaptop = () => {
 
     const [model, setModel] = useState();
     const [btnck, setbtnck] = useState()
@@ -50,11 +49,11 @@ const Seachtablet = () => {
 
     }
 
-    return (
-        <>
 
-            <div className="mobile-form shadow bg-white p-4 mb-n70">
-                <h4 className='text-center mb-4' style={{"color": "#563d7c"}}>Sell Your Old Tablet</h4>
+  return (
+    <>
+        <div className="mobile-form shadow bg-white p-4 mb-n70">
+                <h4 className='text-center mb-4' style={{"color": "#563d7c"}}>Sell Your Old Laptop</h4>
 
                 <p>{
                     btnck ?
@@ -95,7 +94,8 @@ const Seachtablet = () => {
 
                 <button className='btn btn-block w-100 btn-main' onClick={() => { searchmodel() }} >Sell now</button>
             </div>
-        </>
-    )
+    </>
+  )
 }
-export default Seachtablet;
+
+export default Seachlaptop

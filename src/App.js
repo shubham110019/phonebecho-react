@@ -25,6 +25,10 @@ import TabletEditModel from './admin/model/TabletEditModel';
 import Brand from './page/Brand';
 import Tabletbrandd from './page/tablet/Tabletbrand';
 import Tabletmodel from './page/tablet/Tabletmodel';
+import TabletModeldetail from './page/tablet/Tabletmodeldetail';
+import Tabletvariant from './page/tablet/Variant';
+
+
 
 import Model from './page/Model';
 import Logout from './admin/Logout';
@@ -33,7 +37,7 @@ import Variant from './page/Variant';
 import Bookingdetail from './admin/booking/Bookingdetail';
 import Pickupcity from './admin/city/Pickupcity';
 
-
+import Selllaptop from './page/laptop/Selllaptop';
 
 import UserProfile from './page/user/Profile';
 
@@ -49,15 +53,15 @@ function App() {
   
       <Route path='/' component={Home} exact/>
 
-      <Route path='/sell-old-mobile-phone' component={Sellphone} exact/>
-      <Route path='/sell-old-tablet' component={Selltablet} exact/>
+      
+      
 
       <Route path='/about' component={About} exact/>
 
       {/* user page */}
 
       {/* phone url */}
-      
+      <Route path='/sell-old-mobile-phone' component={Sellphone} exact/>
       <Route path='/sell-old-mobile-phone/brand' component={Brand} exact/>
       <Route path='/sell-old-mobile-phone/brand/:id' component={Model} exact/>
       <Route path='/sell-old-mobile-phone/model/:id' component={Modeldetail} exact/>
@@ -65,13 +69,31 @@ function App() {
 
       {/* table url */}
 
+      <Route path='/sell-old-tablet' component={Selltablet} exact/>
+      <Route path='/sell-old-tablet/brand' component={Tabletbrandd} exact/>
+      <Route path='/sell-old-tablet/brand/:id' component={Tabletmodel} exact/>
+      <Route path='/sell-old-tablet/model/:id' component={TabletModeldetail} exact/>
+      <Route path='/sell-old-tablet/model/:id/calculator/:pid/:slug' component={Tabletvariant} exact/>
+      
+
+
+      {/* laptop url */}
+
+      <Route path='/sell-old-laptop' component={Selllaptop} exact/>
+
+      
+
+
+       {/* user url */}
       <Route path='/profile' exact>
       <ProtextedUser Cmd={UserProfile}/>
       </Route>
 
 
-      <Route path='/sell-old-tablet/brand' component={Tabletbrandd} exact/>
-      <Route path='/sell-old-tablet/brand/:id' component={Tabletmodel} exact/>
+     
+
+
+      
 
       <Route path='/wp-login' component={Login} exact/>
       <Route path='/wp-singup' component={Singup} exact/>
@@ -123,10 +145,6 @@ function App() {
       <Route path='/admin/pickup-city' exact>
       <Protected Cmd={Pickupcity}/>
       </Route>
-      
-
-      
-      
       
       <Route path='/logout' exact>
       <Protected Cmd={Logout}/>
