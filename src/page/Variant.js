@@ -352,11 +352,7 @@ const Variant = (props) => {
 
   
 
-        if(mainprice > 10)
-        {
-            alert('not pick up');
-        }
-
+      
     
 
   
@@ -381,7 +377,7 @@ const Variant = (props) => {
 
                                     <h5>{fullmodelname}</h5>
 
-                                    {mainprice}
+                                    
 
 
                                 </div>
