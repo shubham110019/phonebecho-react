@@ -17,7 +17,7 @@ const Variant = (props) => {
     const [issuedata, setIssuedata] = useState([]);
     const [phoneasdata, setPhoneasdata] = useState([]);
     const [isChecked, setIsChecked] = useState(false);
-    const [mainprice, setMainprice] = useState();
+    const [mainprice, setMainprice] = useState(50);
     const [issecheck, setIssecheck] = useState(false);
     const [phoneold, setPhoneold] = useState(false);
     const [oldphone, setOldphone] = useState(false);
@@ -319,7 +319,7 @@ const Variant = (props) => {
             }
     
             const bookingtype = {
-                "bookingtype": "web",
+                "bookingtype": "mobile",
             }
     
     
@@ -350,6 +350,16 @@ const Variant = (props) => {
 
     }
 
+  
+
+        if(mainprice > 10)
+        {
+            alert('not pick up');
+        }
+
+    
+
+  
 
     return (
         <>
@@ -371,15 +381,13 @@ const Variant = (props) => {
 
                                     <h5>{fullmodelname}</h5>
 
+                                    {mainprice}
 
 
                                 </div>
 
                                 <div className='box'>
-                                    {/* <h5>phone data:{phoneprice.phonedata}</h5> <h5>Price: {mainprice}</h5> 
-
-                                     <h5>Phone Age : {agephone}</h5>
-                                    <h5>Phone condition : {phonecprice}</h5> */}
+                                   
                                 </div>
 
                                 <hr />

@@ -6,6 +6,7 @@ import Footer from '../../comonent/Footer';
 import Apiurl from '../../Apidata';
 import Cardloading from '../../comonent/Cardloading';
 import Howwork from '../../comonent/Howwork';
+import { Link } from 'react-router-dom';
 
 const Selltablet = () => {
 
@@ -47,7 +48,8 @@ const Selltablet = () => {
             <div className="alt-topsell ptb-50">
                 <div className='container'>
                     <div className='row mb-4 '>
-                        <div className='col-md-12 alt-title'><h2>Top Selling Brands</h2></div>
+                        <div className='col-md-8 alt-title'><h2>Top Selling Brands</h2></div>
+                        
                     </div>
 
                     <div className='row gy-4'>

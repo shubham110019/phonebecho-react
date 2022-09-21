@@ -60,6 +60,11 @@ const Viewbooking = () => {
       sortable: true,
     },
     {
+      name: "Type",
+      cell: (row) => row.bookingtype,
+      sortable: true,
+    },
+    {
       name: "View",
       cell: (row) => <Link className="btn btn-success btn-sm" to={`./booking-detail/${row._id}`}>View</Link>,
     },

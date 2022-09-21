@@ -44,7 +44,7 @@ const Navbar = () => {
               </li>
 
               {/* <li className="nav-item dropdown">
-                <Link className="nav-link dropdown-toggle" to="/sell-old-mobile-phone/brand" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <Link className="nav-link dropdown-toggle" to="/sell-old-mobile-phone/" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 Sell Phone
                 </Link>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">

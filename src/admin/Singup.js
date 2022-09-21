@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Apiurl from '../Apidata';
 import Navbar from '../comonent/Navbar';
 import Footer from '../comonent/Footer';
@@ -142,20 +142,21 @@ const Singup = () => {
 
     return (
         <>
-            <Navbar />
+            {/* <Navbar /> */}
 
-            
+            <div className="loginfull">
             <div className='container'>
                 <div className='row py-5'>
-                    <h2 className="mb-4 text-center">Singup page</h2>
-                    <div className='col-md-6 offset-md-3 p-5 shadow'>
+                    
+                    <div className='col-md-6 offset-md-3 p-5 shadow bg-white rounded'>
+                    <h2 className="mb-4 text-start">Register</h2>
                         {
                             formdata.map((item) => {
                                 return (
                                     <>
                                         <div class="mb-3">
-                                            <label className="form-label">{item.name}</label>
-                                            <input type={item.type} className="form-control" name={item.name} onChange={(e) => { Handmodelupdate(e) }} required />
+                                           
+                                            <input type={item.type} className="lgn-input form-control" name={item.name} onChange={(e) => { Handmodelupdate(e) }} required placeholder={item.name}/>
                                         </div>
                                         <p style={{ 'color': 'red', 'fontSize': '12px' }}>{item.error}</p>
 
@@ -163,11 +164,16 @@ const Singup = () => {
                                 )
                             })
                         }
-
-                        <button type="submit" className="btn btn-primary" onClick={() => { userSubmit() }}>Submit</button>
+                        <div className="text-start pt-4">
+                        <button type="submit" className="btn btn-lgn" onClick={() => { userSubmit() }}>Register</button>
+                        <Link to="/wp-login" className="ms-4">Sign in</Link>
+                        </div>
+                        
+                        
                     </div></div>
             </div>
-            <Footer />
+            </div>
+            {/* <Footer /> */}
         </>
     )
 }

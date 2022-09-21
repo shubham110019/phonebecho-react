@@ -319,7 +319,7 @@ const Variant = (props) => {
             }
     
             const bookingtype = {
-                "bookingtype": "web",
+                "bookingtype": "tablet",
             }
     
     

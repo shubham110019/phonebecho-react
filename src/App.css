@@ -107,6 +107,51 @@ h1,h2,h3,h4,h5{
 .text-cp{
   text-transform: capitalize;
 }
+
+.loginfull{
+  background: #563d7c;
+  /* height: calc(100vh - 145px); */
+  height: 100vh;
+}
+.loginfull a{
+  color:#777;
+}
+.btn-lgn{
+  background: #563d7c;
+    border: 1px solid #563d7c !important;
+    font-size: 18px;
+    border-radius: 5px;
+    padding: 10px 35px;
+    margin: 0px auto;
+    text-align: center;
+    color:#FFF !important;
+}
+.btn-lgn:hover{
+  background: #563d7c;
+  color:#FFF !important;
+}
+.lgn-input{border: none !important;
+  border-bottom: 1px solid #2d3b55 !important;
+  border-radius: 0px !important;
+  padding: 15px;
+  margin-top: 15px !important;}
+
+  .form-control:focus{
+    box-shadow:none !important;
+  }
+
+  ::placeholder {
+    text-transform: capitalize;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    text-transform: capitalize;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    text-transform: capitalize;
+  }
 @media (max-width: 991.98px) { 
 
   .media-991-center{

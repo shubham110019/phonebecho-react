@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { StateContent } from "../StateProvider";
 import Apiurl from "../Apidata";
 import Navbar from "../comonent/Navbar";
@@ -77,43 +77,49 @@ const Login = () => {
     {/* {
       console.log("login check " + logincheck)
     } */}
-    <Navbar/>
+    {/* <Navbar/> */}
+    <div className="loginfull">
       <div className="container">
-        <div className="row py-5">
-          <div className="col-md-6 offset-md-3 p-5 shadow">
-            <h2 className="mb-4 text-center">Login page</h2>
+        <div className="row py-5 align-items-center">
+          <div className="col-md-5 m-auto p-5 mt-5 shadow bg-white rounded">
+            <h2 className="mb-4 text-stat">Login </h2>
 
             <p>{error}</p>
 
             <div className="mb-3">
-              <label className="form-label">Email</label>
+              
               <input
                 type="text"
-                className="form-control"
+                className="lgn-input form-control"
                 value={email}
+                placeholder="Email"
                 onChange={(e) => setEmail(e.target.value)}
               />
                <p style={{"color":"red","fontSize":"12px"}}>{emailError}</p>
             </div>
-            <div className="mb-3">
-              <label className="form-label">Password</label>
+            <div className="mb-4">
+             
               <input
                 type="password"
-                className="form-control"
+                className="lgn-input form-control"
                 value={password}
+                placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
               />
               <p style={{"color":"red","fontSize":"12px"}}>{passwordError}</p>
             </div>
+            <div className="text-start pt-2">
             <button
               type="submit"
-              className="btn btn-primary"
+              className="btn btn-lgn"
               onClick={() => {
                 loginFrom();
               }}
             >
-              Submit
+              Sign in
             </button>
+              <Link to="/wp-singup" className="ms-4">Register</Link>
+            </div>
 
 
             {/* <h3 className="mt-4"><strong>Admin login</strong></h3>
@@ -125,7 +131,8 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      </div>
+      {/* <Footer/> */}
     </>
   );
 };
