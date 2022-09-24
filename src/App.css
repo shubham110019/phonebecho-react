@@ -2,6 +2,10 @@
 *{
   font-family: 'Varela Round', sans-serif;
 }
+
+.alt-topsell{
+  min-height:calc(100vh - 145px);;
+}
 a{
   text-decoration: none !important;
 }
@@ -152,6 +156,8 @@ h1,h2,h3,h4,h5{
   ::-ms-input-placeholder { /* Microsoft Edge */
     text-transform: capitalize;
   }
+
+
 @media (max-width: 991.98px) { 
 
   .media-991-center{

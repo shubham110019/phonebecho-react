@@ -101,6 +101,25 @@ const Profile = () => {
 
   ]
 
+  const totaldata = [
+    {
+      name: 'Mobile',
+      booking: totalbook,
+
+    },
+    {
+      name: 'Tablet',
+      booking: tbmodeldata,
+
+    },
+    {
+      name: 'Laptop',
+      booking: 0,
+
+    },
+
+  ]
+
 
   useEffect(() => {
     apidata();
@@ -185,14 +204,32 @@ const Profile = () => {
               </div>
             </div>
 
-
             <div className="col-md-6">
               <div className="bg-white p-4">
                 <div className="title">
-                  <h4 className="mb-4">Today booking</h4>
+                  <h4 className="mb-4">Total booking</h4>
                 </div>
                 <ResponsiveContainer width="100%" aspect={3}>
-                  <LineChart data={pdata}>
+                  <BarChart width={730} height={250} data={totaldata}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="booking" fill="#8884d8" position="insideTop" />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </div>
+
+
+            <div className="col-md-6 mt-4">
+              <div className="bg-white p-4">
+                <div className="title">
+                  <h4 className="mb-4">Total booking</h4>
+                </div>
+                <ResponsiveContainer width="100%" aspect={3}>
+                  <LineChart data={totaldata}>
                     <CartesianGrid />
                     <XAxis dataKey="name" interval={'preserveStartEnd'} />
                     <YAxis />
@@ -206,23 +243,7 @@ const Profile = () => {
             </div>
 
          
-            <div className="col-md-6 mt-4">
-              <div className="bg-white p-4">
-                <div className="title">
-                  <h4 className="mb-4">7 days</h4>
-                </div>
-                <ResponsiveContainer width="100%" aspect={3}>
-                  <BarChart width={730} height={250} data={pdata}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="booking" fill="#8884d8" position="insideTop" />
-                  </BarChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
+        
 
 
 

@@ -6,6 +6,9 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+.min-h0{
+  min-height: 0 !important;
+}
 .sidebar{
   position: fixed;
   height: 100%;
@@ -371,6 +374,23 @@
     left: 220px;
   }
 }
+
+@media (max-width: 1199.98px) { 
+
+  .home-section .nav{
+    width: 100% !important;
+    left: 60px !important;
+  }
+
+  .home-section .nav .profile-details{
+    display: none !important;
+  }
+
+  .home-section .nav .search-box{
+    display: none !important;
+  }
+
+ }
 @media (max-width: 1150px) {
   .home-content .sales-boxes{
     flex-direction: column;

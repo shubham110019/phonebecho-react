@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Topmenu from "./Topmenu";
 
 const Menu = () => {
+  const [isActive, setActive] = useState("false");
+
+  const ToggleClass = () => {
+    setActive(!isActive); 
+   };
+  
   return (
     <>
-      <div className="sidebar">
+      <div className={`sidebar ${isActive ? "" : "active"}`}>
         <div className="logo-details">
           <i className="bx bxl-c-plus-plus"></i>
           <span className="logo_name">PhoneBecho</span>
@@ -64,6 +71,16 @@ const Menu = () => {
             </Link>
           </li>
         </ul>
+      </div>
+
+      <div className="home-section min-h0">
+      <nav className={`nav`}>
+        <div className="sidebar-button">
+          <i className="bx bx-menu sidebarBtn" onClick={ToggleClass}></i>
+          <span className="dashboard" >Dashboard </span>
+        </div>
+    
+      </nav>
       </div>
     </>
   );

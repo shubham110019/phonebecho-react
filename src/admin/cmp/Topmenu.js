@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Topmenu = () => {
+
+  const [isActive, setActive] = useState("false");
+  const ToggleClass = () => {
+    setActive(!isActive); 
+   };
+  
 
     // let sidebar = document.querySelector(".sidebar");
     // let sidebarBtn = document.querySelector(".sidebarBtn");
@@ -13,23 +19,9 @@ const Topmenu = () => {
     // }
 
   return (
-    <div>
-      <nav className="nav">
-        <div className="sidebar-button">
-          <i className="bx bx-menu sidebarBtn"></i>
-          <span className="dashboard">Dashboard</span>
-        </div>
-        <div className="search-box">
-          <input type="text" placeholder="Search..." />
-          <i className="bx bx-search"></i>
-        </div>
-        <div className="profile-details">
-          <img src="https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG.png" alt="" />
-          <span className="admin_name">{localStorage.getItem('username')}</span>
-          <i className="bx bx-chevron-down"></i>
-        </div>
-      </nav>
-    </div>
+   <>
+   
+   </>
   );
 };
 
