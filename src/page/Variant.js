@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Footer from '../comonent/Footer';
 import Navbar from '../comonent/Navbar';
 import Apiurl from '../Apidata';
@@ -10,8 +10,10 @@ import '../css/Formpage.css';
 
 const Variant = (props) => {
 
+
+
     const [phoneoncheck, setPhoneoncheck] = useState();
-    const [phoncheck,setPhoncheck]=useState(true);
+    const [phoncheck, setPhoncheck] = useState(true);
     const [phoneonc, setPhoneonc] = useState();
     const [issues, setIssues] = useState(false);
     const [issuedata, setIssuedata] = useState([]);
@@ -29,9 +31,9 @@ const Variant = (props) => {
     const [agephone, setAgephone] = useState(0);
     const [phoneagedata, setPhoneagedata] = useState("");
     const [agebtn, setAgebtn] = useState(true);
-    const [conditionbtn,setConditionbtn] = useState(true);
-    const [formErrors,setFormErrors] = useState({});
-
+    const [conditionbtn, setConditionbtn] = useState(true);
+    const [formErrors, setFormErrors] = useState({});
+    const [pricevalue, setPricevalue] = useState(true);
     const [fullmodelname, setFullmodelname] = useState("");
 
     const [phonecdata, setPhonecdata] = useState();
@@ -79,13 +81,13 @@ const Variant = (props) => {
     const [ist, setIst] = useState();
 
     const userdatafull = [
-        {id:61,type:'text',title:'Full Name',name:'fullname',value:userdata.fullname},
-        {id:62,type:'email',title:'Email',name:'email',value:userdata.email},
-        {id:63,type:'number',title:'Phone',name:'phone',value:userdata.phone},
-        {id:64,type:'number',title:'Zip Postal Code',name:'pincode',value:userdata.pincode},
-        {id:65,type:'text',title:'Select City',name:'city',value:userdata.city},
-        {id:66,type:'date',title:'Pickup Date',name:'pickupdate',value:userdata.pickupdate,min:new Date().toISOString().slice(0,10)},
-        {id:67,type:'text',title:'Address',name:'address',value:userdata.address},
+        { id: 61, type: 'text', title: 'Full Name', name: 'fullname', value: userdata.fullname },
+        { id: 62, type: 'email', title: 'Email', name: 'email', value: userdata.email },
+        { id: 63, type: 'number', title: 'Phone', name: 'phone', value: userdata.phone },
+        { id: 64, type: 'number', title: 'Zip Postal Code', name: 'pincode', value: userdata.pincode },
+        { id: 65, type: 'text', title: 'Select City', name: 'city', value: userdata.city },
+        { id: 66, type: 'date', title: 'Pickup Date', name: 'pickupdate', value: userdata.pickupdate, min: new Date().toISOString().slice(0, 10) },
+        { id: 67, type: 'text', title: 'Address', name: 'address', value: userdata.address },
     ]
 
     const phoneissuedata = [
@@ -138,7 +140,7 @@ const Variant = (props) => {
             setPhoneoncheck(true)
             setPhoneonc('No')
             setNotbuy(true)
-
+            setPricevalue(false)
         }
         else {
             setPhoneoncheck(true)
@@ -292,45 +294,44 @@ const Variant = (props) => {
 
     const modelbooking = () => {
 
-        if(!userdata.fullname || !userdata.email || !userdata.phone || !userdata.pincode || !userdata.city || !userdata.pickupdate || !userdata.address)
-        {
+        if (!userdata.fullname || !userdata.email || !userdata.phone || !userdata.pincode || !userdata.city || !userdata.pickupdate || !userdata.address) {
             alert("fill the form")
         }
-        else{
+        else {
             alert("submit")
             const phoneissues = {
                 "phoneissues": issuedata,
             }
-    
+
             const phoneacessories = {
                 "phoneacessories": phoneasdata,
             }
-    
+
             const phoneage = {
                 "phoneage": phoneagedata,
             }
-    
+
             const phonecondition = {
                 "phonecondition": phonecdata,
             }
-    
+
             const pickupprice = {
                 "pickupprice": mainprice,
             }
-    
+
             const bookingtype = {
                 "bookingtype": "mobile",
             }
-    
-    
+
+
             const modelnamefull =
             {
                 "modelnamefull": fullmodelname,
             }
-    
+
             const fulldata = { ...phoneissues, ...phoneacessories, ...phoneage, ...phonecondition, ...pickupprice, ...bookingtype, ...userdata, ...modelnamefull }
-    
-    
+
+
             fetch(`${Apiurl}phonebook`, {
                 method: "POST",
                 headers: {
@@ -341,7 +342,7 @@ const Variant = (props) => {
             }).then((res) => {
                 console.log(res);
                 console.log(fulldata)
-    
+
             }).catch((err) => {
                 console.log(err);
             })
@@ -350,12 +351,15 @@ const Variant = (props) => {
 
     }
 
-  
+    useEffect(() => {
+        if (mainprice < 10) {
+            setPricevalue(false);
+        }
 
-      
-    
 
-  
+    }, [mainprice])
+
+
 
     return (
         <>
@@ -377,13 +381,10 @@ const Variant = (props) => {
 
                                     <h5>{fullmodelname}</h5>
 
-                                    
-
-
                                 </div>
 
                                 <div className='box'>
-                                   
+
                                 </div>
 
                                 <hr />
@@ -469,8 +470,20 @@ const Variant = (props) => {
                             </div>
                         </div>
 
+
+
                         <div className='col-md-8 px-2'>
-                            <div className='box rounded p-4 border'>
+
+
+                            <div className={`box rounded p-4 border text-center ${pricevalue ? 'd-none' : ''}`}>
+                                <h2 className='text-center'>Your Price is very low</h2>
+
+                                <Link to="/" className='btn btn-info mt-4'>Home</Link>
+                            </div>
+
+                            <div className={`box rounded p-4 border ${pricevalue ? '' : 'd-none'}`}>
+
+
                                 <div className={`phone-on-check ${phoneoncheck ? 'd-none' : ''} radio-toolbar`}>
                                     <h2>Does your device switch On?</h2>
                                     <div className='my-4 row'>
@@ -490,205 +503,205 @@ const Variant = (props) => {
                                 </div>
 
                                 <div className={`${phoncheck ? '' : 'd-none'}`}>
-                                       
+
                                 </div>
 
                                 <div className={`${phoncheck ? 'd-none' : ''}`}>
 
-                                <div className={`function-check ${phoneoncheck ? '' : 'd-none'} ${issecheck ? 'd-none' : ''}`}>
-                                    <h2>Please select the issues of your Phone</h2>
-                                    <div className='dfr mt-4'>
-                                        {phoneissuedata.map((item, i) => {
-                                            return <>
-                                                <div className={`form-check cat action ${item.price ? '' : 'd-none'}`} key={i}>
-                                                    <label className="form-check-label">
-                                                        <input className="form-check-input" type="checkbox" name={item.name} id={item.id} onChange={(e) => { HandPhoneissues(e, item.price); }} />
-                                                        <span>{item.name}</span>
-                                                    </label>
-                                                </div>
-                                            </>
-                                        })}
-
-                                    </div>
-                                    <button className='btn btn-info mt-4' onClick={() => { setIssecheck(true); setPhoneas(true) }}>Next</button>
-                                </div>
-
-                                <div className={`${phoneas ? '' : 'd-none'}`}>
-
-                                    <h2>Please select the available acessories</h2>
-                                    <div className='dfr my-4'>
-
-
-                                        {phoneacessories.map(item => {
-                                            return (
-                                                <>
-
-                                                    <div className="form-check cat sports">
-                                                        <label className="form-check-label" htmlFor={item.id}>
-                                                            <input className="form-check-input" type="checkbox" name={item.name} id={item.id} onClick={(e) => { HandlePhoneacessories(e, item.price) }} />
+                                    <div className={`function-check ${phoneoncheck ? '' : 'd-none'} ${issecheck ? 'd-none' : ''}`}>
+                                        <h2>Please select the issues of your Phone</h2>
+                                        <div className='dfr mt-4'>
+                                            {phoneissuedata.map((item, i) => {
+                                                return <>
+                                                    <div className={`form-check cat action ${item.price ? '' : 'd-none'}`} key={i}>
+                                                        <label className="form-check-label">
+                                                            <input className="form-check-input" type="checkbox" name={item.name} id={item.id} onChange={(e) => { HandPhoneissues(e, item.price); }} />
                                                             <span>{item.name}</span>
                                                         </label>
                                                     </div>
                                                 </>
-                                            )
-                                        })
-                                        }
+                                            })}
 
-
+                                        </div>
+                                        <button className='btn btn-info mt-4' onClick={() => { setIssecheck(true); setPhoneas(true) }}>Next</button>
                                     </div>
-                                    <div className='col-md-12'>
-                                        <button className="btn btn-dark" onClick={() => { setIssecheck(false); setPhoneas(false) }}>Back</button>
 
-                                        {
-                                            oldphone ?
-                                                <>
-                                                    <button className='btn btn-info' onClick={() => { setPhoneas(false); setPhoneold(true) }}>Next</button>
-                                                </>
-                                                :
-                                                <> <button className='btn btn-info' onClick={() => { setPhoneas(false); setCondition(true) }}>Next</button></>
-                                        }
+                                    <div className={`${phoneas ? '' : 'd-none'}`}>
 
-                                    </div>
-                                </div>
-
-                                <div className={`${phoneold ? '' : 'd-none'}`}>
-                                    <h2>Please select the age of your device</h2>
-
-                                    <div className='dfr my-4'>
+                                        <h2>Please select the available acessories</h2>
+                                        <div className='dfr my-4'>
 
 
-                                        {
-                                            ageDevice.map(item => {
+                                            {phoneacessories.map(item => {
                                                 return (
                                                     <>
+
                                                         <div className="form-check cat sports">
                                                             <label className="form-check-label" htmlFor={item.id}>
-                                                                <input className="form-check-input" type="radio" name="phoneage" id={item.id} onChange={(e) => { HandPhoneold(e, item.name, item.price) }} />
-
+                                                                <input className="form-check-input" type="checkbox" name={item.name} id={item.id} onClick={(e) => { HandlePhoneacessories(e, item.price) }} />
                                                                 <span>{item.name}</span>
                                                             </label>
                                                         </div>
                                                     </>
                                                 )
                                             })
-                                        }
+                                            }
 
 
-                                    </div>
+                                        </div>
+                                        <div className='col-md-12'>
+                                            <button className="btn btn-dark" onClick={() => { setIssecheck(false); setPhoneas(false) }}>Back</button>
 
-                                    <div className='col-md-12'>
-                                        <button className="btn btn-dark" onClick={() => { setPhoneold(false); setPhoneas(true) }}>Back</button>
-                                        
-                                        {
-                                            agebtn?
-                                            <button className='btn btn-info'
-                                            disabled>
-                                            Next</button>
-                                            :
-                                            <button className='btn btn-info'
-                                            onClick={() => {
-                                                setPhoneas(false);
-                                                setPhoneold(false);
-                                                setCondition(true);
-                                                Handaddage();
-                                            }}>
-                                            Next</button>
-                                        }
-                                      
-                                    </div>
-
-                                </div>
-
-                                <div className={`${condition ? '' : 'd-none'}`}>
-                                    <h2>Please select the Phone condition</h2>
-
-                                    <div className='dfr my-4'>
-
-
-                                        {
-                                            conditiondata.map(item => {
-                                                return (
+                                            {
+                                                oldphone ?
                                                     <>
-                                                        <div className="form-check cat sports">
-                                                            <label className="form-check-label" htmlFor={item.id}>
-                                                                <input className="form-check-input" type="radio" name="phone" id={item.id} onChange={(e) => { HandPhonecondition(e, item.name, item.price) }} />
-
-                                                                <span>{item.name}</span>
-                                                            </label>
-                                                        </div>
+                                                        <button className='btn btn-info' onClick={() => { setPhoneas(false); setPhoneold(true) }}>Next</button>
                                                     </>
-                                                )
-                                            })
-                                        }
+                                                    :
+                                                    <> <button className='btn btn-info' onClick={() => { setPhoneas(false); setCondition(true) }}>Next</button></>
+                                            }
 
+                                        </div>
+                                    </div>
+
+                                    <div className={`${phoneold ? '' : 'd-none'}`}>
+                                        <h2>Please select the age of your device</h2>
+
+                                        <div className='dfr my-4'>
+
+
+                                            {
+                                                ageDevice.map(item => {
+                                                    return (
+                                                        <>
+                                                            <div className="form-check cat sports">
+                                                                <label className="form-check-label" htmlFor={item.id}>
+                                                                    <input className="form-check-input" type="radio" name="phoneage" id={item.id} onChange={(e) => { HandPhoneold(e, item.name, item.price) }} />
+
+                                                                    <span>{item.name}</span>
+                                                                </label>
+                                                            </div>
+                                                        </>
+                                                    )
+                                                })
+                                            }
+
+
+                                        </div>
+
+                                        <div className='col-md-12'>
+                                            <button className="btn btn-dark" onClick={() => { setPhoneold(false); setPhoneas(true) }}>Back</button>
+
+                                            {
+                                                agebtn ?
+                                                    <button className='btn btn-info'
+                                                        disabled>
+                                                        Next</button>
+                                                    :
+                                                    <button className='btn btn-info'
+                                                        onClick={() => {
+                                                            setPhoneas(false);
+                                                            setPhoneold(false);
+                                                            setCondition(true);
+                                                            Handaddage();
+                                                        }}>
+                                                        Next</button>
+                                            }
+
+                                        </div>
 
                                     </div>
 
+                                    <div className={`${condition ? '' : 'd-none'}`}>
+                                        <h2>Please select the Phone condition</h2>
 
-                                    <div className='col-md-12'>
-
-                                        {
-                                            oldphone ?
-                                                <button className="btn btn-dark" onClick={() => { setCondition(false); setPhoneold(true); Handsubage(agephone) }}>Back</button>
-                                                : <button className="btn btn-dark" onClick={() => { setCondition(false); setPhoneas(true); }}>Back</button>
-                                        }
-
-                                        {
-                                            conditionbtn?
-                                            <button className='btn btn-info' disabled>Next</button>
-                                            :
-                                            <button className='btn btn-info' onClick={() => { setCondition(false); setPriceshow(true); Handsubcd(); }}>Next</button>
-                                        }
-
-                                        
-                                    </div>
+                                        <div className='dfr my-4'>
 
 
-                                </div>
+                                            {
+                                                conditiondata.map(item => {
+                                                    return (
+                                                        <>
+                                                            <div className="form-check cat sports">
+                                                                <label className="form-check-label" htmlFor={item.id}>
+                                                                    <input className="form-check-input" type="radio" name="phone" id={item.id} onChange={(e) => { HandPhonecondition(e, item.name, item.price) }} />
 
-                                <div className={`${priceshow ? '' : 'd-none'}`}>
-                                    <h2>Your Device price is </h2>
-
-                                    <h1 className='my-4'>₹ {mainprice}</h1>
-
-                                    <div className='col-md-12'>
-                                        <button className="btn btn-dark" onClick={() => { setPriceshow(false); setCondition(true); Handaddcd(phonecprice) }}>Back</button>
-                                        <button className='btn btn-info' onClick={() => { setPriceshow(false); setFormsb(true) }}>Next</button>
-
-                                    </div>
-                                </div>
+                                                                    <span>{item.name}</span>
+                                                                </label>
+                                                            </div>
+                                                        </>
+                                                    )
+                                                })
+                                            }
 
 
-                                <div className={`${formsb ? '' : 'd-none'}`}>
-                                    <h2>Billing Address</h2>
+                                        </div>
 
-                                    <div className='row mt-4'>
 
-                                        {
-                                            userdatafull.map((item)=>{
-                                                return(
-                                                    <>
-                                                     <div className="form-group col-md-6 mb-2">
-                                                        <label htmlFor="exampleInputEmail1">{item.title}</label>
-                                                        <input type={item.type} className="form-control" name={item.name} value={item.value} onChange={(e) => Handleuserinput(e)} min={item.min}/>
-                                                        <span>{formErrors.name}</span>
-                                                    </div>
-                                                    
-                                                    </>
-                                                )
-                                            })
-                                        }
+                                        <div className='col-md-12'>
 
-                                       
+                                            {
+                                                oldphone ?
+                                                    <button className="btn btn-dark" onClick={() => { setCondition(false); setPhoneold(true); Handsubage(agephone) }}>Back</button>
+                                                    : <button className="btn btn-dark" onClick={() => { setCondition(false); setPhoneas(true); }}>Back</button>
+                                            }
 
-                                        <div className='col-md-12 mt-4'>
-                                            <button className="btn btn-dark" onClick={() => { setFormsb(false); setPriceshow(true); }}>Back</button>
-                                            <button className='btn btn-info' onClick={() => (modelbooking())}> Submit</button>
+                                            {
+                                                conditionbtn ?
+                                                    <button className='btn btn-info' disabled>Next</button>
+                                                    :
+                                                    <button className='btn btn-info' onClick={() => { setCondition(false); setPriceshow(true); Handsubcd(); }}>Next</button>
+                                            }
+
+
                                         </div>
 
 
                                     </div>
-                                </div>
+
+                                    <div className={`${priceshow ? '' : 'd-none'}`}>
+                                        <h2>Your Device price is </h2>
+
+                                        <h1 className='my-4'>₹ {mainprice}</h1>
+
+                                        <div className='col-md-12'>
+                                            <button className="btn btn-dark" onClick={() => { setPriceshow(false); setCondition(true); Handaddcd(phonecprice) }}>Back</button>
+                                            <button className='btn btn-info' onClick={() => { setPriceshow(false); setFormsb(true) }}>Next</button>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div className={`${formsb ? '' : 'd-none'}`}>
+                                        <h2>Billing Address</h2>
+
+                                        <div className='row mt-4'>
+
+                                            {
+                                                userdatafull.map((item) => {
+                                                    return (
+                                                        <>
+                                                            <div className="form-group col-md-6 mb-2">
+                                                                <label htmlFor="exampleInputEmail1">{item.title}</label>
+                                                                <input type={item.type} className="form-control" name={item.name} value={item.value} onChange={(e) => Handleuserinput(e)} min={item.min} />
+                                                                <span>{formErrors.name}</span>
+                                                            </div>
+
+                                                        </>
+                                                    )
+                                                })
+                                            }
+
+
+
+                                            <div className='col-md-12 mt-4'>
+                                                <button className="btn btn-dark" onClick={() => { setFormsb(false); setPriceshow(true); }}>Back</button>
+                                                <button className='btn btn-info' onClick={() => (modelbooking())}> Submit</button>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
 
                                 </div>
                             </div>

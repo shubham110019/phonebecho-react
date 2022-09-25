@@ -13,12 +13,12 @@ const Menu = () => {
     <>
       <div className={`sidebar ${isActive ? "" : "active"}`}>
         <div className="logo-details">
-          <i className="bx bxl-c-plus-plus"></i>
+          <i className="bx bx-mobile-alt"></i>
           <span className="logo_name">PhoneBecho</span>
         </div>
         <ul className="nav-links p-0">
           <li>
-            <Link to="/admin/dashboard" className="active">
+            <Link to="/admin/dashboard">
               <i className="bx bx-grid-alt"></i>
               <span className="links_name">Dashboard</span>
             </Link>
