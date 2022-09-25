@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Footer from '../../comonent/Footer';
 import Navbar from '../../comonent/Navbar';
 import Apiurl from '../../Apidata';
@@ -31,7 +31,7 @@ const Variant = (props) => {
     const [agebtn, setAgebtn] = useState(true);
     const [conditionbtn,setConditionbtn] = useState(true);
     const [formErrors,setFormErrors] = useState({});
-
+    const [pricevalue, setPricevalue] = useState(true);
     const [fullmodelname, setFullmodelname] = useState("");
 
     const [phonecdata, setPhonecdata] = useState();
@@ -138,6 +138,7 @@ const Variant = (props) => {
             setPhoneoncheck(true)
             setPhoneonc('No')
             setNotbuy(true)
+            setPricevalue(false)
 
         }
         else {
@@ -350,6 +351,14 @@ const Variant = (props) => {
 
     }
 
+    useEffect(() => {
+        if (mainprice < 10) {
+            setPricevalue(false);
+        }
+
+
+    }, [mainprice])
+
 
     return (
         <>
@@ -466,7 +475,15 @@ const Variant = (props) => {
                         </div>
 
                         <div className='col-md-8 px-2'>
-                            <div className='box rounded p-4 border'>
+
+                        <div className={`box rounded p-4 border text-center ${pricevalue ? 'd-none' : ''}`}>
+                                <h2 className='text-center'>Your Price is very low</h2>
+
+                                <Link to="/" className='btn btn-info mt-4'>Home</Link>
+                            </div>
+                            
+                            <div className={`box rounded p-4 border ${pricevalue ? '' : 'd-none'}`}>
+
                                 <div className={`phone-on-check ${phoneoncheck ? 'd-none' : ''} radio-toolbar`}>
                                     <h2>Does your device switch On?</h2>
                                     <div className='my-4 row'>
