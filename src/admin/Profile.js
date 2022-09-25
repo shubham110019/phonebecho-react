@@ -165,24 +165,14 @@ const Profile = () => {
                 </div>
                 <i class='bx bxs-mobile cart three' ></i>
               </div>
-              <div class="box">
-                <div class="right-side">
-                  <div class="box-topic">Total Return</div>
-                  <div class="number">11,086</div>
-                  <div class="indicator">
-                    <i class='bx bx-down-arrow-alt down'></i>
-                    <span class="text">Down From Today</span>
-                  </div>
-                </div>
-                <i class='bx bxs-cart-download cart four' ></i>
-              </div>
+            
             </div>
 
           </div>
         </div>
 
         <div className="container py-5 px-4 text-center">
-
+            <div className="overview-boxes">
           <div className="row">
 
 
@@ -251,7 +241,7 @@ const Profile = () => {
           </div>
 
 
-
+            </div>
         </div>
       </section>
     </>

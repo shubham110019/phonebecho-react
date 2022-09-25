@@ -6,7 +6,7 @@ import paid from '../img/get-paid.svg';
 const Howwork = () => {
     return (
         <>
-            <div className='bg-main ptb-50'>
+            <div className='sel-box ptb-50'>
                 <div className='container'>
                     <div className='row mb-4 '>
                         <div className='col-md-12 alt-title'><h3 className='text-center mb-4'>How PhoneBecho Works</h3></div>
@@ -19,8 +19,8 @@ const Howwork = () => {
                                 <div className='work-boximg'>
                                     <img src={price} />
                                 </div>
-                                <h4 style={{"color":"#563d7c"}}>Check Price</h4>
-                                <p style={{"color":"#000"}}>Select your device & tell us about its current condition, and our advanced AI tech will tailor make the perfect price for you.</p>
+                                <h4 >Check Price</h4>
+                                <p >Select your device & tell us about its current condition, and our advanced AI tech will tailor make the perfect price for you.</p>
                             </div>
                         </div>
 
@@ -29,8 +29,8 @@ const Howwork = () => {
                                 <div className='work-boximg'>
                                     <img src={pickup} />
                                 </div>
-                                <h4 style={{"color":"#563d7c"}}>Schedule Pickup</h4>
-                                <p style={{"color":"#000"}}>Book a free pickup from your home or work at a time slot that best suits your convenience.</p>
+                                <h4 >Schedule Pickup</h4>
+                                <p >Book a free pickup from your home or work at a time slot that best suits your convenience.</p>
                             </div>
                         </div>
 
@@ -39,8 +39,8 @@ const Howwork = () => {
                                 <div className='work-boximg'>
                                     <img src={paid} />
                                 </div>
-                                <h4 style={{"color":"#563d7c"}}>Get Paid</h4>
-                                <p style={{"color":"#000"}}>Did we mention you get paid as soon as our executive picks up your device? It's instant payment all the way!</p>
+                                <h4 >Get Paid</h4>
+                                <p >Did we mention you get paid as soon as our executive picks up your device? It's instant payment all the way!</p>
                             </div>
                         </div>
 

@@ -47,7 +47,7 @@ const Sellphone = () => {
                 </div>
            
 
-            <div className="alt-topsell ptb-50">
+            <div className="ptb-50">
                 <div className='container'>
                     <div className='row mb-4 align-items-center'>
                    

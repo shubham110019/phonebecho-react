@@ -53,7 +53,7 @@ const Seachlaptop = () => {
   return (
     <>
         <div className="mobile-form shadow bg-white p-4 mb-n70">
-                <h4 className='text-center mb-4' style={{"color": "#563d7c"}}>Sell Your Old Laptop</h4>
+                <h4 className='text-center mb-4'>Sell Your Old Laptop</h4>
 
                 <p>{
                     btnck ?

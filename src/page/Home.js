@@ -49,7 +49,7 @@ const Home = () => {
                 </div>
             </div>
 
-            <div className="alt-topsell ptb-50">
+            <div className="ptb-50">
                 <div className='container'>
                     <div className='row mb-4 '>
                         <div className='col-md-12 alt-title'><h2>Sell for cash</h2></div>

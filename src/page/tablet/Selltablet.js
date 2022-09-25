@@ -45,7 +45,7 @@ const Selltablet = () => {
                 </div>
            
 
-            <div className="alt-topsell ptb-50">
+            <div className=" ptb-50">
                 <div className='container'>
                     <div className='row mb-4 '>
                         <div className='col-md-8 alt-title'><h2>Top Selling Brands</h2></div>

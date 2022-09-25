@@ -25,7 +25,7 @@ const Menu = () => {
           </li>
           <li>
             <Link to="/admin/add-brand">
-              <i className="bx bx-box"></i>
+              <i className="bx bx-mobile"></i>
               <span className="links_name">Phone Brand</span>
             </Link>
           </li>
@@ -38,7 +38,7 @@ const Menu = () => {
 
           <li>
             <Link to="/admin/view-booking">
-              <i className="bx bx-list-ul"></i>
+              <i className="bx bx-cart"></i>
               <span className="links_name">Booking</span>
             </Link>
           </li>
@@ -59,7 +59,7 @@ const Menu = () => {
 
           <li>
             <Link to="/admin/pickup-city">
-              <i className="bx bx-list-ul"></i>
+              <i className="bx bx-location-plus"></i>
               <span className="links_name">Pick Citys</span>
             </Link>
           </li>
