@@ -188,3 +188,66 @@ h1,h2,h3,h4,h5{
  @media (max-width: 767.98px) { 
 
   }
+
+
+  .modal {
+    position: relative;
+    display: block;
+  }
+  .modal > .header {
+    width: 100%;
+    font-size: 18px;
+    text-align: center;
+    padding: 5px;
+  }
+  .modal > .content {
+    width: 100%;
+    padding: 10px 30px;
+  }
+  .modal > .actions {
+    width: 100%;
+    padding: 10px 5px;
+    margin: auto;
+    text-align: center;
+  }
+  .modal > .close {
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    padding: 2px 5px;
+    line-height: 20px;
+    right: 0px;
+    top: 0px;
+    font-size: 24px;
+    background: #ffffff;
+border:none !important
+  }
+  .popup-content{
+    width: 95%;
+    max-width: 550px;
+  }
+
+  .modal > .header button{
+    width: 50%;
+    background: none !important;
+    border: none !important;
+    padding: 15px !important;
+    background: #efefef !important;
+  }
+  .popup-overlay{
+    z-index: 9999 !important;
+  }
+  .mobile-icon{
+    position: fixed;
+    bottom: 50px;
+    left: 20px;
+    z-index: 10;
+    background: white;
+    padding: 12px 12px;
+    border: 1px solid #0000004f;
+    border-radius: 50%;
+  }
+
+  .mobile-icon img{
+    max-height: 35px;
+  }

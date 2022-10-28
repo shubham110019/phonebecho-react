@@ -1,16 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Link, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
 import Footer from '../comonent/Footer';
 import Navbar from '../comonent/Navbar';
 import Apiurl from '../Apidata';
 import '../css/Formpage.css';
 
 
-
-
 const Variant = (props) => {
 
-
+    const history =useHistory();
 
     const [phoneoncheck, setPhoneoncheck] = useState();
     const [phoncheck, setPhoncheck] = useState(true);
@@ -290,7 +288,7 @@ const Variant = (props) => {
         console.log(userdata)
     }
 
-
+  
 
     const modelbooking = () => {
 
@@ -351,6 +349,33 @@ const Variant = (props) => {
 
     }
 
+    const Phonecart = () =>{
+
+
+        var cartdata = {
+            "fullmobilename": fullmodelname,
+            "Xmainprice": mainprice,
+             "Xphonedata": issuedata,
+             "Xphoneasdata": phoneasdata,
+             "Xphoneagedata": phoneagedata,
+             "Xphonecdata": phonecdata,
+             "Xphoneimg": phonedata.image,
+
+        }
+
+        localStorage.setItem("pkeydata",JSON.stringify(cartdata));
+
+        // localStorage.setItem("fullmobilename",fullmodelname);
+        // localStorage.setItem("Xmainprice",mainprice);
+        // localStorage.setItem("Xphonedata",issuedata);
+        // localStorage.setItem("Xphoneasdata",phoneasdata);
+        // localStorage.setItem("Xphoneagedata",phoneagedata);
+        // localStorage.setItem("Xphonecdata",phonecdata);
+        // localStorage.setItem("Xphoneimg",phonedata.image);
+
+        history.push("/cart");
+    }
+
     useEffect(() => {
         if (mainprice < 10) {
             setPricevalue(false);
@@ -380,6 +405,7 @@ const Variant = (props) => {
 
 
                                     <h5>{fullmodelname}</h5>
+                                    <h5>{mainprice}</h5>
 
                                 </div>
 
@@ -478,7 +504,10 @@ const Variant = (props) => {
                             <div className={`box rounded p-4 border text-center ${pricevalue ? 'd-none' : ''}`}>
                                 <h2 className='text-center'>Your Price is very low</h2>
 
-                                <Link to="/" className='btn btn-info mt-4'>Home</Link>
+                                
+                                <button  onClick={() => {
+                    history.goBack();
+                }} className="mt-4 btn btn-main">Home</button>
                             </div>
 
                             <div className={`box rounded p-4 border ${pricevalue ? '' : 'd-none'}`}>
@@ -648,10 +677,13 @@ const Variant = (props) => {
 
                                             {
                                                 conditionbtn ?
-                                                    <button className='btn btn-info' disabled>Next</button>
+                                                    // <button className='btn btn-info' disabled>Next</button>
+
+                                                    <button className="btn btn-info" disabled>Continue</button>
                                                     :
-                                                    <button className='btn btn-info' onClick={() => { setCondition(false); setPriceshow(true); Handsubcd(); }}>Next</button>
-                                            }
+                                                    // <button className='btn btn-info' onClick={() => { setCondition(false); setPriceshow(true); Handsubcd(); }}>Next</button>
+                                                    <button onClick={()=>{Phonecart()}} className="btn btn-info">Continue</button>
+                                            }       
 
 
                                         </div>
@@ -659,15 +691,19 @@ const Variant = (props) => {
 
                                     </div>
 
-                                    <div className={`${priceshow ? '' : 'd-none'}`}>
+                                    <div className={`${priceshow ? '' : 'd-none'} text-center`}>
                                         <h2>Your Device price is </h2>
 
                                         <h1 className='my-4'>₹ {mainprice}</h1>
 
                                         <div className='col-md-12'>
-                                            <button className="btn btn-dark" onClick={() => { setPriceshow(false); setCondition(true); Handaddcd(phonecprice) }}>Back</button>
-                                            <button className='btn btn-info' onClick={() => { setPriceshow(false); setFormsb(true) }}>Next</button>
+                                            {/* <button className="btn btn-dark" onClick={() => { setPriceshow(false); setCondition(true); Handaddcd(phonecprice) }}>Back</button> */}
 
+                                            <button onClick={()=>{Phonecart()}} className="btn btn-info">Continue</button>
+                                            {/* {
+                                                localStorage.getItem("login") ? <button className='btn btn-info' onClick={() => { setPriceshow(false); setFormsb(true) }}>Next</button> : <button>login</button>
+
+                                            } */}
                                         </div>
                                     </div>
 

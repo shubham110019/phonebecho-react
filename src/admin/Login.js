@@ -2,8 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { StateContent } from "../StateProvider";
 import Apiurl from "../Apidata";
-import Navbar from "../comonent/Navbar";
-import Footer from "../comonent/Footer";
+
 
 const Login = () => {
   const{loginck,loginupdate,loginout}= useContext(StateContent);

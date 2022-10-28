@@ -40,6 +40,12 @@ import Pickupcity from './admin/city/Pickupcity';
 import Selllaptop from './page/laptop/Selllaptop';
 
 import UserProfile from './page/user/Profile';
+import PageNotFound from './page/Pagenotfound';
+
+import Phonecart from './page/Phonecart';
+
+import Bookdata from './comonent/Bookdata';
+
 
 function App() {
 
@@ -52,7 +58,7 @@ function App() {
     <Switch>
   
       <Route path='/' component={Home} exact/>
-
+      {/* <Route path="*" component={PageNotFound} exact/> */}
       
       
 
@@ -66,6 +72,9 @@ function App() {
       <Route path='/sell-old-mobile-phone/brand/:id' component={Model} exact/>
       <Route path='/sell-old-mobile-phone/model/:id' component={Modeldetail} exact/>
       <Route path='/sell-old-mobile-phone/model/:id/calculator/:pid/:slug' component={Variant} exact/>
+
+      <Route path='/cart' component={Phonecart} exact/>
+
 
       {/* table url */}
 
@@ -155,7 +164,7 @@ function App() {
    
     </StateProvider>
 
-
+    <Bookdata/>
     </>
   );
 }
