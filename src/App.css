@@ -202,7 +202,7 @@ h1,h2,h3,h4,h5{
   }
   .modal > .content {
     width: 100%;
-    padding: 10px 30px;
+    padding: 20px 30px;
   }
   .modal > .actions {
     width: 100%;
@@ -232,7 +232,13 @@ border:none !important
     background: none !important;
     border: none !important;
     padding: 15px !important;
-    background: #efefef !important;
+    
+  }
+  .modal > .header button.active{
+    background: #1F2232 !important;
+    color:#FFF !important;
+    border-radius: 8px;
+    font-weight: 800;
   }
   .popup-overlay{
     z-index: 9999 !important;

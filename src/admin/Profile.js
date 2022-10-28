@@ -32,6 +32,8 @@ const Profile = () => {
       });
   };
 
+  console.log(totalbook)
+
 
   // let newDate = new Date()
   // console.log(newDate)

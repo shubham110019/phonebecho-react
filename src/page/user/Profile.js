@@ -1,6 +1,7 @@
 import React from 'react'
 import Footer from '../../comonent/Footer'
 import Navbar from '../../comonent/Navbar'
+import Bookdata from '../../comonent/Bookdata'
 
 const Profile = () => {
   return (
@@ -52,7 +53,7 @@ const Profile = () => {
 
 
       </div>
-
+      <Bookdata/>
       <Footer />
     </>
   )

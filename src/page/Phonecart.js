@@ -6,6 +6,7 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import Loginpopup from '../comonent/Loginpopup';
 import { useHistory } from 'react-router-dom';
+import Registerpop from '../comonent/Registerpop';
 
 export default function Phonecart() {
 
@@ -19,6 +20,7 @@ export default function Phonecart() {
         pickupdate: "",
     })
     const [formErrors, setFormErrors] = useState({});
+    const[popcheck,setpopcheck]=useState(true);
 
 
     const userdatafull = [
@@ -238,9 +240,18 @@ export default function Phonecart() {
                                                         <button className="close" onClick={close}>
                                                             &times;
                                                         </button>
-                                                        <div className="header"> Modal Title </div>
+                                                        <div className="header">
+                                                            <button className={`${popcheck? 'active' :''}`} onClick={()=>{setpopcheck(true)}}>Sign in</button>    
+                                                            <button className={`${popcheck? '' :'active'}`} onClick={()=>{setpopcheck(false)}}>Register</button>    
+                                                        </div>
                                                         <div className="content">
+                                                            <div className={`login ${popcheck? '' :'d-none'}`}>
                                                             <Loginpopup />
+                                                            </div>
+
+                                                            <div className={`register ${popcheck? 'd-none' :''}`}>
+                                                                <Registerpop/>
+                                                            </div>
                                                         </div>
 
                                                     </div>

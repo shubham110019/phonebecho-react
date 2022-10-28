@@ -5,6 +5,7 @@ import Navbar from '../comonent/Navbar';
 import Footer from '../comonent/Footer';
 import Apiurl from '../Apidata';
 import Cardloading from '../comonent/Cardloading';
+import Bookdata from '../comonent/Bookdata';
 
 const Model = (prop) => {
 
@@ -58,6 +59,8 @@ const Model = (prop) => {
                     </div>
                 </div>
             </div>
+
+            <Bookdata/>
             <Footer />
         </>
     )

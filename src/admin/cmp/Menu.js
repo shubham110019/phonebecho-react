@@ -64,6 +64,13 @@ const Menu = () => {
             </Link>
           </li>
 
+          <li>
+            <Link to="/admin/userlist">
+              <i className="bx bx-location-plus"></i>
+              <span className="links_name">Users</span>
+            </Link>
+          </li>
+
           <li className="log_out">
             <Link to="/logout">
               <i className="bx bx-log-out"></i>

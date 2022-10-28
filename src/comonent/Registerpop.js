@@ -1,21 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import Apiurl from '../Apidata';
-import Navbar from '../comonent/Navbar';
-import Footer from '../comonent/Footer';
-import * as yup from 'yup';
-import { Formik, Form, Field } from 'formik';
 
-const Singup = () => {
+export default function Registerpop() {
 
     const history = useHistory();
-
     const[register,setRegister]=useState(false);
-
     useEffect(() => {
         if (localStorage.getItem('login')) {
-            // history.push('/dashboard');
-            window.location.reload(); 
+            history.push('/dashboard');
         }
     }, [])
 
@@ -114,74 +107,48 @@ const Singup = () => {
             result = await result.json();
             console.log(result);
 
-
-
             if (!result.token) {
                 setUsererrordata({ ...usererrordata, email: result.emailError })
             }
 
-            // history.push('/wp-login')
-
             setRegister(true);
-
         }
         else {
             console.log('not submit')
         }
     }
 
-    
+  return (
+    <>
 
-    return (
-        <>
-            {/* <Navbar /> */}
-
-           
-            <div className="loginfull">
-
-          
-
-                <div className='container'>
-
-               
-                    <div className='row py-5'>
-
-                        <div className='col-md-6 offset-md-3 p-5 shadow bg-white rounded'>
-
-                        {
+{
                             register?
                 <div class="alert alert-success" role="alert">
-                your account has been successfully activated <Link to="/wp-login" style={{"color": "#0f67ea","fontWeight": "800"}}>Click here</Link>
+                your account has been successfully activated 
               </div>
               : <></>
             }
-
-                            <h2 className="mb-4 text-start">Register</h2>
-                            {
-                                formdata.map((item) => {
-                                    return (
-                                        <>
-                                            <div class="mb-3">
-
-                                                <input type={item.type} className="lgn-input form-control" name={item.name} onChange={(e) => { Handmodelupdate(e) }} required placeholder={item.name} />
-                                            </div>
-                                            <p style={{ 'color': 'red', 'fontSize': '12px' }}>{item.error}</p>
-
-                                        </>
-                                    )
-                                })
-                            }
-                            <div className="text-start pt-4">
-                                <button type="submit" className="btn btn-lgn" onClick={() => { userSubmit() }}>Register</button>
-                                <Link to="/wp-login" className="ms-4">Sign in</Link>
-                            </div>
+            
+        {
+                            formdata.map((item) => {
+                                return (
+                                    <>
 
 
-                        </div></div>
-                </div>
-            </div>
-            {/* <Footer /> */}
-        </>
-    )
+                                        <div class="mb-3">
+                                           
+                                            <input type={item.type} className="lgn-input form-control" name={item.name} onChange={(e) => { Handmodelupdate(e) }} required placeholder={item.name}/>
+                                        </div>
+                                        <p style={{ 'color': 'red', 'fontSize': '12px' }}>{item.error}</p>
+
+                                    </>
+                                )
+                            })
+                        }
+
+<div className="text-start pt-4">
+                        <button type="submit" className="btn btn-lgn" onClick={() => { userSubmit() }}>Register</button>
+                        </div>
+    </>
+  )
 }
-export default Singup;

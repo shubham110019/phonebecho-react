@@ -11,7 +11,7 @@ import selltabletimg from '../img/sell-tablet.png';
 import selllaptopimg from '../img/sell-laptop.png';
 import Searchall from '../comonent/Searchall';
 import Howwork from '../comonent/Howwork';
-
+import Bookdata from '../comonent/Bookdata';
 
 const Home = () => {
 
@@ -125,7 +125,7 @@ const Home = () => {
                     <Howwork/>
 
 
-            
+                    <Bookdata/>
             <Footer />
         </>
     )

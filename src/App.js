@@ -21,6 +21,7 @@ import StateProvider from './StateProvider';
 import TableModelview from './admin/model/TableModelview';
 import TabletAddModel from './admin/model/TabletAddModel';
 import TabletEditModel from './admin/model/TabletEditModel';
+import Userlist from './admin/user/Userlist';
 
 import Brand from './page/Brand';
 import Tabletbrandd from './page/tablet/Tabletbrand';
@@ -45,6 +46,8 @@ import PageNotFound from './page/Pagenotfound';
 import Phonecart from './page/Phonecart';
 
 import Bookdata from './comonent/Bookdata';
+
+
 
 
 function App() {
@@ -154,6 +157,10 @@ function App() {
       <Route path='/admin/pickup-city' exact>
       <Protected Cmd={Pickupcity}/>
       </Route>
+
+      <Route path='/admin/userlist' exact>
+      <Protected Cmd={Userlist}/>
+      </Route>
       
       <Route path='/logout' exact>
       <Protected Cmd={Logout}/>
@@ -164,7 +171,7 @@ function App() {
    
     </StateProvider>
 
-    <Bookdata/>
+
     </>
   );
 }

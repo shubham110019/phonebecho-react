@@ -405,7 +405,7 @@ const Variant = (props) => {
 
 
                                     <h5>{fullmodelname}</h5>
-                                    <h5>{mainprice}</h5>
+                                   
 
                                 </div>
 

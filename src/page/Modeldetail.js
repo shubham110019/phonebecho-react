@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import Footer from '../comonent/Footer';
 import Navbar from '../comonent/Navbar';
 import Apiurl from '../Apidata';
+import Bookdata from '../comonent/Bookdata';
 
 
 function Modeldetail(props) {
@@ -110,6 +111,7 @@ function Modeldetail(props) {
                     </div>
                 </div>
             </div>
+            <Bookdata/>
             <Footer />
         </>
     )

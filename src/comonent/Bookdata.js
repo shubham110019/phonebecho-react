@@ -1,8 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from "react-router-dom";
 import PhoneImg from "../img/Ph.png";
 
 function Bookdata() {
+
+
+    useEffect(()=>{
+
+        setTimeout(() => {
+            localStorage.clear();
+            
+          }, 1000 * 60 * 60);
+
+    },[])
+
+
+    
     return (
         <>
 
