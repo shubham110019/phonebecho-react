@@ -167,6 +167,15 @@ const Profile = () => {
                 </div>
                 <i class='bx bxs-mobile cart three' ></i>
               </div>
+
+              <div class="box">
+                <div class="right-side">
+                  <div class="box-topic">Total Tablet Model</div>
+                  <div class="number">{tbmodeldata}</div>
+
+                </div>
+                <i class='bx bxs-mobile cart three' ></i>
+              </div>
             
             </div>
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Footer from '../comonent/Footer'
 import Navbar from '../comonent/Navbar';
 import Apiurl from '../Apidata';
@@ -9,47 +9,62 @@ import { useHistory } from 'react-router-dom';
 import Registerpop from '../comonent/Registerpop';
 
 export default function Phonecart() {
-
+    const [userpdata, setUserpdata] = useState({});
     const [userdata, setUserdata] = useState({
-        fullname: "",
-        email: "",
-        phone: "",
+        // fullname: "",
+        // email: userpdata.email,
+        // phone: userpdata.phone,
         pincode: "",
         city: "",
         address: "",
         pickupdate: "",
+        // userid: userpdata._id,
     })
+
+  const [fullname,setFullname]=useState();
+
+    // console.log(userpdata.username)
     const [formErrors, setFormErrors] = useState({});
-    const[popcheck,setpopcheck]=useState(true);
+    const [popcheck, setpopcheck] = useState(true);
+  
+    console.log(fullname)
 
 
     const userdatafull = [
-        { id: 61, type: 'text', title: 'Full Name', name: 'fullname', value: userdata.fullname },
-        { id: 62, type: 'email', title: 'Email', name: 'email', value: userdata.email },
-        { id: 63, type: 'number', title: 'Phone', name: 'phone', value: userdata.phone },
-        { id: 64, type: 'number', title: 'Zip Postal Code', name: 'pincode', value: userdata.pincode },
-        { id: 65, type: 'text', title: 'Select City', name: 'city', value: userdata.city },
+        // { id: 61, type: 'text', title: 'Full Name', name: 'fullname', value: fullname, classdata: 'd-block' },
+        // { id: 62, type: 'email', title: 'Email', name: 'email', value: userdata.email, classdata: 'd-block' },
+        // { id: 63, type: 'number', title: 'Phone', name: 'phone', value: userdata.phone, classdata: 'd-block' },
+        { id: 64, type: 'number', title: 'Zip Postal Code', name: 'pincode', value: userdata.pincode, classdata: 'd-block' },
+        { id: 65, type: 'text', title: 'Select City', name: 'city', value: userdata.city, classdata: 'd-block' },
         { id: 66, type: 'date', title: 'Pickup Date', name: 'pickupdate', value: userdata.pickupdate, min: new Date().toISOString().slice(0, 10) },
         { id: 67, type: 'text', title: 'Address', name: 'address', value: userdata.address },
+        // { id: 68, type: 'text', title: 'userid', name: 'userid', value: userdata.userid, },
     ]
+
+    // setUserdata({
+    //     fullname: userpdata.username,
+    //     email:userpdata.email,
+    //     phone:userpdata.phone,
+    //     userid:userpdata._id
+    // })
 
 
     const history = useHistory();
 
 
-    const[nextprice,setNextprice]=useState(false);
+    const [nextprice, setNextprice] = useState(false);
 
 
 
     var val = localStorage.getItem('pkeydata');
 
-    console.log(val);
+    // console.log(val);
 
-    console.log('retrievedValue: ', JSON.parse(val));
+    // console.log('retrievedValue: ', JSON.parse(val));
 
     const vardata = JSON.parse(val);
 
-    console.log(vardata);
+    // console.log(vardata);
 
     if (!vardata) {
         history.push("/");
@@ -62,17 +77,33 @@ export default function Phonecart() {
             [name]: value
         })
 
-        console.log(userdata)
+        // console.log(userdata)
     }
 
+    console.log(localStorage.getItem('userid'))
+
+    const usercheck = () => {
+
+
+        if (localStorage.getItem('userid')) {
+            fetch(`${Apiurl}user/${localStorage.getItem('userid')}`).then((resq) => {
+                resq.json().then((result) => {
+                    console.log(result.data)
+                    setUserpdata(result.data);
+                }).catch(err => {
+                    console.log(err);
+                })
+            })
+        }
+    }
 
     const modelbooking = () => {
 
-        if (!userdata.fullname || !userdata.email || !userdata.phone || !userdata.pincode || !userdata.city || !userdata.pickupdate || !userdata.address) {
+        if (!userdata.pincode || !userdata.city || !userdata.pickupdate || !userdata.address) {
             alert("fill the form")
         }
         else {
-            alert("submit")
+            // alert("submit")
             const phoneissues = {
                 "phoneissues": vardata.Xphonedata,
             }
@@ -103,7 +134,7 @@ export default function Phonecart() {
                 "modelnamefull": vardata.fullmobilename,
             }
 
-            const fulldata = { ...phoneissues, ...phoneacessories, ...phoneage, ...phonecondition, ...pickupprice, ...bookingtype, ...userdata, ...modelnamefull }
+            const fulldata = { ...phoneissues, ...phoneacessories, ...phoneage, ...phonecondition, ...pickupprice, ...bookingtype, ...userdata, ...modelnamefull, userid:userpdata._id, fullname:userpdata.username, email:userpdata.email, phone: userpdata.phone,   }
 
 
             fetch(`${Apiurl}phonebook`, {
@@ -114,8 +145,10 @@ export default function Phonecart() {
                 },
                 body: JSON.stringify(fulldata)
             }).then((res) => {
-                console.log(res);
-                console.log(fulldata)
+                // console.log(res);
+                // console.log(fulldata)
+
+                
 
             }).catch((err) => {
                 console.log(err);
@@ -125,6 +158,9 @@ export default function Phonecart() {
 
     }
 
+    useEffect(() => {
+        usercheck();
+    }, [])
 
     return (
         <>
@@ -223,13 +259,13 @@ export default function Phonecart() {
 
                         <div className='col-md-8 px-2'>
                             <div className='box rounded p-4 border'>
-                                <div className={`data-box text-center ${nextprice? 'd-none': ''}`}>
+                                <div className={`data-box text-center ${nextprice ? 'd-none' : ''}`}>
                                     <h2>Your Device price is </h2>
 
                                     <h1 className='my-4'>₹ {vardata.Xmainprice}</h1>
 
                                     {
-                                        localStorage.getItem("login") ? <button className=' btn btn-main' onClick={()=>{setNextprice(true)}}>Next</button> :
+                                        localStorage.getItem("login") ? <button className=' btn btn-main' onClick={() => { setNextprice(true) }}>Next</button> :
                                             <Popup
                                                 trigger={<button className="button btn btn-info"> Continue </button>}
                                                 modal
@@ -241,16 +277,16 @@ export default function Phonecart() {
                                                             &times;
                                                         </button>
                                                         <div className="header">
-                                                            <button className={`${popcheck? 'active' :''}`} onClick={()=>{setpopcheck(true)}}>Sign in</button>    
-                                                            <button className={`${popcheck? '' :'active'}`} onClick={()=>{setpopcheck(false)}}>Register</button>    
+                                                            <button className={`${popcheck ? 'active' : ''}`} onClick={() => { setpopcheck(true) }}>Sign in</button>
+                                                            <button className={`${popcheck ? '' : 'active'}`} onClick={() => { setpopcheck(false) }}>Register</button>
                                                         </div>
                                                         <div className="content">
-                                                            <div className={`login ${popcheck? '' :'d-none'}`}>
-                                                            <Loginpopup />
+                                                            <div className={`login ${popcheck ? '' : 'd-none'}`}>
+                                                                <Loginpopup />
                                                             </div>
 
-                                                            <div className={`register ${popcheck? 'd-none' :''}`}>
-                                                                <Registerpop/>
+                                                            <div className={`register ${popcheck ? 'd-none' : ''}`}>
+                                                                <Registerpop />
                                                             </div>
                                                         </div>
 
@@ -264,27 +300,29 @@ export default function Phonecart() {
 
                                 </div>
 
-                                <div className={`data-box ${nextprice? '': 'd-none'}`}>
-                                <h2>Billing Address</h2>
-                                <div className='row mt-4'>
+                                <div className={`data-box ${nextprice ? '' : 'd-none'}`}>
+                                    <h2>Billing Address</h2>
+                                    <div className='row mt-4'>
 
-                                {
-                                                userdatafull.map((item) => {
-                                                    return (
-                                                        <>
-                                                            <div className="form-group col-md-6 mb-2">
-                                                                <label htmlFor="exampleInputEmail1">{item.title}</label>
-                                                                <input type={item.type} className="form-control" name={item.name} value={item.value} onChange={(e) => Handleuserinput(e)} min={item.min} />
-                                                                <span>{formErrors.name}</span>
-                                                            </div>
+                                        {
+                                            userdatafull.map((item) => {
+                                                return (
+                                                    <>
+                                                        <div className={`form-group col-md-6 mb-2 ${item.classdata}`}>
+                                                            <label htmlFor="exampleInputEmail1">{item.title}</label>
+                                                            <input type={item.type} className="form-control" name={item.name} value={item.value} onChange={(e) => Handleuserinput(e)} min={item.min} />
+                                                            <span>{formErrors.name}</span>
+                                                        </div>
 
-                                                        </>
-                                                    )
-                                                })
-                                            }
+                                                    </>
+                                                )
+                                            })
+                                        }
 
-
-<button className='btn btn-info' onClick={() => (modelbooking())}> Submit</button>
+                                       
+                                        <div className='mt-3'>
+                                            <button className='btn btn-info' onClick={() => (modelbooking())}> Submit</button>
+                                        </div>
 
 
                                     </div>

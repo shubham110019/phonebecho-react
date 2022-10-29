@@ -13,7 +13,7 @@ const Navbar = () => {
       <nav className="navbar navbar-expand-lg sticky-top bg-white border-bottom p-3">
         <div className="container">
           <Link className="navbar-brand" to="/">
-            <strong>PhoneBecho</strong>
+          <i class="fa-solid fa-mobile-screen"></i> <strong>PhoneBecho</strong>
           </Link>
           <button
             className="navbar-toggler"

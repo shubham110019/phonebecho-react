@@ -23,7 +23,7 @@ function Userlist() {
     });
   };
 
-  console.log(datafull)
+  // console.log(datafull)
 
   const deleteuser = (id) => {
     fetch(`${Apiurl}user/${id}`, {
